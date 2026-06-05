@@ -1,0 +1,75 @@
+:root {
+  /* =========================
+     BASE COLORS
+  ========================= */
+
+  --color-white: #fff;
+  --color-neutral-darkest: #000;
+
+  --color-neutral-lightest: #f2f2f2;
+  --color-neutral-lighter: #d8d8d8;
+  --color-neutral-light: #b2b2b2;
+  --color-neutral: #7f7f7f;
+  --color-neutral-dark: #4c4c4c;
+  --color-neutral-darker: #191919;
+
+  /* =========================
+     BRAND (CORAL SYSTEM)
+  ========================= */
+
+  --color-coral-lightest: #fff2ec;
+  --color-coral-lighter: #ffe5d9;
+  --color-coral-light: #ffa57a;
+  --color-coral: #cc6534;
+  --color-coral-dark: #b24f24;
+  --color-coral-darker: #66321a;
+  --color-coral-darkest: #4c2613;
+
+  /* =========================
+     OPACITY TOKENS
+  ========================= */
+
+  --opacity-transparent: rgba(255, 255, 255, 0);
+
+  --opacity-white-5: rgba(255, 255, 255, 0.05);
+  --opacity-white-10: rgba(255, 255, 255, 0.1);
+  --opacity-white-15: rgba(255, 255, 255, 0.15);
+  --opacity-white-20: rgba(255, 255, 255, 0.2);
+  --opacity-white-30: rgba(255, 255, 255, 0.3);
+  --opacity-white-40: rgba(255, 255, 255, 0.4);
+  --opacity-white-50: rgba(255, 255, 255, 0.5);
+  --opacity-white-60: rgba(255, 255, 255, 0.6);
+
+  --opacity-neutral-5: rgba(0, 0, 0, 0.05);
+  --opacity-neutral-10: rgba(0, 0, 0, 0.1);
+  --opacity-neutral-15: rgba(0, 0, 0, 0.15);
+  --opacity-neutral-20: rgba(0, 0, 0, 0.2);
+  --opacity-neutral-30: rgba(0, 0, 0, 0.3);
+  --opacity-neutral-40: rgba(0, 0, 0, 0.4);
+  --opacity-neutral-50: rgba(0, 0, 0, 0.5);
+  --opacity-neutral-60: rgba(0, 0, 0, 0.6);
+
+  /* =========================
+     SEMANTIC TOKENS (UI LAYER)
+  ========================= */
+
+  /* Scheme 1 (light UI) */
+  --color-scheme-1-background: var(--color-white);
+  --color-scheme-1-foreground: var(--color-neutral-lightest);
+  --color-scheme-1-text: var(--color-neutral-darkest);
+  --color-scheme-1-border: var(--opacity-neutral-15);
+  --color-scheme-1-accent: var(--color-coral);
+
+  /* Scheme 2 (warm / accent background) */
+  --color-scheme-2-background: var(--color-coral-lightest);
+  --color-scheme-2-foreground: var(--color-coral-lighter);
+  --color-scheme-2-text: var(--color-coral-darkest);
+  --color-scheme-2-border: var(--opacity-neutral-15);
+  --color-scheme-2-accent: var(--color-coral);
+
+  /* =========================
+     STATE COLORS
+  ========================= */
+
+  --color-error: #b00101;
+}
