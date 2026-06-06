@@ -1,0 +1,21 @@
+/* ===== LAYOUT CONTAINER ===== */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--container-padding-mobile);
+  max-width: var(--container-max-width-mobile);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--container-padding-tablet);
+    max-width: var(--container-max-width-tablet);
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 var(--container-padding-desktop);
+    max-width: var(--container-max-width-desktop);
+  }
+}
