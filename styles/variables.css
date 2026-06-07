@@ -72,4 +72,64 @@
   ========================= */
 
   --color-error: #b00101;
+
+  /* ===== TYPOGRAPHY ===== */
+  /* Розміри шрифтів */
+  --font-size-xxs: 0.625rem;
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-2_5xl: 1.75rem; /* 28px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-3_5xl: 2rem; /* 32px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-4_5xl: 2.375rem; /* 38px*/
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.5rem; /* 56px */
+
+  /* Вага шрифтів */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Міжрядкові інтервали */
+  --line-height-none: 1;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  /* Letter Spacing (Міжлітерний інтервал) */
+  --letter-spacing-tighter: -0.05em; /* Для великих заголовків */
+  --letter-spacing-tight: -0.02em; /* Для підзаголовків */
+  --letter-spacing-normal: 0em; /* Стандарт */
+  --letter-spacing-wide: 0.025em; /* Для кнопок (наприклад, Sign Up) */
+  --letter-spacing-widest: 0.1em; /* Для акцентних елементів */
+
+  /* ===== BREAKPOINTS ===== */
+  --bp-mobile-min: 320px;
+  --bp-mobile: 375px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1440px;
+
+  /* ===== CONTAINER ===== */
+  --container-padding-mobile: 20px;
+  --container-padding-tablet: 32px;
+  --container-padding-desktop: 64px;
+
+  /* mobile (від 320 до 767) */
+  --container-max-width-mobile: 375px;
+
+  /* tablet (768–1439) */
+  --container-max-width-tablet: 768px;
+
+  /* desktop (1440+) */
+  --container-max-width-desktop: 1440px;
+
+  /* ===== ANIMATIONS ===== */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
 }
