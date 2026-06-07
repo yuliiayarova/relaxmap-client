@@ -1,3 +1,23 @@
 .btn {
-  display: block;
+  display: inline-flex;
+  background-color: var(--color-coral);
+  border: 1px solid var(--color-coral);
+  border-radius: 6px;
+  padding: 12px;
+  min-width: 114px;
+  min-height: 48px;
+
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-white);
+
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
 }

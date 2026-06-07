@@ -25,10 +25,10 @@
   --color-coral-darker: #66321a;
   --color-coral-darkest: #4c2613;
 
+  --color-green-darkest: #1b391b;
   /* =========================
      OPACITY TOKENS
   ========================= */
-
   --opacity-transparent: rgba(255, 255, 255, 0);
 
   --opacity-white-5: rgba(255, 255, 255, 0.05);

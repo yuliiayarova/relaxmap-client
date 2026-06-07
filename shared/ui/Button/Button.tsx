@@ -23,6 +23,7 @@ export default function Button({
   if (href) {
     return (
       <Link href={href} target={target} className={clsx(css.btn, className)}>
+        {children}
         {text}
       </Link>
     );
