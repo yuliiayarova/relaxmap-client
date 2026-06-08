@@ -60,13 +60,7 @@
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
     color: var(--color-coral-darkest);
-    
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
+
 
     @media (min-width:1440px) {
         font-size: var(--font-size-xl) ;

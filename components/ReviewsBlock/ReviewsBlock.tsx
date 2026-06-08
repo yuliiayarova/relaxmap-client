@@ -3,57 +3,92 @@
 import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { useQuery } from '@tanstack/react-query';
+
+// Імпортуємо вашу функцію
+import { getFeedbacks } from '@/lib/api/client/feedbacksApi';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 import css from './ReviewsBlock.module.css';
 
-const mockReviews = [
-  {
-    id: 1,
-    name: 'Олена Коваль',
-    location: 'Бакота',
-    text: 'Неймовірні краєвиди та спокійна атмосфера — це одне з моїх найулюбленіших місць в Україні.',
-    rating: 4.5,
-  },
-  {
-    id: 2,
-    name: 'Ігор Петров',
-    location: 'Карпати',
-    text: '“Чудове місце для відпочинку на природі: чисте повітря, мальовничі пагорби та спокійна річка.”',
-    rating: 4.5,
-  },
-  {
-    id: 3,
-    name: 'Ігор Шевченко',
-    location: 'Місце',
-    text: 'Тут відчуваєш гармонію та справжню силу української природи — варто приїхати хоча б раз у житті.',
-    rating: 4.5,
-  },
-  {
-    id: 4,
-    name: 'Олена Коваль (Дубль)',
-    location: 'Бакота',
-    text: 'Неймовірні краєвиди та спокійна атмосфера — це одне з моїх найулюбленіших місць в Україні.',
-    rating: 4.5,
-  },
-  {
-    id: 5,
-    name: 'Ігор Петров (Дубль)',
-    location: 'Карпати',
-    text: '“Чудове місце для відпочинку на природі: чисте повітря, мальовничі пагорби та спокійна річка.”',
-    rating: 4.5,
-  },
-  {
-    id: 6,
-    name: 'Ігор Шевченко (Дубль)',
-    location: 'Місце',
-    text: 'Тут відчуваєш гармонію та справжню силу української природи — варто приїхати хоча б раз у житті.',
-    rating: 4.5,
-  },
-];
+// Описуємо точний тип одного відгуку на основі вашої відповіді з бекенду
+interface BackendReview {
+  _id: string;
+  userName: string;
+  rate: number;
+  description: string;
+  createdAt: string;
+}
 
 export default function Feedbacks() {
+  const { data: reviewsList = [], isLoading, isError, error } = useQuery<BackendReview[]>({
+    queryKey: ['feedbacks', { perPage: 6, combined: true }],
+    queryFn: async () => {
+      const [page1, page2] = await Promise.all([
+        getFeedbacks({ perPage: 6, page: 1 }),
+        getFeedbacks({ perPage: 6, page: 2 }),
+      ]);
+
+      const list1 = (page1?.data as unknown as BackendReview[]) || [];
+      const list2 = (page2?.data as unknown as BackendReview[]) || [];
+
+      return [...list1, ...list2];
+    },
+  });
+
+  const renderStars = (rate: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (rate >= i) {
+        stars.push(
+          <svg key={i} className={css.iconStar}>
+            <use href="/icons/sprite.svg#icon-star_filled" />
+          </svg>
+        );
+      } else if (rate > i - 1 && rate < i) {
+        stars.push(
+          <svg key={i} className={css.iconStar}>
+            <use href="/icons/sprite.svg#icon-star_half" />
+          </svg>
+        );
+      } else {
+        stars.push(
+          <svg key={i} className={css.iconStar}>
+            <use href="/icons/sprite.svg#icon-star_rate" />
+          </svg>
+        );
+      }
+    }
+    return stars;
+  };
+
+  if (isLoading) {
+    return (
+      <section className={css.feedbacks}>
+        <div className={clsx('container', css.wrapper)}>
+          <h2 className={css.sectionTitle}>Останні відгуки</h2>
+          <div style={{ color: 'var(--color-coral-darkest)' }}>Завантаження відгуків...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (isError) {
+    return (
+      <section className={css.feedbacks}>
+        <div className={clsx('container', css.wrapper)}>
+          <h2 className={css.sectionTitle}>Останні відгуки</h2>
+          <div style={{ color: 'red' }}>Помилка завантаження: {(error as Error)?.message || 'Щось пішло не так'}</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (reviewsList.length === 0) {
+    return null;
+  }
+
   return (
     <section className={css.feedbacks}>
       <div className={clsx('container', css.wrapper)}>
@@ -67,6 +102,8 @@ export default function Feedbacks() {
               prevEl: `.${css.btnPrev}`,
               nextEl: `.${css.btnNext}`,
             }}
+            observer={true}
+            observeParents={true}
             breakpoints={{
               320: {
                 spaceBetween: 24,
@@ -83,32 +120,18 @@ export default function Feedbacks() {
             }}
             className={css.swiper}
           >
-            {mockReviews.map((review) => (
-              <SwiperSlide key={review.id} className={css.slide}>
+            {reviewsList.map((review) => (
+              <SwiperSlide key={review._id} className={css.slide}>
                 <div className={css.card}>
                   <div className={css.rating}>
-                    <svg className={css.iconStar}>
-                      <use href="/icons/sprite.svg#icon-star_filled" />
-                    </svg>
-                    <svg className={css.iconStar}>
-                      <use href="/icons/sprite.svg#icon-star_filled" />
-                    </svg>
-                    <svg className={css.iconStar}>
-                      <use href="/icons/sprite.svg#icon-star_filled" />
-                    </svg>
-                    <svg className={css.iconStar}>
-                      <use href="/icons/sprite.svg#icon-star_filled" />
-                    </svg>
-                    <svg className={css.iconStar}>
-                      <use href="/icons/sprite.svg#icon-star_half" />
-                    </svg>
+                    {renderStars(review.rate)}
                   </div>
 
-                  <p className={css.text}>{review.text}</p>
+                  <p className={css.text}>{review.description}</p>
 
                   <div className={css.authorBlock}>
-                    <h3 className={css.name}>{review.name}</h3>
-                    <span className={css.location}>{review.location}</span>
+                    <h3 className={css.name}>{review.userName}</h3>
+                    <span className={css.location}>Місце локації</span>
                   </div>
                 </div>
               </SwiperSlide>
