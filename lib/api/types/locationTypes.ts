@@ -27,6 +27,30 @@ export interface Location {
   updatedAt: string;
 }
 
+export interface CreateLocation {
+  name: string;
+  image: string;
+  locationType: string;
+  region: string;
+  description: string;
+  coordinates: {
+    lat: number;
+    lon: number;
+  };
+}
+
+export interface UpdateLocation {
+  name?: string;
+  image?: string;
+  locationType?: string;
+  region?: string;
+  description?: string;
+  coordinates?: {
+    lat: number;
+    lon: number;
+  };
+}
+
 export interface LocationsResponse {
   page: number;
   perPage: number;
