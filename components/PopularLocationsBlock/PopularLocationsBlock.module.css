@@ -1,0 +1,159 @@
+.section {
+  padding: 48px 0;
+  background: var(--color-scheme-2-background);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 64px 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding: 72px 0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-neutral-darkest);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+.header .allLocationsBtn {
+  background-color: var(--color-coral-dark);
+  border-color: var(--color-coral-dark);
+  padding: 6px 12px;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .header .allLocationsBtn {
+    width: 114px;
+  }
+}
+
+.header .allLocationsBtn:hover,
+.header .allLocationsBtn:focus-visible {
+  background-color: var(--color-coral-lighter);
+  border-color: var(--color-coral-dark);
+  color: var(--color-scheme-2-text);
+}
+
+@media (min-width: 1440px) {
+  .header .allLocationsBtn {
+    width: 136px;
+    height: 48px;
+    font-size: var(--font-size-xl);
+  }
+}
+
+.slider {
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (min-width: 768px) {
+  .navigation {
+    margin-top: 40px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .navigation {
+    margin-top: 40px;
+  }
+}
+
+.btnPrev,
+.btnNext {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid var(--color-scheme-1-border);
+  padding: 12px;
+  background-color: var(--color-coral-lighter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    opacity var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.btnPrev:not(:global(.swiper-button-disabled)):hover,
+.btnNext:not(:global(.swiper-button-disabled)):hover {
+  background-color: var(--color-neutral-lightest);
+  border-color: var(--color-coral-light);
+}
+
+.btnPrev:not(:global(.swiper-button-disabled)):active,
+.btnNext:not(:global(.swiper-button-disabled)):active {
+  background-color: var(--color-coral-light);
+  border-color: var(--color-coral-light);
+}
+
+.btnPrev:global(.swiper-button-disabled),
+.btnNext:global(.swiper-button-disabled) {
+  background-color: var(--color-scheme-1-foreground);
+  border-color: var(--color-scheme-1-border);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btnPrev svg,
+.btnNext svg {
+  fill: var(--color-coral-darkest);
+}
+
+.statusText {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-dark);
+  padding: 40px 0;
+  text-align: center;
+}
