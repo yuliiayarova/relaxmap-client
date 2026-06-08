@@ -1,6 +1,6 @@
 .advantages-block {
   padding: 64px 0;
-  background-color: #fff2ec;
+  background-color: var(--color-coral-lightest);
 
   @media only screen and (min-width: 1440px) {
     padding: 112px 0;
@@ -8,19 +8,19 @@
 }
 .advantag-title {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  color: #1b391b;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2_5xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight2);
+  color: var(--color-green-darkest);
 
   margin-bottom: 32px;
 
   @media only screen and (min-width: 768px) {
-    font-size: 44px;
+    font-size: var(--font-size-4_5x2);
   }
   @media only screen and (min-width: 1440px) {
-    font-size: 52px;
+    font-size: var(--font-size-5x2);
   }
 }
 .advantag-list {
@@ -43,7 +43,7 @@
   padding: 16px;
   flex-basis: 100%;
 
-  background-color: #ffe5d9;
+  background-color: var(--color-coral-lighter);
 
   @media only screen and (min-width: 768px) {
     flex-basis: calc((100% - 24px) / 2);
@@ -69,26 +69,26 @@
 }
 .advantag-name {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
-  color: #1b391b;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight2);
+  letter-spacing: var(--letter-spacing-tight2);
+  color: var(--color-green-darkest);
 
   margin-bottom: 16px;
 
   @media only screen and (min-width: 1440px) {
-    font-size: 26px;
+    font-size: var(--font-size-2x2);
   }
 }
 .advantag-description {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #1b391b;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-green-darkest);
 
   @media only screen and (min-width: 1440px) {
-    font-size: 18px;
+    font-size: var(--font-size-lg);
   }
 }

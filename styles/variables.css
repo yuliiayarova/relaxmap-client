@@ -82,12 +82,15 @@
   --font-size-lg: 1.125rem; /* 18px */
   --font-size-xl: 1.25rem; /* 20px */
   --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-2x2: 1.625rem; /* 26px */
   --font-size-2_5xl: 1.75rem; /* 28px */
   --font-size-3xl: 1.875rem; /* 30px */
   --font-size-3_5xl: 2rem; /* 32px */
   --font-size-4xl: 2.25rem; /* 36px */
   --font-size-4_5xl: 2.375rem; /* 38px*/
+  --font-size-4_5x2: 2.75rem; /* 44px*/
   --font-size-5xl: 3rem; /* 48px */
+  --font-size-5x2: 3.25rem; /* 52px */
   --font-size-6xl: 3.5rem; /* 56px */
 
   /* Вага шрифтів */
@@ -99,11 +102,13 @@
   /* Міжрядкові інтервали */
   --line-height-none: 1;
   --line-height-tight: 1.2;
+  --line-height-tight2: 1.4;
   --line-height-normal: 1.5;
 
   /* Letter Spacing (Міжлітерний інтервал) */
   --letter-spacing-tighter: -0.05em; /* Для великих заголовків */
   --letter-spacing-tight: -0.02em; /* Для підзаголовків */
+  --letter-spacing-tight2: -0.01em;
   --letter-spacing-normal: 0em; /* Стандарт */
   --letter-spacing-wide: 0.025em; /* Для кнопок (наприклад, Sign Up) */
   --letter-spacing-widest: 0.1em; /* Для акцентних елементів */
