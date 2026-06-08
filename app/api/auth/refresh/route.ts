@@ -39,8 +39,9 @@ export async function POST() {
             cookieStore.set('accessToken', parsed.accessToken, options);
           if (parsed.refreshToken)
             cookieStore.set('refreshToken', parsed.refreshToken, options);
+          if (parsed.sessionId)
+            cookieStore.set('refreshToken', parsed.sessionId, options);
         }
-        console.log(cookieStore);
         return NextResponse.json({ success: true }, { status: 200 });
       }
     }
