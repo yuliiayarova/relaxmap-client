@@ -75,7 +75,7 @@
 
   /* ===== TYPOGRAPHY ===== */
   /* Розміри шрифтів */
-  --font-size-xxs: 0.625rem;
+  --font-size-xxs: 0.625rem; /* 10px */
   --font-size-xs: 0.75rem; /* 12px */
   --font-size-sm: 0.875rem; /* 14px */
   --font-size-base: 1rem; /* 16px */
@@ -87,7 +87,9 @@
   --font-size-3_5xl: 2rem; /* 32px */
   --font-size-4xl: 2.25rem; /* 36px */
   --font-size-4_5xl: 2.375rem; /* 38px*/
+  --font-size-4_8xl: 2.75rem;/* 44px*/
   --font-size-5xl: 3rem; /* 48px */
+  --font-size-5_5xl: 3.25rem;/* 52px */
   --font-size-6xl: 3.5rem; /* 56px */
 
   /* Вага шрифтів */
