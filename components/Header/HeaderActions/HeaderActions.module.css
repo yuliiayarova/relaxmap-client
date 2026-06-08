@@ -1,0 +1,124 @@
+.desktopActions {
+  display: none;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.loginBtn,
+.signupBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.loginBtn {
+  border: 1px solid var(--opacity-neutral-15);
+  color: var(--color-scheme-2-text);
+  background-color: transparent;
+}
+
+.signupBtn {
+  border: 1px solid var(--color-coral);
+  color: var(--color-white);
+  background-color: var(--color-coral);
+}
+
+.btnAdd,
+.addBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  border: 1px solid var(--color-coral);
+  border-radius: 6px;
+  background-color: var(--color-coral);
+  color: var(--color-white);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  transition: var(--transition-base);
+}
+
+.btnAdd {
+  padding: 0 16px;
+  font-size: var(--font-size-base);
+}
+
+.addBtn {
+  max-width: 200px;
+  padding: 0 10px;
+  font-size: var(--font-size-xs);
+  white-space: nowrap;
+}
+
+.btnAdd:hover,
+.btnAdd:focus,
+.addBtn:hover,
+.addBtn:focus,
+.loginBtn:hover,
+.loginBtn:focus,
+.signupBtn:hover,
+.signupBtn:focus {
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  width: 36px;
+  min-height: 36px;
+  padding: 0;
+  border: 1px solid var(--opacity-neutral-15);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-scheme-2-text);
+}
+
+@media (min-width: 375px) {
+  .menuBtn {
+    min-width: 40px;
+    width: 40px;
+    min-height: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .loginBtn,
+  .signupBtn,
+  .addBtn {
+    display: flex;
+  }
+
+  .mobileActions {
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .desktopActions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: 32px;
+  }
+
+  .btnAdd {
+    display: flex;
+  }
+
+  .mobileActions {
+    display: none;
+  }
+}

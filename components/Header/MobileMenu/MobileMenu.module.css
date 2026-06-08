@@ -1,0 +1,102 @@
+.menu {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 72px;
+  z-index: 10;
+  display: flex;
+  min-height: calc(100vh - 92px);
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 10px 48px;
+  background-color: var(--color-coral-lightest);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base);
+}
+
+.isOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav {
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bottom {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: auto;
+}
+
+.authActions {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loginBtn,
+.signupBtn,
+.addBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 38px;
+  border-radius: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition: var(--transition-base);
+}
+
+.loginBtn {
+  border: 1px solid var(--opacity-neutral-15);
+  color: var(--color-scheme-2-text);
+  background-color: transparent;
+}
+
+.signupBtn,
+.addBtn {
+  border: 1px solid var(--color-coral);
+  color: var(--color-white);
+  background-color: var(--color-coral);
+}
+
+.loginBtn:hover,
+.loginBtn:focus,
+.signupBtn:hover,
+.signupBtn:focus,
+.addBtn:hover,
+.addBtn:focus {
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+@media (min-width: 768px) {
+  .menu {
+    left: 32px;
+    right: 32px;
+    top: 78px;
+    min-height: calc(100vh - 110px);
+  }
+  .loginBtn,
+  .signupBtn {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .menu {
+    display: none;
+  }
+}

@@ -1,6 +1,25 @@
 .header {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 20px;
+  justify-content: flex-start;
+  min-height: 72px;
+  background-color: var(--color-coral-lightest);
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    min-height: 78px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .desktopNav {
+    display: flex;
+    margin-left: auto;
+  }
 }

@@ -1,0 +1,53 @@
+.userBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-green-darkest);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.userName {
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  color: var(--color-scheme-2-text);
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--opacity-neutral-15);
+}
+
+.logBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.logBtn:hover,
+.logBtn:focus {
+  background-color: var(--color-coral-lighter);
+}
+
+.logBtnSvg {
+  fill: var(--color-scheme-2-text);
+}
