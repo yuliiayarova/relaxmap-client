@@ -50,6 +50,7 @@ export default function LocationCard({
           <Button
             className={css['btn-view-location']}
             text="Переглянути локацію"
+            href={`/locations/${locationId}`}
           />
           {!user && (
             <Button

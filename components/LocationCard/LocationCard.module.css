@@ -3,9 +3,8 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 0px;
 
-  border: 0px solid var(--opacity-neutral-15);
+  border: 0 solid var(--opacity-neutral-15);
   border-radius: 12px;
   width: 335px;
   height: 520px;
@@ -59,7 +58,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: row;
-  gap: 0px;
 }
 .name-location {
   font-family: 'Montserrat', sans-serif;
