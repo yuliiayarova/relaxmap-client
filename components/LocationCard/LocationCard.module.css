@@ -1,0 +1,123 @@
+.location-card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 0px;
+
+  border: 0px solid var(--opacity-neutral-15);
+  border-radius: 12px;
+  width: 335px;
+  height: 520px;
+
+  background-color: var(--color-coral-lighter);
+
+  overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    width: 340px;
+    height: 525px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 421px;
+    height: 624px;
+  }
+}
+.article-box-img {
+  width: 100%;
+  height: 100%;
+}
+.article-location-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.article-box-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+  width: 100%;
+}
+.name-type-location {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  color: var(--color-coral-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-base);
+  }
+}
+.rate-stars {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0px;
+}
+.name-location {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+  color: var(--color-coral-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-2_5x0);
+  }
+}
+.button-box-location {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+  width: 100%;
+}
+.btn-view-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  border: 1px solid var(--opacity-neutral-15);
+  border-radius: 6px;
+  padding: 6px 12px;
+  width: 100%;
+  height: 48px;
+
+  background: var(--opacity-neutral-5);
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-coral-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-xl);
+  }
+}
+.btn-edit-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 12px;
+
+  border: 1px solid var(--opacity-neutral-15);
+  border-radius: 6px;
+  padding: 6px;
+  min-width: 48px;
+  width: 48px;
+  height: 48px;
+
+  background: var(--opacity-neutral-5);
+}
