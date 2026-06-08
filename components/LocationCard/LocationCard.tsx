@@ -4,7 +4,7 @@ import Icon from '@/shared/ui/Icon/Icon';
 import clsx from 'clsx';
 import css from './LocationCard.module.css';
 import Image from 'next/image';
-import { AddRate } from '@/lib/services/AddRate';
+import { AddRate } from '@/shared/ui/AddStarsRate/AddRate';
 import { User } from '@/lib/api/types/authTypes';
 // import { useRouter } from 'next/navigation';
 
