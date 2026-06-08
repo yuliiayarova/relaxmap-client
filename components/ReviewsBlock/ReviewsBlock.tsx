@@ -40,31 +40,25 @@ export default function Feedbacks() {
     },
   });
 
-  const renderStars = (rate: number) => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (rate >= i) {
-        stars.push(
-          <svg key={i} className={css.iconStar}>
-            <use href="/icons/sprite.svg#icon-star_filled" />
-          </svg>,
-        );
-      } else if (rate > i - 1 && rate < i) {
-        stars.push(
-          <svg key={i} className={css.iconStar}>
-            <use href="/icons/sprite.svg#icon-star_half" />
-          </svg>,
-        );
-      } else {
-        stars.push(
-          <svg key={i} className={css.iconStar}>
-            <use href="/icons/sprite.svg#icon-star_rate" />
-          </svg>,
-        );
-      }
+const renderStars = (rate: number) => {
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    if (rate >= i) {
+      stars.push(
+        <Icon key={i} name="star_filled" className={css.iconStar} />
+      );
+    } else if (rate > i - 1 && rate < i) {
+      stars.push(
+        <Icon key={i} name="star_half" className={css.iconStar} />
+      );
+    } else {
+      stars.push(
+        <Icon key={i} name="star_rate" className={css.iconStar} />
+      );
     }
-    return stars;
-  };
+  }
+  return stars;
+};
 
   if (isLoading) {
     return (
