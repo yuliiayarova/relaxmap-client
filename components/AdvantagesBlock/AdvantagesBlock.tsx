@@ -1,4 +1,5 @@
 import Icon from '@/shared/ui/Icon/Icon';
+import clsx from 'clsx';
 import css from './AdvantagesBlock.module.css';
 
 export default function AdvantagesBlock() {
@@ -9,7 +10,10 @@ export default function AdvantagesBlock() {
         <ul className={css['advantag-list']}>
           <li className={css['advantag-item']}>
             <div className={css['advantag-icon-box']}>
-              <Icon name="arrow_back" />
+              <Icon
+                name="select_check_box"
+                className={css['advantag-icon-img']}
+              />
             </div>
             <h3 className={css['advantag-name']}>Реальні відгуки</h3>
             <p className={css['advantag-description']}>
@@ -19,7 +23,7 @@ export default function AdvantagesBlock() {
           </li>
           <li className={css['advantag-item']}>
             <div className={css['advantag-icon-box']}>
-              <Icon name="chevron_right" />
+              <Icon name="filter_alt" className={css['advantag-icon-img']} />
             </div>
             <h3 className={css['advantag-name']}>Зручні фільтри</h3>
             <p className={css['advantag-description']}>
@@ -27,9 +31,9 @@ export default function AdvantagesBlock() {
               критеріями.
             </p>
           </li>
-          <li className={css['advantag-item']}>
+          <li className={clsx(css['advantag-item'], css['last-item'])}>
             <div className={css['advantag-icon-box']}>
-              <Icon name="communication" />
+              <Icon name="communication" className={css['advantag-icon-img']} />
             </div>
             <h3 className={css['advantag-name']}>Спільнота мандрівників</h3>
             <p className={css['advantag-description']}>

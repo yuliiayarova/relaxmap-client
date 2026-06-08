@@ -1,2 +1,94 @@
 .advantages-block {
+  padding: 64px 0;
+  background-color: #fff2ec;
+
+  @media only screen and (min-width: 1440px) {
+    padding: 112px 0;
+  }
+}
+.advantag-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #1b391b;
+
+  margin-bottom: 32px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 44px;
+  }
+  @media only screen and (min-width: 1440px) {
+    font-size: 52px;
+  }
+}
+.advantag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 24px;
+
+  padding: 8px 0px; /* Это строго по макету, но я не знаю зачем эти 8px здесь?*/
+  width: 100%;
+
+  @media only screen and (min-width: 1440px) {
+    flex-wrap: nowrap;
+  }
+}
+.advantag-item {
+  border-radius: 16px;
+  padding: 16px;
+  flex-basis: 100%;
+
+  background-color: #ffe5d9;
+
+  @media only screen and (min-width: 768px) {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+  @media only screen and (min-width: 1440px) {
+    flex-basis: calc((100% - 48px) / 3);
+  }
+}
+.advantag-item.last-item {
+  @media only screen and (min-width: 768px) {
+    flex-basis: 100%;
+  }
+  @media only screen and (min-width: 1440px) {
+    flex-basis: calc((100% - 48px) / 3);
+  }
+}
+.advantag-icon-box {
+  margin-bottom: 16px;
+}
+.advantag-icon-img {
+  width: 64px;
+  height: 64px;
+}
+.advantag-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #1b391b;
+
+  margin-bottom: 16px;
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 26px;
+  }
+}
+.advantag-description {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1b391b;
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
 }
