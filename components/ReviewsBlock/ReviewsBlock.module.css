@@ -83,16 +83,6 @@
         }
 }
 
-.location {
-    font-size: var(--font-size-xxs);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--line-height-normal);
-    color: var(--color-coral-darkest);
-
-    @media (min-width:1440px) {
-            font-size: var(--font-size-xs);
-        }
-}
 
 .navigation {
     display: flex;

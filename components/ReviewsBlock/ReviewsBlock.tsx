@@ -4,15 +4,13 @@ import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import { useQuery } from '@tanstack/react-query';
-
-// Імпортуємо вашу функцію
-import { getFeedbacks } from '@/lib/api/client/feedbacksApi';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
-import css from './ReviewsBlock.module.css';
 
-// Описуємо точний тип одного відгуку на основі вашої відповіді з бекенду
+import { getFeedbacks } from '@/lib/api/client/feedbacksApi';
+import css from './ReviewsBlock.module.css';
+import Icon from '@/shared/ui/Icon/Icon';
+
 interface BackendReview {
   _id: string;
   userName: string;
@@ -22,7 +20,12 @@ interface BackendReview {
 }
 
 export default function Feedbacks() {
-  const { data: reviewsList = [], isLoading, isError, error } = useQuery<BackendReview[]>({
+  const {
+    data: reviewsList = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery<BackendReview[]>({
     queryKey: ['feedbacks', { perPage: 6, combined: true }],
     queryFn: async () => {
       const [page1, page2] = await Promise.all([
@@ -30,8 +33,8 @@ export default function Feedbacks() {
         getFeedbacks({ perPage: 6, page: 2 }),
       ]);
 
-      const list1 = (page1?.data as unknown as BackendReview[]) || [];
-      const list2 = (page2?.data as unknown as BackendReview[]) || [];
+      const list1 = (page1?.data as BackendReview[]) || [];
+      const list2 = (page2?.data as BackendReview[]) || [];
 
       return [...list1, ...list2];
     },
@@ -44,19 +47,19 @@ export default function Feedbacks() {
         stars.push(
           <svg key={i} className={css.iconStar}>
             <use href="/icons/sprite.svg#icon-star_filled" />
-          </svg>
+          </svg>,
         );
       } else if (rate > i - 1 && rate < i) {
         stars.push(
           <svg key={i} className={css.iconStar}>
             <use href="/icons/sprite.svg#icon-star_half" />
-          </svg>
+          </svg>,
         );
       } else {
         stars.push(
           <svg key={i} className={css.iconStar}>
             <use href="/icons/sprite.svg#icon-star_rate" />
-          </svg>
+          </svg>,
         );
       }
     }
@@ -68,7 +71,9 @@ export default function Feedbacks() {
       <section className={css.feedbacks}>
         <div className={clsx('container', css.wrapper)}>
           <h2 className={css.sectionTitle}>Останні відгуки</h2>
-          <div style={{ color: 'var(--color-coral-darkest)' }}>Завантаження відгуків...</div>
+          <div style={{ color: 'var(--color-coral-darkest)' }}>
+            Завантаження відгуків...
+          </div>
         </div>
       </section>
     );
@@ -79,7 +84,10 @@ export default function Feedbacks() {
       <section className={css.feedbacks}>
         <div className={clsx('container', css.wrapper)}>
           <h2 className={css.sectionTitle}>Останні відгуки</h2>
-          <div style={{ color: 'red' }}>Помилка завантаження: {(error as Error)?.message || 'Щось пішло не так'}</div>
+          <div style={{ color: 'red' }}>
+            Помилка завантаження:{' '}
+            {(error as Error)?.message || 'Щось пішло не так'}
+          </div>
         </div>
       </section>
     );
@@ -123,15 +131,12 @@ export default function Feedbacks() {
             {reviewsList.map((review) => (
               <SwiperSlide key={review._id} className={css.slide}>
                 <div className={css.card}>
-                  <div className={css.rating}>
-                    {renderStars(review.rate)}
-                  </div>
+                  <div className={css.rating}>{renderStars(review.rate)}</div>
 
                   <p className={css.text}>{review.description}</p>
 
                   <div className={css.authorBlock}>
                     <h3 className={css.name}>{review.userName}</h3>
-                    <span className={css.location}>Місце локації</span>
                   </div>
                 </div>
               </SwiperSlide>
@@ -140,14 +145,10 @@ export default function Feedbacks() {
 
           <div className={css.navigation}>
             <button type="button" className={css.btnPrev} aria-label="Назад">
-              <svg className={css.iconArrow}>
-                <use href="/icons/sprite.svg#icon-arrow_back" />
-              </svg>
+              <Icon name="arrow_back" className={css.iconArrow} />
             </button>
             <button type="button" className={css.btnNext} aria-label="Вперед">
-              <svg className={css.iconArrow}>
-                <use href="/icons/sprite.svg#icon-arrow_forward" />
-              </svg>
+              <Icon name="arrow_forward" className={css.iconArrow} />
             </button>
           </div>
         </div>
