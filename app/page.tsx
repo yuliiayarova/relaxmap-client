@@ -1,14 +1,22 @@
 import AdvantagesBlock from '@/components/AdvantagesBlock/AdvantagesBlock';
-import Feedbacks from "@/components/ReviewsBlock/ReviewsBlock";
+import HeroBlock from '@/components/HeroBlock/HeroBlock';
+import Feedbacks from '@/components/ReviewsBlock/ReviewsBlock';
+import Footer from '@/components/Footer/Footer';
+
+import PopularLocationsBlock from '@/components/PopularLocationsBlock/PopularLocationsBlock';
 
 export default function Home() {
   return (
-    <main>
-      <div className="container">
-        <h1>Main page of Relax Map</h1>
-        <Feedbacks></Feedbacks>
-      </div>
-      <AdvantagesBlock />
-    </main>
+    <>
+      <main>
+        <HeroBlock />
+        <div className="container">
+          <AdvantagesBlock />
+          <PopularLocationsBlock />
+          <Feedbacks />
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

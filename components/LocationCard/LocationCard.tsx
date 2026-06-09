@@ -52,7 +52,7 @@ export default function LocationCard({
             text="Переглянути локацію"
             href={`/locations/${locationId}`}
           />
-          {!user && (
+          {user && (
             <Button
               className={css['btn-edit-location']}
               // onClick={handleEditClick}

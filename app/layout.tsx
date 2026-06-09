@@ -28,8 +28,11 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           {children}
+          
           <Toaster position="bottom-center" />
+          
         </TanStackProvider>
+
       </body>
     </html>
   );
