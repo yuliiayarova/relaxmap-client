@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Icon from '@/shared/ui/Icon/Icon';
 import styles from './Footer.module.css';
 
-export const Footer = () => {
+export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.footerContainer}`}>
@@ -67,4 +67,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+}
