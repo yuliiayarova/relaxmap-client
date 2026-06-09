@@ -21,7 +21,10 @@ export async function proxy(request: NextRequest) {
       const setCookie = data.headers['set-cookie'];
 
       if (setCookie) {
+        const response = NextResponse.next();
         const cookieArray = Array.isArray(setCookie) ? setCookie : [setCookie];
+        response.headers.set('set-cookie', cookieArray.join(', '));
+
         for (const cookieStr of cookieArray) {
           const parsed = parse(cookieStr);
           const options = {
@@ -38,14 +41,10 @@ export async function proxy(request: NextRequest) {
         }
 
         if (isPrivateRoute) {
-          return NextResponse.next({
-            headers: { Cookie: cookieStore.toString() },
-          });
+          return response;
         }
         if (isClosedToAuthedRoute) {
-          return NextResponse.next({
-            headers: { Cookie: cookieStore.toString() },
-          });
+          return response;
         }
       }
     }

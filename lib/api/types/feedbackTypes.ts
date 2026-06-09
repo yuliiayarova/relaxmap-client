@@ -3,8 +3,8 @@ export interface Feedback {
   rate: number;
   description: string;
   userName: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface FeedbackResponse {
@@ -16,7 +16,20 @@ export interface FeedbackResponse {
   data: Feedback[];
 }
 
-export interface FeedbackQuery {
+export interface PageQuery {
   page?: number;
   perPage?: number;
+}
+
+export type FeedbacksForLocationResponse = Omit<FeedbackResponse, 'hasMore'>;
+
+export interface CreateFeedbackBody {
+  rate: number;
+  description: string;
+}
+
+export interface CreateFeedbackResponse {
+  status: number;
+  message: string;
+  data: Feedback;
 }
