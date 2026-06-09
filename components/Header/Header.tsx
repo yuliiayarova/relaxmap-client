@@ -1,8 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/authStore';
 import HeaderActions from './HeaderActions/HeaderActions';
 import HeaderNav from './HeaderNav/HeaderNav';
 import Logo from './Logo/Logo';
@@ -15,9 +16,34 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isAuthChecked = useAuthStore((state) => state.isAuthChecked);
+  const isAuthLoading = useAuthStore((state) => state.isAuthLoading);
+  const checkAuth = useAuthStore((state) => state.checkAuth);
+  const logoutUser = useAuthStore((state) => state.logoutUser);
+
   const isAuthPage =
     pathname === '/auth/login' || pathname === '/auth/register';
-  const isLoggedIn = true;
+  const shouldShowNavigation = !isAuthPage && isAuthChecked;
+
+  useEffect(() => {
+    void checkAuth();
+  }, [checkAuth, pathname]);
+
+  useEffect(() => {
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, [isMenuOpen]);
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -32,12 +58,17 @@ export default function Header() {
     setIsLogoutModalOpen(false);
   };
 
+  const confirmLogout = async () => {
+    await logoutUser();
+    closeLogoutModal();
+  };
+
   return (
     <>
       <header className={clsx('container', css.header)}>
         <Logo onClick={closeMenu} />
 
-        {!isAuthPage && (
+        {shouldShowNavigation && (
           <>
             <HeaderNav isLoggedIn={isLoggedIn} className={css.desktopNav} />
             <HeaderActions
@@ -57,7 +88,11 @@ export default function Header() {
       </header>
 
       {isLogoutModalOpen && (
-        <LogoutModal onCancel={closeLogoutModal} onConfirm={closeLogoutModal} />
+        <LogoutModal
+          isLoading={isAuthLoading}
+          onCancel={closeLogoutModal}
+          onConfirm={confirmLogout}
+        />
       )}
     </>
   );

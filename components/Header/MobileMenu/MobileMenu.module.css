@@ -1,16 +1,18 @@
 .menu {
-  position: absolute;
-  left: 20px;
-  right: 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
   top: 72px;
   z-index: 10;
   display: flex;
-  min-height: calc(100vh - 92px);
+  width: 100vw;
+  min-height: calc(100dvh - 72px);
   flex-direction: column;
   align-items: center;
-  padding: 24px 10px 48px;
+  padding: 0;
   background-color: var(--color-coral-lightest);
   opacity: 0;
+  overflow-y: auto;
   pointer-events: none;
   transform: translateY(-8px);
   transition:
@@ -22,6 +24,16 @@
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  max-width: var(--container-max-width-mobile);
+  min-height: calc(100dvh - 72px);
+  flex-direction: column;
+  align-items: center;
+  padding: 24px var(--container-padding-mobile) 48px;
 }
 
 .nav {
@@ -84,11 +96,17 @@
 
 @media (min-width: 768px) {
   .menu {
-    left: 32px;
-    right: 32px;
     top: 78px;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100dvh - 78px);
   }
+
+  .content {
+    max-width: var(--container-max-width-tablet);
+    min-height: calc(100dvh - 78px);
+    padding-right: var(--container-padding-tablet);
+    padding-left: var(--container-padding-tablet);
+  }
+
   .loginBtn,
   .signupBtn {
     display: none;
