@@ -96,7 +96,7 @@ export default function PopularLocationsBlock() {
                 onClick={() => swiper?.slidePrev()}
                 aria-label="Попередній слайд"
               >
-                <Icon name="arrow_back" size={24} />
+                <Icon name="arrow_back" />
               </button>
               <button
                 className={clsx(css.btnNext, {
@@ -105,7 +105,7 @@ export default function PopularLocationsBlock() {
                 onClick={() => swiper?.slideNext()}
                 aria-label="Наступний слайд"
               >
-                <Icon name="arrow_forward" size={24} />
+                <Icon name="arrow_forward" />
               </button>
             </div>
           </>

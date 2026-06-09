@@ -8,10 +8,10 @@ export default function Home() {
     <main>
       <div className="container">
         <h1>Main page of Relax Map</h1>
-        <Feedbacks></Feedbacks>
       </div>
       <AdvantagesBlock />
       <PopularLocationsBlock />
+      <Feedbacks></Feedbacks>
     </main>
   );
 }
