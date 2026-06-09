@@ -1,9 +1,10 @@
 import HeroSearchForm from './HeroSearchForm';
 import css from './HeroBlock.module.css';
+import clsx from 'clsx';
 
 export default function HeroBlock() {
   return (
-    <section className={css.hero}>
+    <section className={clsx('container', css.hero)}>
       <div className={css.content}>
         <h1 className={css.title}>
           Відкрий для себе Україну. Знайди ідеальне місце для відпочинку
