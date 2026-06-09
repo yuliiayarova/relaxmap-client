@@ -1,0 +1,52 @@
+.locationdetailspagesdescriptionsesEXAMPLE {
+  flex-basis: 30%;
+  @media only screen and (min-width: 768px) {
+    flex-basis: 60%;
+  }
+  @media only screen and (min-width: 1440px) {
+    flex-basis: 90%;
+  }
+}
+.location-img {
+}
+.location-rate-box {
+}
+.location-page-rate-stars {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.location-split-dot {
+}
+.dot-separator {
+  display: block;
+  width: 3px;
+  height: 3px;
+  background-color: #042f1a; /* Цвет точки с твоего макета */
+  border-radius: 50%; /* Округляем квадрат до круга */
+  margin: 0 8px; /* Отступы слева и справа */
+  flex-shrink: 0; /* Чтобы точка не сжималась, если текст не помещается */
+}
+.location-text-rate {
+}
+.location-name {
+}
+.location-details {
+}
+.location-params-key {
+}
+.location-params-value {
+}
+.link-autor-story {
+}
+.location-story {
+}
+.location-page-feedbacks {
+}
+.location-feedbacks-header {
+}
+.location-namesection-feedbacks {
+}
+.location-button-addfeedback {
+}

@@ -4,19 +4,21 @@ import Feedbacks from '@/components/ReviewsBlock/ReviewsBlock';
 import Footer from '@/components/Footer/Footer';
 
 import PopularLocationsBlock from '@/components/PopularLocationsBlock/PopularLocationsBlock';
+import LocationDetailsPage from '@/components/LocationDetailsPage/LocationDetailsPage';
 
 export default function Home() {
   return (
     <>
       <main>
-        <HeroBlock />
+        {/* <HeroBlock /> */}
         <div className="container">
-          <AdvantagesBlock />
+          <LocationDetailsPage />
+          {/* <AdvantagesBlock />
           <PopularLocationsBlock />
-          <Feedbacks />
+          <Feedbacks /> */}
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
