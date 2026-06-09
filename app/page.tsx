@@ -1,3 +1,4 @@
+import AdvantagesBlock from '@/components/AdvantagesBlock/AdvantagesBlock';
 import Feedbacks from "@/components/ReviewsBlock/ReviewsBlock";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
         <h1>Main page of Relax Map</h1>
         <Feedbacks></Feedbacks>
       </div>
+      <AdvantagesBlock />
     </main>
   );
 }
