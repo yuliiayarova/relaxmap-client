@@ -4,7 +4,7 @@ import '@/styles/global.css';
 import { Toaster } from 'react-hot-toast';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
-
+import { Footer } from '@/components/Footer/Footer';
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -28,8 +28,11 @@ export default function RootLayout({
         <TanStackProvider>
           <Header />
           {children}
+          
           <Toaster position="bottom-center" />
+          <Footer/>
         </TanStackProvider>
+
       </body>
     </html>
   );
