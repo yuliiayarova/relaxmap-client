@@ -2,6 +2,8 @@ import { User } from './authTypes';
 
 export type ShortedUser = Omit<User, '_id' | 'email'>;
 
+export type AuthUser = User | ShortedUser;
+
 export interface CurrentUserResponse {
   status: number;
   message: string;
