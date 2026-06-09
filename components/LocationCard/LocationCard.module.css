@@ -6,7 +6,7 @@
 
   border: 0 solid var(--opacity-neutral-15);
   border-radius: 12px;
-  width: 335px;
+  width: 100%;
   height: 520px;
 
   background-color: var(--color-coral-lighter);
@@ -14,12 +14,10 @@
   overflow: hidden;
 
   @media only screen and (min-width: 768px) {
-    width: 340px;
     height: 525px;
   }
 
   @media only screen and (min-width: 1440px) {
-    width: 421px;
     height: 624px;
   }
 }
