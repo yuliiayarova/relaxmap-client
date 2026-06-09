@@ -63,7 +63,7 @@ const renderStars = (rate: number) => {
   if (isLoading) {
     return (
       <section className={css.feedbacks}>
-        <div className={clsx('container', css.wrapper)}>
+        <div className={ css.wrapper}>
           <h2 className={css.sectionTitle}>Останні відгуки</h2>
           <div style={{ color: 'var(--color-coral-darkest)' }}>
             Завантаження відгуків...
@@ -93,7 +93,7 @@ const renderStars = (rate: number) => {
 
   return (
     <section className={css.feedbacks}>
-      <div className={clsx('container', css.wrapper)}>
+      <div className={( css.wrapper)}>
         <h2 className={css.sectionTitle}>Останні відгуки</h2>
 
         <div className={css.sliderContainer}>

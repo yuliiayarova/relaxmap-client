@@ -1,6 +1,4 @@
 .feedbacks {
-    padding: 60px 0;
-
     .wrapper {
             display: flex;
             flex-direction: column;
@@ -60,6 +58,12 @@
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
     color: var(--color-coral-darkest);
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;
 
 
     @media (min-width:1440px) {
