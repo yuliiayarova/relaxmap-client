@@ -35,10 +35,7 @@
   transition: color var(--transition-base);
 }
 
-.logo:hover,
-.logo:focus {
-  color: var(--color-scheme-2-accent);
-}
+
 
 .socialIcon {
   fill: currentColor;

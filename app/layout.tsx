@@ -30,7 +30,7 @@ export default function RootLayout({
           {children}
           
           <Toaster position="bottom-center" />
-          <Footer/>
+          
         </TanStackProvider>
 
       </body>
