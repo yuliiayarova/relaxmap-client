@@ -35,8 +35,6 @@
   transition: color var(--transition-base);
 }
 
-
-
 .socialIcon {
   fill: currentColor;
   width: 32px;
@@ -156,6 +154,4 @@
   .logo {
     padding-right: 271px;
   }
-  
- 
 }
