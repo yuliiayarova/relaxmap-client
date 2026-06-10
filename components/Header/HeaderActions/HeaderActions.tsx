@@ -28,10 +28,10 @@ export default function HeaderActions({
           </>
         ) : (
           <>
-            <Button href="/auth/login" className={css.loginBtn}>
+            <Button href="/login" className={css.loginBtn}>
               Вхід
             </Button>
-            <Button href="/auth/register" className={css.signupBtn}>
+            <Button href="/register" className={css.signupBtn}>
               Реєстрація
             </Button>
           </>
@@ -45,10 +45,10 @@ export default function HeaderActions({
           </Button>
         ) : (
           <>
-            <Button href="/auth/login" className={css.loginBtn}>
+            <Button href="/login" className={css.loginBtn}>
               Вхід
             </Button>
-            <Button href="/auth/register" className={css.signupBtn}>
+            <Button href="/register" className={css.signupBtn}>
               Реєстрація
             </Button>
           </>
