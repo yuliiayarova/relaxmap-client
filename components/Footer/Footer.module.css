@@ -40,9 +40,15 @@
   line-height: var(--line-height-none);
   color: var(--color-scheme-2-text);
 
-  transition: color var(--transition-base);
+transition:
+    color var(--transition-base),
+    opacity var(--transition-base);
 }
-
+.logo:hover,
+.logo:focus {
+  color: var(--color-scheme-2-accent);
+  opacity: 0.8;
+}
 .socialIcon {
   fill: currentColor;
   width: 32px;
@@ -65,12 +71,15 @@
   justify-content: center;
 
   color: var(--color-scheme-2-text);
-  transition: color var(--transition-base);
+  transition:
+      color var(--transition-base),
+      opacity var(--transition-base);
 }
 
 .socialLink:hover,
 .socialLink:focus {
   color: var(--color-scheme-2-accent);
+    opacity: 0.8;
 }
 
 .nav {
@@ -86,17 +95,20 @@
   line-height: var(--line-height-normal);
   color: var(--color-scheme-2-text);
 
-  transition: color var(--transition-base);
+  transition: 
+  color var(--transition-base),
+  opacity var(--transition-base);
   padding: 8px 0;
 }
 
 .nav a:hover,
 .nav a:focus {
   color: var(--color-scheme-2-accent);
+  opacity: 0.8;
 }
 
 .copyright {
-  margin-top: 32px;
+  margin: 32px auto 0;
   width: 100%;
   max-width: 239px;
   text-align: center;

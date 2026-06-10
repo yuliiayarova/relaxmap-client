@@ -26,10 +26,10 @@ export default function Footer() {
       <div className={`container ${css.footerContainer}`}>
         <div className={css.top}>
           <div className={css.mainRow}>
-            <div className={css.logo}>
+            <Link href="/" className={css.logo}>
               <Icon name="map_search" size={24} className={css.logoIcon} />
               <span>Relax Map</span>
-            </div>
+            </Link>
 
             <ul className={css.socials}>
               <li>
@@ -37,6 +37,8 @@ export default function Footer() {
                   href="https://www.facebook.com/"
                   aria-label="Facebook"
                   className={css.socialLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon name="Facebook" className={css.socialIcon} />
                 </a>
@@ -47,6 +49,8 @@ export default function Footer() {
                   href="https://www.instagram.com/"
                   aria-label="Instagram"
                   className={css.socialLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon name="Instagram" className={css.socialIcon} />
                 </a>
@@ -57,6 +61,8 @@ export default function Footer() {
                   href="https://x.com/"
                   aria-label="X"
                   className={css.socialLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon name="X" className={css.socialIcon} />
                 </a>
@@ -67,6 +73,8 @@ export default function Footer() {
                   href="https://www.youtube.com/"
                   aria-label="YouTube"
                   className={css.socialLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Icon name="Youtube" className={css.socialIcon} />
                 </a>
@@ -80,7 +88,7 @@ export default function Footer() {
         </div>
 
         <p className={css.copyright}>
-          © 2025 Природні Мандри. Усі права захищені.
+          © {new Date().getFullYear()} Природні Мандри. Усі права захищені.
         </p>
       </div>
     </footer>
