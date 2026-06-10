@@ -1,61 +1,61 @@
 import { create } from 'zustand';
-import { logout, refreshSessionClient } from '@/lib/api/client/authApiClient';
 
-interface RefreshSessionResponse {
-  success: boolean;
-}
+import { AuthUser } from '../api/types/userTypes';
+import { logout } from '../api/client/authApiClient';
 
-interface AuthStore {
-  isLoggedIn: boolean;
+type AuthStore = {
+  isAuthenticated: boolean;
+  user: AuthUser | null;
   isAuthChecked: boolean;
   isAuthLoading: boolean;
-  logoutError: string | null;
-  checkAuth: () => Promise<void>;
-  logoutUser: () => Promise<void>;
-}
 
-export const useAuthStore = create<AuthStore>((set) => ({
-  isLoggedIn: false,
+  setUser: (user: AuthUser) => void;
+  clearAuth: () => void;
+  setAuthChecked: (value: boolean) => void;
+
+  logoutUser: () => Promise<void>;
+};
+
+export const useAuthStore = create<AuthStore>()((set) => ({
+  isAuthenticated: false,
+  user: null,
   isAuthChecked: false,
   isAuthLoading: false,
-  logoutError: null,
 
-  checkAuth: async () => {
-    set({ isAuthLoading: true });
+  setUser: (user) => {
+    set({
+      user,
+      isAuthenticated: true,
+    });
+  },
 
-    try {
-      const response = await refreshSessionClient();
-      const data = response.data as RefreshSessionResponse;
+  clearAuth: () => {
+    set({
+      user: null,
+      isAuthenticated: false,
+    });
+  },
 
-      set({
-        isLoggedIn: Boolean(data.success),
-        isAuthChecked: true,
-        logoutError: null,
-      });
-    } catch {
-      set({
-        isLoggedIn: false,
-        isAuthChecked: true,
-      });
-    } finally {
-      set({ isAuthLoading: false });
-    }
+  setAuthChecked: (value) => {
+    set({
+      isAuthChecked: value,
+    });
   },
 
   logoutUser: async () => {
-    set({ isAuthLoading: true, logoutError: null });
+    set({
+      isAuthLoading: true,
+    });
 
     try {
       await logout();
-    } catch (error) {
+
       set({
-        logoutError:
-          error instanceof Error ? error.message : 'Failed to logout',
+        user: null,
+        isAuthenticated: false,
       });
     } finally {
       set({
-        isLoggedIn: false,
-        isAuthChecked: true,
         isAuthLoading: false,
       });
     }

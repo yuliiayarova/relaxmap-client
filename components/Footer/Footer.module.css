@@ -2,8 +2,16 @@
   background-color: var(--color-scheme-2-foreground);
 }
 
+.footerAuth {
+  background-color: transparent;
+}
+
 .footerContainer {
   padding: 48px 20px;
+}
+
+.footerContainerAuth {
+  padding: 27px;
 }
 
 .top {
@@ -96,6 +104,10 @@
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--color-scheme-2-text);
+}
+
+.authCopyright {
+  color: var(--color-neutral-darkest);
 }
 @media (min-width: 768px) {
   .footerContainer {

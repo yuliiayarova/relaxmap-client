@@ -16,19 +16,18 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
-  const isLoggedIn = useAuthStore((state) => state.isLoggedIn);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isAuthChecked = useAuthStore((state) => state.isAuthChecked);
   const isAuthLoading = useAuthStore((state) => state.isAuthLoading);
-  const checkAuth = useAuthStore((state) => state.checkAuth);
+
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
-  const isAuthPage =
-    pathname === '/login' || pathname === '/register';
+  const isAuthPage = pathname === '/login' || pathname === '/register';
   const shouldShowNavigation = !isAuthPage && isAuthChecked;
 
-  useEffect(() => {
-    void checkAuth();
-  }, [checkAuth, pathname]);
+  // useEffect(() => {
+  //   void checkAuth();
+  // }, [checkAuth, pathname]);
 
   useEffect(() => {
     const originalBodyOverflow = document.body.style.overflow;
@@ -70,16 +69,19 @@ export default function Header() {
 
         {shouldShowNavigation && (
           <>
-            <HeaderNav isLoggedIn={isLoggedIn} className={css.desktopNav} />
+            <HeaderNav
+              isLoggedIn={isAuthenticated}
+              className={css.desktopNav}
+            />
             <HeaderActions
-              isLoggedIn={isLoggedIn}
+              isLoggedIn={isAuthenticated}
               isMenuOpen={isMenuOpen}
               onToggleMenu={() => setIsMenuOpen((value) => !value)}
               onLogoutClick={openLogoutModal}
             />
             <MobileMenu
               isOpen={isMenuOpen}
-              isLoggedIn={isLoggedIn}
+              isLoggedIn={isAuthenticated}
               onClose={closeMenu}
               onLogoutClick={openLogoutModal}
             />
