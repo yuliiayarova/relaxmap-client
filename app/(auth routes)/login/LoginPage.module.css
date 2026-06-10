@@ -1,0 +1,22 @@
+.title {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2_5xl);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight2);
+  text-align: center;
+  color: var(--color-neutral-darkest);
+
+  margin-bottom: 32px;
+}
+
+@media only screen and (min-width: 768px) {
+  .title {
+    font-size: var(--font-size-4_5x2);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .title {
+    font-size: var(--font-size-5x2);
+  }
+}

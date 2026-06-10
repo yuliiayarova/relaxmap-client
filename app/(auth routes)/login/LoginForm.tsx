@@ -81,14 +81,15 @@ export default function LoginForm() {
       {({ errors, touched, isSubmitting }) => (
         <Form className={css.form}>
           <div className={css.fieldset}>
-            <label className={css.visuallyHidden} htmlFor={`${id}-email`}>
-              Email
+            <label className={css.label} htmlFor={`${id}-email`}>
+              Пошта*
             </label>
             <Field
               id={`${id}-email`}
               type="email"
               name="email"
-              placeholder="Email"
+              autoComplete="email"
+              placeholder="hello@relaxmap.ua"
               className={`${css.input} ${
                 errors.email && touched.email ? css.inputError : ''
               }`}
@@ -96,29 +97,33 @@ export default function LoginForm() {
             <ErrorMessage name="email" component="span" className={css.error} />
           </div>
 
-          <Field
-            id={`${id}-password`}
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
-          <ErrorMessage
-            name="password"
-            component="span"
-            className={css.error}
-          />
-
-          <div className={css.actions}>
-            <div className={css.loadingWrapper}>
-              <Button
-                className={css.submitButton}
-                type="submit"
-                text={isSubmitting ? 'Signing In...' : 'Sign In'}
-                disabled={isSubmitting}
-              />
-              {isSubmitting && <p>Loading...</p>}
-            </div>
+          <div className={css.fieldset}>
+            <label className={css.label} htmlFor={`${id}-password`}>
+              Пароль*
+            </label>
+            <Field
+              id={`${id}-password`}
+              type="password"
+              name="password"
+              autoComplete="new-password"
+              placeholder="********"
+              className={`${css.input} ${
+                errors.password && touched.password ? css.inputError : ''
+              }`}
+            />
+            <ErrorMessage
+              name="password"
+              component="span"
+              className={css.error}
+            />
           </div>
+
+          <Button
+            className={css.submitButton}
+            type="submit"
+            text={isSubmitting ? 'Вхід..' : 'Увійти'}
+            disabled={isSubmitting}
+          />
         </Form>
       )}
     </Formik>

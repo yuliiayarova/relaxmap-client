@@ -27,6 +27,6 @@ export async function getUserLocations(
 }
 
 export async function getCurrentUser() {
-  const res = await nextServer.get<CurrentUserResponse>('/users/profile');
+  const res = await nextServer.get<CurrentUserResponse>('/profile');
   return res.data;
 }

@@ -15,9 +15,7 @@ export default function AuthProvider({ children }: Props) {
   const pathname = usePathname();
 
   const setUser = useAuthStore((state) => state.setUser);
-  const clearIsAuthenticated = useAuthStore(
-    (state) => state.clearIsAuthenticated,
-  );
+  const clearAuth = useAuthStore((state) => state.clearAuth);
   const setAuthChecked = useAuthStore((state) => state.setAuthChecked);
   const isAuthChecked = useAuthStore((state) => state.isAuthChecked);
 
@@ -38,20 +36,20 @@ export default function AuthProvider({ children }: Props) {
         await refreshSessionClient();
 
         const response = await getCurrentUser();
+        console.log('Current user', response.data);
 
         console.log('Current user', response.data);
 
         setUser(response.data);
       } catch {
-        console.log('Not authenticated');
-        clearIsAuthenticated();
+        clearAuth();
       } finally {
         setAuthChecked(true);
       }
     };
 
     checkAuth();
-  }, [pathname, setUser, clearIsAuthenticated, setAuthChecked]);
+  }, [pathname, setUser, clearAuth, setAuthChecked]);
 
   if (!isAuthChecked) {
     return <p>Loading...</p>;
