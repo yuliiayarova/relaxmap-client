@@ -41,14 +41,14 @@ export default function MobileMenu({
           ) : (
             <div className={css.authActions}>
               <Button
-                href="/auth/login"
+                href="/login"
                 className={css.loginBtn}
                 onClick={onClose}
               >
                 Вхід
               </Button>
               <Button
-                href="/auth/register"
+                href="/register"
                 className={css.signupBtn}
                 onClick={onClose}
               >
