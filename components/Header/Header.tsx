@@ -23,7 +23,7 @@ export default function Header() {
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
   const isAuthPage =
-    pathname === '/auth/login' || pathname === '/auth/register';
+    pathname === '/login' || pathname === '/register';
   const shouldShowNavigation = !isAuthPage && isAuthChecked;
 
   useEffect(() => {
