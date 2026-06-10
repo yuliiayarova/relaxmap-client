@@ -36,12 +36,15 @@ export default function AuthProvider({ children }: Props) {
         await refreshSessionClient();
 
         const response = await getCurrentUser();
+        console.log('PROFILE', response);
+
         console.log('Current user', response.data);
 
         console.log('Current user', response.data);
 
         setUser(response.data);
-      } catch {
+      } catch (error) {
+        console.error('AUTH ERROR', error);
         clearAuth();
       } finally {
         setAuthChecked(true);
