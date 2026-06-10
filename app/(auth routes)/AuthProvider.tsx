@@ -1,6 +1,6 @@
 'use client';
 
-import { useAuthStore } from '../../lib/store/authStore';
+import { useAuthStore } from '../../lib/store/authStoreYulia';
 import { useEffect } from 'react';
 
 import { usePathname } from 'next/navigation';

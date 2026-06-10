@@ -7,7 +7,7 @@ import { AxiosError } from 'axios';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { useAuthStore } from '@/lib/store/authStore';
+import { useAuthStore } from '@/lib/store/authStoreYulia';
 import Button from '@/shared/ui/Button/Button';
 import { login } from '@/lib/api/client/authApiClient';
 
