@@ -17,7 +17,7 @@
   max-width: var(--container-max-width-mobile);
   min-height: 708px;
   margin: 0 auto;
-  padding: 169px var(--container-padding-mobile) 40px;
+  padding: 169px 0;
 }
 
 .title {
@@ -122,7 +122,7 @@
 
   .content {
     max-width: var(--container-max-width-tablet);
-    padding: 215px var(--container-padding-tablet) 40px;
+    padding: 215px 0;
   }
 
   .title {
@@ -171,7 +171,7 @@
   .content {
     max-width: var(--container-max-width-desktop);
     min-height: 724px;
-    padding: 235px var(--container-padding-desktop) 40px;
+    padding: 235px 0;
   }
 
   .title {
