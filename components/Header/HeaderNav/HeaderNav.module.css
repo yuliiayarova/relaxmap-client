@@ -1,0 +1,18 @@
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  color: var(--color-scheme-2-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+.navMenu a {
+  transition: var(--transition-base);
+}
+
+.navMenu a:hover,
+.navMenu a:focus {
+  color: var(--color-coral);
+}
