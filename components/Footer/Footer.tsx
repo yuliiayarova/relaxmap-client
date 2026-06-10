@@ -1,26 +1,44 @@
+'use client';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Icon from '@/shared/ui/Icon/Icon';
-import styles from './Footer.module.css';
+import css from './Footer.module.css';
+import clsx from 'clsx';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const isAuthPage = pathname === '/login' || pathname === '/register';
+
+  if (isAuthPage) {
+    return (
+      <footer className={css.footerAuth}>
+        <div className={`container ${css.footerContainerAuth}`}>
+          <p className={clsx(css.copyright, css.authCopyright)}>
+            © 2025 Relax Map
+          </p>
+        </div>
+      </footer>
+    );
+  }
   return (
-    <footer className={styles.footer}>
-      <div className={`container ${styles.footerContainer}`}>
-        <div className={styles.top}>
-          <div className={styles.mainRow}>
-            <div className={styles.logo}>
-              <Icon name="map_search" size={24} className={styles.logoIcon} />
+    <footer className={css.footer}>
+      <div className={`container ${css.footerContainer}`}>
+        <div className={css.top}>
+          <div className={css.mainRow}>
+            <div className={css.logo}>
+              <Icon name="map_search" size={24} className={css.logoIcon} />
               <span>Relax Map</span>
             </div>
 
-            <ul className={styles.socials}>
+            <ul className={css.socials}>
               <li>
                 <a
                   href="https://www.facebook.com/"
                   aria-label="Facebook"
-                  className={styles.socialLink}
+                  className={css.socialLink}
                 >
-                  <Icon name="Facebook" className={styles.socialIcon} />
+                  <Icon name="Facebook" className={css.socialIcon} />
                 </a>
               </li>
 
@@ -28,9 +46,9 @@ export default function Footer() {
                 <a
                   href="https://www.instagram.com/"
                   aria-label="Instagram"
-                  className={styles.socialLink}
+                  className={css.socialLink}
                 >
-                  <Icon name="Instagram" className={styles.socialIcon} />
+                  <Icon name="Instagram" className={css.socialIcon} />
                 </a>
               </li>
 
@@ -38,9 +56,9 @@ export default function Footer() {
                 <a
                   href="https://x.com/"
                   aria-label="X"
-                  className={styles.socialLink}
+                  className={css.socialLink}
                 >
-                  <Icon name="X" className={styles.socialIcon} />
+                  <Icon name="X" className={css.socialIcon} />
                 </a>
               </li>
 
@@ -48,20 +66,20 @@ export default function Footer() {
                 <a
                   href="https://www.youtube.com/"
                   aria-label="YouTube"
-                  className={styles.socialLink}
+                  className={css.socialLink}
                 >
-                  <Icon name="Youtube" className={styles.socialIcon} />
+                  <Icon name="Youtube" className={css.socialIcon} />
                 </a>
               </li>
             </ul>
           </div>
-          <nav className={styles.nav}>
+          <nav className={css.nav}>
             <Link href="/">Головна</Link>
             <Link href="/locations">Місця відпочинку</Link>
           </nav>
         </div>
 
-        <p className={styles.copyright}>
+        <p className={css.copyright}>
           © 2025 Природні Мандри. Усі права захищені.
         </p>
       </div>

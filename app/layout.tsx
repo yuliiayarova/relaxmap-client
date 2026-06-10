@@ -5,6 +5,7 @@ import { Toaster } from 'react-hot-toast';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
 import AuthProvider from './(auth routes)/AuthProvider';
+import Footer from '@/components/Footer/Footer';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -28,8 +29,13 @@ export default function RootLayout({
       <body className={montserrat.variable}>
         <TanStackProvider>
           <AuthProvider>
-            <Header />
-            {children}
+            <div className="appLayout">
+              <Header />
+
+              <main className="appContent">{children}</main>
+
+              <Footer />
+            </div>
 
             <Toaster position="bottom-center" />
           </AuthProvider>
