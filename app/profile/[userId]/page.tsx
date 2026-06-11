@@ -14,7 +14,6 @@ export default function ProfilePage() {
   const params = useParams();
   const userId = params?.userId as string;
 
-  // 1. Запит даних публічного профілю користувача
   const {
     data: profileData,
     isLoading: isProfileLoading,
@@ -25,7 +24,6 @@ export default function ProfilePage() {
     enabled: !!userId,
   });
 
-  // 2. Запит даних поточного залогіненого користувача (для перевірки прав)
   const { data: currentUserData } = useQuery({
     queryKey: ['current-user'],
     queryFn: getCurrentUser,
@@ -54,24 +52,11 @@ export default function ProfilePage() {
 
   const user = profileData.data;
 
-  // Безопасная проверка: мой ли это профиль
-  const isAuthenticated = Boolean(currentUserData?.data);
-  const currentAvatar = currentUserData?.data?.avatarUrl;
-  const profileAvatar = user?.avatarUrl;
-  const currentName = currentUserData?.data?.name;
-  const profileName = user?.name;
-
-  // Ссылки на дефолтные аватарки, чтобы защитить пользователей от случайной подмены прав
-  const defaultAvatar1 = 'https://goit.global';
-  const defaultAvatar2 = 'https://goit.study';
-
-  const isDefaultAvatar = currentAvatar === defaultAvatar1 || currentAvatar === defaultAvatar2;
+  const currentUserId = (currentUserData?.data as { _id?: string })?._id;
+  const profileOwnerId = user?._id;
 
   const isOwnProfile = Boolean(
-    isAuthenticated &&
-    currentAvatar === profileAvatar &&
-    // Если аватарка дефолтная — строго проверяем совпадение имени, иначе верим ссылке
-    (isDefaultAvatar ? currentName === profileName : true)
+    currentUserId && profileOwnerId && currentUserId === profileOwnerId,
   );
 
   return (
@@ -82,10 +67,10 @@ export default function ProfilePage() {
         articlesAmount={user.articlesAmount || 0}
       />
 
-     <div className={css.locationsSection}>
+      <div className={css.locationsSection}>
         <h2 className={css.sectionTitle}>Локації</h2>
 
-        {/* Если локаций больше 0 — рендерим сетку, если 0 — плейсхолдер */}
+        {/* Якщо локацій більше 0 — рендеримо сітку, якщо 0 — плейсхолдер */}
         {user.articlesAmount > 0 ? (
           <UserLocationsGrid userId={userId} />
         ) : (
