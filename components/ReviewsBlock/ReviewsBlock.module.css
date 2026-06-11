@@ -17,10 +17,10 @@
   color: var(--color-coral-darkest);
 
   @media (min-width: 768px) {
-    font-size: var(--font-size-4_8xl);
+    font-size: var(--font-size-4_5x2);
   }
   @media (min-width: 1440px) {
-    font-size: var(--font-size-5_5xl);
+    font-size: var(--font-size-5x2);
   }
 }
 
