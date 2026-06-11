@@ -1,0 +1,40 @@
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 40px;
+    width: 100%;
+    
+    @media only screen and (min-width: 768px) {
+        &>* {
+            width: calc((100% - 24px) / 2);
+        }
+    }
+
+    @media only screen and (min-width: 1440px) {
+        &>* {
+            width: calc((100% - 48px) / 3);
+        }
+    }
+}
+
+.loadMore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: var(--font-size-base);
+    height: 48px;
+    margin: 0 auto;
+
+    @media only screen and (min-width: 768px) {
+        width: 135px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        width: 162px;
+        font-size: var(--font-size-xl);
+    }
+}
+

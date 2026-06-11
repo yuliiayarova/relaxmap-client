@@ -1,0 +1,78 @@
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 24px;
+    width: 100%;
+    padding: 24px 0;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+.avatarWrapper {
+    width: 145px;
+    height: 145px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+}
+
+.avatar {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.infoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        align-items: flex-start;
+    }
+}
+
+.name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight2);
+    color: var(--color-coral-darkest);
+
+    @media (min-width: 768px) {
+        color: var(--color-green-darkest);
+    }
+    @media (min-width: 1440px) {
+       font-size: var(--font-size-3_5xl);
+    }
+}
+
+.countLabel, 
+.countNumber {
+    font-size: var(--font-size-base);
+    color: var(--color-coral-darkest);
+    line-height: var(--line-height-normal);
+    
+    @media (min-width: 768px) {
+            color: var(--color-green-darkest);
+        }
+    @media (min-width: 1440px) {
+            font-size: var(--font-size-xl);
+        }
+}
+
+
+    
