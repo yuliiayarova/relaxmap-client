@@ -1,0 +1,29 @@
+.pageWrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.locationsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+.sectionTitle {
+    font-size: var(--font-size-2_5xl);
+    line-height: var(--line-height-tight);
+    color: var(--color-neutral-darkest);
+    font-weight: var(--font-weight-bold, 700);
+
+    @media (min-width: 768px) {
+        font-size: var(--font-size-4_5x2);
+    }
+
+    @media (min-width: 1440px) {
+        font-size: var(--font-size-5x2);
+    }
+}
