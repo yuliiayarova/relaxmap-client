@@ -1,0 +1,151 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  padding-bottom: 24px;
+  text-align: center;
+  font-size: var(--font-size-2_5x0);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-neutral-darkest);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+.label {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-neutral-darkest);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px;
+
+  resize: none;
+  border: 1px solid var(--opacity-neutral-15);
+  border-radius: 6px;
+  outline: none;
+
+  background-color: var(--color-scheme-2-foreground);
+  color: var(--opacity-neutral-60);
+
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+
+  transition: border-color var(--transition-base);
+}
+
+.textarea:hover,
+.textarea:focus {
+  border-color: var(--color-scheme-2-accent);
+}
+
+.ratingField {
+  padding-bottom: 24px;
+}
+
+.ratingWrap {
+  display: flex;
+}
+
+.stars svg {
+  margin-right: 5px;
+}
+
+.stars svg:last-child {
+  margin-right: 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cancelButton,
+.submitButton {
+  width: 100%;
+  max-width: 294px;
+  height: 48px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.cancelButton {
+  border: 1px solid var(--color-scheme-2-border);
+  background-color: var(--color-coral-primary);
+  color: var(--color-scheme-2-text);
+}
+
+.submitButton {
+  border: transparent;
+  background-color: var(--color-scheme-2-accent);
+  color: var(--color-white);
+}
+
+.cancelButton:hover .cancelButton:focus {
+  border: transparent;
+  background-color: var(--color-scheme-2-accent);
+  color: var(--color-white);
+}
+
+.submitButton:hover .submitButton:focus {
+  border: 1px solid var(--color-scheme-2-accent);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-scheme-2-text);
+}
+.error {
+  margin-top: 8px;
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: var(--font-size-3_5xl);
+  }
+
+  .textarea {
+    width: 640px;
+  }
+
+  .actions {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .cancelButton,
+  .submitButton {
+    width: 203px;
+  }
+}
+@media (min-width: 1440px) {
+  .title {
+    font-size: var(--font-size-5xl);
+  }
+}

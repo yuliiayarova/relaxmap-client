@@ -12,13 +12,14 @@
 
 .modal {
   position: relative;
-  background-color: var(--color-white);
-  border-radius: 8px;
+  background-color: var(--color-coral-lightest);
+  border-radius: 24px;
   box-shadow: 0 16px 40px var(--opacity-neutral-20);
   max-width: 90vw;
-  max-height: 90vh;
+  max-height: calc(100vh - 40px);
   overflow-y: auto;
   animation: slideUp var(--transition-base);
+  padding: 64px 20px;
 }
 
 .closeBtn {
@@ -46,8 +47,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUp {
