@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function LocationsPage() {
   return (
-    <>
+
       <main className={css.main}>
         <section className={css.section}>
           <div className="container">
@@ -17,7 +17,5 @@ export default function LocationsPage() {
           </div>
         </section>
       </main>
-      <Footer />
-    </>
   );
 }
