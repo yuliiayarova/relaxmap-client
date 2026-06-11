@@ -56,7 +56,7 @@ export default function LoginForm() {
 
       setUser(response.data);
 
-      router.replace('/users/profile');
+      router.replace(`/profile/${response.data._id}`);
     } catch (error) {
       const axiosError = error as AxiosError<ErrorResponse>;
 
