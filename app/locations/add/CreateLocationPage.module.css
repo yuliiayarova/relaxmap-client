@@ -1,0 +1,41 @@
+.section {
+  padding: 32px 0 64px;
+  background-color: var(--color-scheme-2-background);
+}
+
+.title {
+  width: 100%;
+  margin-bottom: 20px;
+
+  font-size: var(--font-size-3_5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-tight2);
+  color: var(--color-scheme-2-text);
+}
+
+.formSlot {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 32px 0 72px;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: var(--font-size-5xl);
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding: 48px 0 80px;
+  }
+
+  .title {
+    margin-bottom: 32px;
+    font-size: var(--font-size-6xl);
+  }
+}
