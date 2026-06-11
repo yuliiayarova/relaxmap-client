@@ -45,7 +45,8 @@ export const registerSchema = Yup.object({
     .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(128, 'Password must be at most 128 characters')
-    .required('Password is required'),
+    .required('Password is required')
+    .matches(/^[^\s]+$/, 'Password must not contain spaces'),
 });
 
 export default function RegisterForm() {

@@ -7,13 +7,13 @@ import clsx from 'clsx';
 import { getUserById, getCurrentUser } from '@/lib/api/client/usersApi';
 import ProfileInfo from '@/components/ProfileInfo/ProfileInfo';
 import ProfilePlaceholder from '@/components/ProfilePlaceholder/ProfilePlaceholder';
+import UserLocationsGrid from '@/components/UserLocationsGrid/UserLocationsGrid';
 import css from './page.module.css';
 
 export default function ProfilePage() {
   const params = useParams();
   const userId = params?.userId as string;
 
-  // 1. Запит даних публічного профілю користувача
   const {
     data: profileData,
     isLoading: isProfileLoading,
@@ -24,7 +24,6 @@ export default function ProfilePage() {
     enabled: !!userId,
   });
 
-  // 2. Запит даних поточного залогіненого користувача (для перевірки прав)
   const { data: currentUserData } = useQuery({
     queryKey: ['current-user'],
     queryFn: getCurrentUser,
@@ -53,8 +52,12 @@ export default function ProfilePage() {
 
   const user = profileData.data;
 
-  const isOwnProfile =
-    (currentUserData?.data as { _id?: string })?._id === user._id;
+  const currentUserId = (currentUserData?.data as { _id?: string })?._id;
+  const profileOwnerId = user?._id;
+
+  const isOwnProfile = Boolean(
+    currentUserId && profileOwnerId && currentUserId === profileOwnerId,
+  );
 
   return (
     <main className={clsx('container', css.pageWrapper)}>
@@ -67,8 +70,12 @@ export default function ProfilePage() {
       <div className={css.locationsSection}>
         <h2 className={css.sectionTitle}>Локації</h2>
 
-        {/*  Pендер плейсхолдер порожнього стану */}
-        <ProfilePlaceholder isOwnProfile={isOwnProfile} />
+        {/* Якщо локацій більше 0 — рендеримо сітку, якщо 0 — плейсхолдер */}
+        {user.articlesAmount > 0 ? (
+          <UserLocationsGrid userId={userId} />
+        ) : (
+          <ProfilePlaceholder isOwnProfile={isOwnProfile} />
+        )}
       </div>
     </main>
   );

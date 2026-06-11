@@ -15,6 +15,13 @@ export interface UserLocationsResponse {
   page: number;
   limit: number;
   totalItems: number;
-  totalPgaes: number;
-  locations: Location[];
+  totalPages: number;
+  locations: (Location & { 
+  _id: string;
+  image: string;
+  locationType: string;
+  rate: number;
+  name: string;
+})[];
+
 }
