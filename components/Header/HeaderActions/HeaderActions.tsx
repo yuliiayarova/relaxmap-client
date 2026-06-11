@@ -2,15 +2,18 @@ import Button from '@/shared/ui/Button/Button';
 import Icon from '@/shared/ui/Icon/Icon';
 import UserMenu from '../UserMenu/UserMenu';
 import css from './HeaderActions.module.css';
+import { AuthUser } from '@/lib/api/types/userTypes';
 
 interface HeaderActionsProps {
   isLoggedIn: boolean;
   isMenuOpen: boolean;
   onToggleMenu: () => void;
   onLogoutClick: () => void;
+  user?: AuthUser | null;
 }
 
 export default function HeaderActions({
+    user,
   isLoggedIn,
   isMenuOpen,
   onToggleMenu,
@@ -24,7 +27,7 @@ export default function HeaderActions({
             <Button href="/locations/add" className={css.btnAdd}>
               Поділитись локацією
             </Button>
-            <UserMenu onLogoutClick={onLogoutClick} />
+            <UserMenu user={user} onLogoutClick={onLogoutClick} />
           </>
         ) : (
           <>

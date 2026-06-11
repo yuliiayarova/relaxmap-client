@@ -78,12 +78,14 @@ export default function Header() {
               className={css.desktopNav}
             />
             <HeaderActions
+            user={user}
               isLoggedIn={isAuthenticated}
               isMenuOpen={isMenuOpen}
               onToggleMenu={() => setIsMenuOpen((value) => !value)}
               onLogoutClick={openLogoutModal}
             />
             <MobileMenu
+              user={user}
               isOpen={isMenuOpen}
               isLoggedIn={isAuthenticated}
               onClose={closeMenu}
