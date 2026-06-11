@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { getUserById, getCurrentUser } from '@/lib/api/client/usersApi';
 import ProfileInfo from '@/components/ProfileInfo/ProfileInfo';
 import ProfilePlaceholder from '@/components/ProfilePlaceholder/ProfilePlaceholder';
+import UserLocationsGrid from '@/components/UserLocationsGrid/UserLocationsGrid';
 import css from './page.module.css';
 
 export default function ProfilePage() {
@@ -53,8 +54,25 @@ export default function ProfilePage() {
 
   const user = profileData.data;
 
-  const isOwnProfile =
-    (currentUserData?.data as { _id?: string })?._id === user._id;
+  // Безопасная проверка: мой ли это профиль
+  const isAuthenticated = Boolean(currentUserData?.data);
+  const currentAvatar = currentUserData?.data?.avatarUrl;
+  const profileAvatar = user?.avatarUrl;
+  const currentName = currentUserData?.data?.name;
+  const profileName = user?.name;
+
+  // Ссылки на дефолтные аватарки, чтобы защитить пользователей от случайной подмены прав
+  const defaultAvatar1 = 'https://goit.global';
+  const defaultAvatar2 = 'https://goit.study';
+
+  const isDefaultAvatar = currentAvatar === defaultAvatar1 || currentAvatar === defaultAvatar2;
+
+  const isOwnProfile = Boolean(
+    isAuthenticated &&
+    currentAvatar === profileAvatar &&
+    // Если аватарка дефолтная — строго проверяем совпадение имени, иначе верим ссылке
+    (isDefaultAvatar ? currentName === profileName : true)
+  );
 
   return (
     <main className={clsx('container', css.pageWrapper)}>
@@ -64,11 +82,15 @@ export default function ProfilePage() {
         articlesAmount={user.articlesAmount || 0}
       />
 
-      <div className={css.locationsSection}>
+     <div className={css.locationsSection}>
         <h2 className={css.sectionTitle}>Локації</h2>
 
-        {/*  Pендер плейсхолдер порожнього стану */}
-        <ProfilePlaceholder isOwnProfile={isOwnProfile} />
+        {/* Если локаций больше 0 — рендерим сетку, если 0 — плейсхолдер */}
+        {user.articlesAmount > 0 ? (
+          <UserLocationsGrid userId={userId} />
+        ) : (
+          <ProfilePlaceholder isOwnProfile={isOwnProfile} />
+        )}
       </div>
     </main>
   );
