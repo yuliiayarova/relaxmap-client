@@ -6,15 +6,13 @@ import PopularLocationsBlock from '@/components/PopularLocationsBlock/PopularLoc
 
 export default function Home() {
   return (
-    <>
-      <main>
-        <HeroBlock />
-        <div className="container">
-          <AdvantagesBlock />
-          <PopularLocationsBlock />
-          <Feedbacks />
-        </div>
-      </main>
-    </>
+    <main>
+      <HeroBlock />
+      <div className="container">
+        <AdvantagesBlock />
+        <PopularLocationsBlock />
+        <Feedbacks />
+      </div>
+    </main>
   );
 }
