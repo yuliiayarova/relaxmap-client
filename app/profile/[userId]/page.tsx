@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import clsx from 'clsx';
 
@@ -13,6 +13,7 @@ import css from './page.module.css';
 export default function ProfilePage() {
   const params = useParams();
   const userId = params?.userId as string;
+  const router = useRouter();
 
   const {
     data: profileData,
@@ -52,12 +53,14 @@ export default function ProfilePage() {
 
   const user = profileData.data;
 
-  const currentUserId = (currentUserData?.data as { _id?: string })?._id;
-  const profileOwnerId = user?._id;
+  const currentUserId = currentUserData?.data?._id 
+  const profileOwnerId = user?._id 
 
-  const isOwnProfile = Boolean(
-    currentUserId && profileOwnerId && currentUserId === profileOwnerId,
-  );
+  // 3. Сравниваем их. Если ID совпали — это твой личный профиль!
+const isOwnProfile = Boolean(currentUserId && profileOwnerId && currentUserId === profileOwnerId);
+
+// 4. ДОБАВЬ ЭТОТ КОНСОЛЬ-ЛОГ ДЛЯ ПРОВЕРКИ:
+console.log('РЕЗУЛЬТАТ ПРОВЕРКИ:', { currentUserId, profileOwnerId, isOwnProfile });
 
   return (
     <main className={clsx('container', css.pageWrapper)}>
@@ -65,6 +68,8 @@ export default function ProfilePage() {
         name={user.name}
         avatarUrl={user.avatarUrl}
         articlesAmount={user.articlesAmount || 0}
+        isOwnProfile={isOwnProfile}
+        onEditClick={() => router.push(`/profile/${userId}/edit`)}
       />
 
       <div className={css.locationsSection}>
