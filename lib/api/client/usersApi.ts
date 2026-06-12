@@ -1,7 +1,7 @@
-import { forwardBackend } from '../api';
+import { forwardBackend, nextServer } from '../api';
 import { AuthResponse } from '../types/authTypes';
 import { PageQuery } from '../types/feedbackTypes';
-import { UserLocationsResponse } from '../types/userTypes';
+import { CurrentUserResponse, UserLocationsResponse } from '../types/userTypes';
 
 export async function getUserById(userId: string): Promise<AuthResponse> {
   const res = await forwardBackend.get<AuthResponse>(`/users/${userId}`);
@@ -23,5 +23,10 @@ export async function getUserLocations(
       params: cleanedQuery,
     },
   );
+  return res.data;
+}
+
+export async function getCurrentUser() {
+  const res = await nextServer.get<CurrentUserResponse>('/profile');
   return res.data;
 }

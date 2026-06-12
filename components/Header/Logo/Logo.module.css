@@ -1,0 +1,17 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  fill: var(--color-scheme-1-text);
+}
+
+.brandText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-scheme-2-text);
+}

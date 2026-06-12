@@ -1,7 +1,6 @@
 import AdvantagesBlock from '@/components/AdvantagesBlock/AdvantagesBlock';
 import HeroBlock from '@/components/HeroBlock/HeroBlock';
 import Feedbacks from '@/components/ReviewsBlock/ReviewsBlock';
-import Footer from '@/components/Footer/Footer';
 
 import PopularLocationsBlock from '@/components/PopularLocationsBlock/PopularLocationsBlock';
 import LocationDetailsPage from '@/components/LocationDetailsPageAll/LocationDetailsPageAll';
@@ -26,7 +25,6 @@ export default function Home() {
           <Feedbacks /> */}
         </div>
       </main>
-      {/* <Footer /> */}
     </>
   );
 }

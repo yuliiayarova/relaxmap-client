@@ -5,7 +5,7 @@ import css from './AdvantagesBlock.module.css';
 export default function AdvantagesBlock() {
   return (
     <section className={css['advantages-block']}>
-      <div className="container">
+      <div>
         <h2 className={css['advantag-title']}>Ключові переваги</h2>
         <ul className={css['advantag-list']}>
           <li className={css['advantag-item']}>
