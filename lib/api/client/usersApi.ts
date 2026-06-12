@@ -30,3 +30,15 @@ export async function getCurrentUser() {
   const res = await nextServer.get<CurrentUserResponse>('/profile');
   return res.data;
 }
+
+export async function updateUserProfile(formData: FormData) {
+  const res = await nextServer.patch('/profile', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return res.data;
+}
+
+export async function deleteUserAvatar() {
+  const res = await nextServer.delete('/profile');
+  return res.data;
+}

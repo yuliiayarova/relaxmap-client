@@ -53,14 +53,12 @@ export default function ProfilePage() {
 
   const user = profileData.data;
 
-  const currentUserId = currentUserData?.data?._id 
-  const profileOwnerId = user?._id 
+  const currentUserId = currentUserData?.data?._id;
+  const profileOwnerId = user?._id;
 
-  // 3. Сравниваем их. Если ID совпали — это твой личный профиль!
-const isOwnProfile = Boolean(currentUserId && profileOwnerId && currentUserId === profileOwnerId);
-
-// 4. ДОБАВЬ ЭТОТ КОНСОЛЬ-ЛОГ ДЛЯ ПРОВЕРКИ:
-console.log('РЕЗУЛЬТАТ ПРОВЕРКИ:', { currentUserId, profileOwnerId, isOwnProfile });
+  const isOwnProfile = Boolean(
+    currentUserId && profileOwnerId && currentUserId === profileOwnerId,
+  );
 
   return (
     <main className={clsx('container', css.pageWrapper)}>
@@ -75,7 +73,6 @@ console.log('РЕЗУЛЬТАТ ПРОВЕРКИ:', { currentUserId, profileOwne
       <div className={css.locationsSection}>
         <h2 className={css.sectionTitle}>Локації</h2>
 
-        {/* Якщо локацій більше 0 — рендеримо сітку, якщо 0 — плейсхолдер */}
         {user.articlesAmount > 0 ? (
           <UserLocationsGrid userId={userId} />
         ) : (
