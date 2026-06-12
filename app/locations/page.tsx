@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import Footer from '@/components/Footer/Footer';
 import css from './page.module.css';
+import FilterPanel from '@/components/FilterPanel/FilterPanel';
+import LocationsGrid from '@/components/LocationsGrid/LocationsGrid';
 
 export const metadata: Metadata = {
   title: 'Усі місця відпочинку | Relax Map',
@@ -9,13 +10,14 @@ export const metadata: Metadata = {
 
 export default function LocationsPage() {
   return (
-
-      <main className={css.main}>
-        <section className={css.section}>
-          <div className="container">
-            <h1 className={css.title}>Усі місця відпочинку</h1>
-          </div>
-        </section>
-      </main>
+    <main className={css.main}>
+      <section className={css.section}>
+        <div className="container">
+          <h1 className={css.title}>Усі місця відпочинку</h1>
+          <FilterPanel />
+          <LocationsGrid />
+        </div>
+      </section>
+    </main>
   );
 }
