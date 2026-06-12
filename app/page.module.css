@@ -14,3 +14,10 @@
   align-items: flex-start;
   justify-content: space-between;
 }
+
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}

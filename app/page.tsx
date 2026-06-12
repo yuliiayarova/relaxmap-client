@@ -8,23 +8,13 @@ import LocationCard from '@/components/LocationCard/LocationCard';
 
 export default function Home() {
   return (
-    <>
-      <main>
-        {/* <HeroBlock /> */}
-        <div className="container">
-          <LocationCard
-            pathPhotoLocatin={'/images/location-sone-beach.jpg'}
-            nameTypeLocation={'Море'}
-            rate={3.5}
-            nameLocation={"Сонячна Рів'єра"}
-            locationId={'0123'}
-          />
-          {/* <LocationDetailsPage /> */}
-          {/* <AdvantagesBlock />
-          <PopularLocationsBlock />
-          <Feedbacks /> */}
-        </div>
-      </main>
-    </>
+    <main>
+      <HeroBlock />
+      <div className="container">
+        <AdvantagesBlock />
+        <PopularLocationsBlock />
+        <Feedbacks />
+      </div>
+    </main>
   );
 }
