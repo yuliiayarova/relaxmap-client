@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/authStore';
 import HeaderActions from './HeaderActions/HeaderActions';
 import HeaderNav from './HeaderNav/HeaderNav';
@@ -13,12 +13,14 @@ import css from './Header.module.css';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isAuthChecked = useAuthStore((state) => state.isAuthChecked);
   const isAuthLoading = useAuthStore((state) => state.isAuthLoading);
+  const user = useAuthStore((state) => state.user);
 
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
@@ -60,6 +62,7 @@ export default function Header() {
   const confirmLogout = async () => {
     await logoutUser();
     closeLogoutModal();
+    router.push('/');
   };
 
   return (
@@ -70,16 +73,19 @@ export default function Header() {
         {shouldShowNavigation && (
           <>
             <HeaderNav
+              user={user}
               isLoggedIn={isAuthenticated}
               className={css.desktopNav}
             />
             <HeaderActions
+            user={user}
               isLoggedIn={isAuthenticated}
               isMenuOpen={isMenuOpen}
               onToggleMenu={() => setIsMenuOpen((value) => !value)}
               onLogoutClick={openLogoutModal}
             />
             <MobileMenu
+              user={user}
               isOpen={isMenuOpen}
               isLoggedIn={isAuthenticated}
               onClose={closeMenu}

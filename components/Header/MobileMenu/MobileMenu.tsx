@@ -3,15 +3,18 @@ import Button from '@/shared/ui/Button/Button';
 import HeaderNav from '../HeaderNav/HeaderNav';
 import UserMenu from '../UserMenu/UserMenu';
 import css from './MobileMenu.module.css';
+import { AuthUser } from '@/lib/api/types/userTypes';
 
 interface MobileMenuProps {
   isOpen: boolean;
   isLoggedIn: boolean;
   onClose: () => void;
   onLogoutClick: () => void;
+  user?: AuthUser | null;
 }
 
 export default function MobileMenu({
+  user,
   isOpen,
   isLoggedIn,
   onClose,
@@ -21,6 +24,7 @@ export default function MobileMenu({
     <div className={clsx(css.menu, isOpen && css.isOpen)} aria-hidden={!isOpen}>
       <div className={css.content}>
         <HeaderNav
+          user={user}
           isLoggedIn={isLoggedIn}
           className={css.nav}
           onNavigate={onClose}
@@ -36,15 +40,11 @@ export default function MobileMenu({
               >
                 Опублікувати статтю
               </Button>
-              <UserMenu onLogoutClick={onLogoutClick} />
+              <UserMenu user={user} onLogoutClick={onLogoutClick} />
             </>
           ) : (
             <div className={css.authActions}>
-              <Button
-                href="/login"
-                className={css.loginBtn}
-                onClick={onClose}
-              >
+              <Button href="/login" className={css.loginBtn} onClick={onClose}>
                 Вхід
               </Button>
               <Button
