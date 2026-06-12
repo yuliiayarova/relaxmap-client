@@ -24,9 +24,8 @@ export default function EditProfileModalPage() {
   if (isLoading) {
     return (
       <ModalBackdrop isOpen onClose={handleClose}>
-        <div style={{ padding: '20px', color: 'var(--color-coral-darkest)' }}>
           Завантаження даних форми...
-        </div>
+
       </ModalBackdrop>
     );
   }
@@ -37,20 +36,12 @@ export default function EditProfileModalPage() {
 
   return (
     <ModalBackdrop isOpen onClose={handleClose}>
-      <div
-        style={{
-          backgroundColor: 'white',
-          padding: '32px',
-          borderRadius: '16px',
-        }}
-      >
         <EditProfileForm
           initialName={user.name}
           initialAvatarUrl={user.avatarUrl}
           userId={userId}
           onClose={handleClose}
         />
-      </div>
     </ModalBackdrop>
   );
 }

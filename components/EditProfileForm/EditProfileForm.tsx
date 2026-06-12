@@ -102,38 +102,46 @@ export default function EditProfileForm({
     <form onSubmit={handleSubmit} className={css.form}>
       <h2 className={css.title}>Редагувати профіль</h2>
 
+      {/* Блок Аватара */}
+      <label className={css.label}>Аватар</label>
       <div className={css.avatarSection}>
-        <div className={css.avatarContainer}>
-          <Image
-            src={avatarPreview}
-            alt={name}
-            width={117}
-            height={117}
-            className={css.avatar}
-          />
-          <label className={css.uploadLabel}>
-            <input
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-              onChange={handleFileChange}
-              className={css.fileInput}
+        <div className={css.divAvatarRow}>
+          <div className={css.avatarWrapper}>
+            <Image
+              src={avatarPreview}
+              alt={name}
+              width={117}
+              height={117}
+              className={css.avatar}
             />
-            <span>Змінити фото</span>
-          </label>
+          </div>
         </div>
 
+        {/* Кнопка завантаження винесена окремо */}
+        <label className={css.uploadLabel}>
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onChange={handleFileChange}
+            className={css.fileInput}
+          />
+          <span>Завантажити фото</span>
+        </label>
+
+        {/* Кнопка видалення винесена окремо та прихована за ТЗ */}
         {!isDefaultAvatar && (
-          <button
+          <Button
             type="button"
             onClick={() => deleteAvatarMutation.mutate()}
-            className={css.deleteAvatarBtn}
+            className={`${(css.deleteAvatarBtn, css.visuallyHidden)}`}
             disabled={deleteAvatarMutation.isPending}
           >
             Видалити фото
-          </button>
+          </Button>
         )}
       </div>
 
+      {/* Блок імені */}
       <div className={css.inputGroup}>
         <label htmlFor="profileName" className={css.label}>
           Ім&apos;я
@@ -145,22 +153,22 @@ export default function EditProfileForm({
           onChange={(e) => setName(e.target.value)}
           className={css.input}
           maxLength={32}
+          placeholder="Введіть нове ім'я"
         />
       </div>
 
       <div className={css.actions}>
         <Button
-          type="submit"
-          text={
-            updateProfileMutation.isPending ? 'Збереження...' : 'Зберегти зміни'
-          }
-          disabled={updateProfileMutation.isPending}
-        />
-        <Button
           type="button"
-          text="Скасувати"
+          text="Відмінити"
           onClick={onClose}
           className={css.cancelBtn}
+        />
+        <Button
+          type="submit"
+          text={updateProfileMutation.isPending ? 'Збереження...' : 'Зберегти'}
+          disabled={updateProfileMutation.isPending}
+          className={css.submitBtn}
         />
       </div>
     </form>

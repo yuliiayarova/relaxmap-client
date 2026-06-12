@@ -15,7 +15,8 @@ interface ProfileInfoProps {
 export default function ProfileInfo({ name, avatarUrl, articlesAmount, isOwnProfile, onEditClick }: ProfileInfoProps) {
   return (
     <div className={css.profileCard}>
-      <div className={css.avatarWrapper}>
+      <div className={css.profileInfo}>
+        <div className={css.avatarWrapper}>
         <Image
           src={avatarUrl}
           alt={name}
@@ -32,6 +33,8 @@ export default function ProfileInfo({ name, avatarUrl, articlesAmount, isOwnProf
           Статей: <span className={css.countNumber}>{articlesAmount}</span>
         </p>
       </div>
+      </div>
+      
 
       {isOwnProfile && (
         <Button
