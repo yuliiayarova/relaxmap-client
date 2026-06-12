@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import Button from '@/shared/ui/Button/Button';
 import { AddRate } from '@/shared/ui/AddStarsRate/AddRate';
 import css from './LocationDetailsPageAll.module.css';
