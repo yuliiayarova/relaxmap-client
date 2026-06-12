@@ -1,0 +1,193 @@
+.location-page-box {
+  width: 100%;
+  padding: 32px 0;
+
+  @media only screen and (min-width: 1440px) {
+    padding: 48px 0;
+  }
+}
+.location-header-box {
+  width: 100%;
+  margin-bottom: 40px; /*думаю, что лучше сделать здесь также 32px*/
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 32px;
+  }
+  @media only screen and (min-width: 1440px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+    gap: 24px;
+
+    margin-bottom: 48px;
+  }
+}
+.location-img-box {
+  width: 100%;
+
+  border-radius: 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+
+  @media only screen and (min-width: 1440px) {
+    flex-basis: 755px;
+    height: 503px;
+
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    margin-bottom: 0;
+  }
+}
+.location-img {
+  width: 335px;
+  height: 223px;
+
+  @media only screen and (min-width: 768px) {
+    width: 704px;
+    height: 469px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 755px;
+    height: 503px;
+  }
+}
+.location-titele-box {
+  width: 100%;
+  @media only screen and (min-width: 1440px) {
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+}
+.location-rate-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+.location-rate-stars {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.dot-separator {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: #1b391b;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.location-text-rate {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1b391b;
+  @media only screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+.location-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #1b391b;
+
+  margin-bottom: 12px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 48px;
+  }
+  @media only screen and (min-width: 1440px) {
+    font-size: 56px;
+  }
+}
+.location-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+.location-params-str {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+}
+.location-params-key {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1b391b;
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+.location-params-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1b391b;
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+.link-autor-story {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #1b391b;
+
+  @media only screen and (min-width: 1440px) {
+    font-size: 18px;
+  }
+}
+.location-story {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1b391b;
+
+  @media only screen and (min-width: 1440px) {
+    padding-top: 48px;
+    font-size: 18px;
+
+    width: 865px;
+    margin: 0 auto;
+  }
+}
+
+/************************/
+.location-page-feedbacks {
+  width: 100%;
+  padding: 32px 0;
+}
+.location-feedbacks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 24px;
+}
+.location-namesection-feedbacks {
+}
+.location-button-addfeedback {
+}
