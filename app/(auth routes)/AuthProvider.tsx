@@ -31,16 +31,9 @@ export default function AuthProvider({ children }: Props) {
 
     const checkAuth = async () => {
       try {
-        console.log('Checking auth');
-
         await refreshSessionClient();
 
         const response = await getCurrentUser();
-        console.log('PROFILE', response);
-
-        console.log('Current user', response.data);
-
-        console.log('Current user', response.data);
 
         setUser(response.data);
       } catch (error) {

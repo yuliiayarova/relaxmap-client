@@ -40,18 +40,18 @@ export async function POST() {
           if (parsed.refreshToken)
             cookieStore.set('refreshToken', parsed.refreshToken, options);
           if (parsed.sessionId)
-            cookieStore.set('refreshToken', parsed.sessionId, options);
+            cookieStore.set('sessionId', parsed.sessionId, options);
         }
         return NextResponse.json({ success: true }, { status: 200 });
       }
     }
-    return NextResponse.json({ success: false }, { status: 200 });
+    return NextResponse.json({ success: false }, { status: 401 });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
-      return NextResponse.json({ success: false }, { status: 200 });
+      return NextResponse.json({ success: false }, { status: 401 });
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json({ success: false }, { status: 200 });
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }

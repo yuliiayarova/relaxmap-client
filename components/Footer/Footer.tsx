@@ -15,7 +15,7 @@ export default function Footer() {
       <footer className={css.footerAuth}>
         <div className={`container ${css.footerContainerAuth}`}>
           <p className={clsx(css.copyright, css.authCopyright)}>
-            © 2025 Relax Map
+            © {new Date().getFullYear()} Relax Map
           </p>
         </div>
       </footer>

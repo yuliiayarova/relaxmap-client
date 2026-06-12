@@ -1,13 +1,14 @@
 import { User } from './authTypes';
 
 export type ShortedUser = Omit<User, '_id' | 'email'>;
+export type CurrentUser = Omit<User, 'email'>;
 
-export type AuthUser = User | ShortedUser;
+export type AuthUser = User | CurrentUser;
 
 export interface CurrentUserResponse {
   status: number;
   message: string;
-  data: ShortedUser;
+  data: CurrentUser;
 }
 export interface UserLocationsResponse {
   status: number;

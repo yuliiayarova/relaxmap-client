@@ -81,6 +81,11 @@ input::placeholder {
   align-items: center;
 }
 
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media only screen and (min-width: 1440px) {
   .submitButton {
     padding: 7px;

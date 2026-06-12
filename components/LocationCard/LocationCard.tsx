@@ -23,11 +23,13 @@ export default function LocationCard({
   rate = 3.5,
   nameLocation = "Сонячна Рів'єра",
   locationId = '0123',
-  user,
 }: LocationCardProps) {
   /*const router = useRouter();
   const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
+  };
+  /*const handleViewLocationClick = () => {
+    router.push(`/locations/${locationId}`);
   };/**/
   return (
     <div className={clsx(css['location-card'])}>
@@ -52,7 +54,7 @@ export default function LocationCard({
             text="Переглянути локацію"
             href={`/locations/${locationId}`}
           />
-          {user && (
+          {/*user && (
             <Button
               className={css['btn-edit-location']}
               // onClick={handleEditClick}
@@ -60,7 +62,7 @@ export default function LocationCard({
             >
               <Icon name="edit" />
             </Button>
-          )}
+          )*/}
         </div>
       </div>
     </div>
