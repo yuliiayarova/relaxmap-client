@@ -42,7 +42,6 @@ export const registerSchema = Yup.object({
     .required('Email is required'),
 
   password: Yup.string()
-    .trim()
     .min(8, 'Password must be at least 8 characters')
     .max(128, 'Password must be at most 128 characters')
     .required('Password is required')
@@ -54,10 +53,7 @@ export default function RegisterForm() {
   const { setUser } = useAuthStore();
   const id = useId();
 
-  const handleSubmit = async (
-    values: RegisterData,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
-  ) => {
+  const handleSubmit = async (values: RegisterData) => {
     try {
       const response = await register(values);
 
@@ -74,8 +70,6 @@ export default function RegisterForm() {
           axiosError.message ??
           'Oops... some error',
       );
-    } finally {
-      setSubmitting(false);
     }
   };
 
