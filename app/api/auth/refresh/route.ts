@@ -45,13 +45,13 @@ export async function POST() {
         return NextResponse.json({ success: true }, { status: 200 });
       }
     }
-    return NextResponse.json({ success: false }, { status: 200 });
+    return NextResponse.json({ success: false }, { status: 401 });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
-      return NextResponse.json({ success: false }, { status: 200 });
+      return NextResponse.json({ success: false }, { status: 401 });
     }
     logErrorResponse({ message: (error as Error).message });
-    return NextResponse.json({ success: false }, { status: 200 });
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }

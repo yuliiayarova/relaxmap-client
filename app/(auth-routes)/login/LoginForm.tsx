@@ -47,10 +47,7 @@ export default function LoginForm() {
   const { setUser } = useAuthStore();
   const id = useId();
 
-  const handleSubmit = async (
-    values: LoginData,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
-  ) => {
+  const handleSubmit = async (values: LoginData) => {
     try {
       const response = await login(values);
 
@@ -67,8 +64,6 @@ export default function LoginForm() {
           axiosError.message ??
           'Oops... some error',
       );
-    } finally {
-      setSubmitting(false);
     }
   };
 

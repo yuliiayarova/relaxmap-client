@@ -1,18 +1,22 @@
 'use client';
 
 import Image from 'next/image';
+import Button from '@/shared/ui/Button/Button';
 import css from './ProfileInfo.module.css';
 
 interface ProfileInfoProps {
   name: string;
   avatarUrl: string;
   articlesAmount: number;
+  isOwnProfile: boolean;
+  onEditClick?: () => void;
 }
 
-export default function ProfileInfo({ name, avatarUrl, articlesAmount }: ProfileInfoProps) {
+export default function ProfileInfo({ name, avatarUrl, articlesAmount, isOwnProfile, onEditClick }: ProfileInfoProps) {
   return (
     <div className={css.profileCard}>
-      <div className={css.avatarWrapper}>
+      <div className={css.profileInfo}>
+        <div className={css.avatarWrapper}>
         <Image
           src={avatarUrl}
           alt={name}
@@ -29,6 +33,16 @@ export default function ProfileInfo({ name, avatarUrl, articlesAmount }: Profile
           Статей: <span className={css.countNumber}>{articlesAmount}</span>
         </p>
       </div>
+      </div>
+      
+
+      {isOwnProfile && (
+        <Button
+          text="Редагувати профіль"
+          onClick={onEditClick}
+          className={css.editButton}
+        />
+      )}
     </div>
   );
 }
