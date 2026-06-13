@@ -11,12 +11,12 @@ interface LocationInfoBlockProps {
 }
 
 export default function LocationInfoBlock({
-  rate = 4.5,
-  locationName = 'Бакотська затока',
-  region = 'Хмельниччина',
-  type = 'Пляж',
-  ownerName = 'Анастасія Олійник',
-  ownerId = '_id_id_id_id',
+  rate,
+  locationName,
+  region,
+  type,
+  ownerName,
+  ownerId,
 }: LocationInfoBlockProps) {
   return (
     <div className={css['location-titele-box']}>

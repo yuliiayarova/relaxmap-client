@@ -7,8 +7,8 @@ interface LocationGalleryProps {
 }
 
 export default function LocationGallery({
-  locationName = 'location symme beach',
-  pathImage = '/images/location-sone-beach.jpg',
+  locationName,
+  pathImage,
 }: LocationGalleryProps) {
   return (
     <div className={css['location-img-box']}>
