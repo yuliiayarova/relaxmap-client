@@ -1,6 +1,6 @@
 // 'use client';
 import Button from '@/shared/ui/Button/Button';
-import Icon from '@/shared/ui/Icon/Icon';
+// import Icon from '@/shared/ui/Icon/Icon';
 import clsx from 'clsx';
 import css from './LocationCard.module.css';
 import Image from 'next/image';
@@ -18,19 +18,19 @@ interface LocationCardProps {
 }
 
 export default function LocationCard({
-  pathPhotoLocatin = '/images/location-sone-beach.jpg',
-  nameTypeLocation = 'Море',
-  rate = 3.5,
-  nameLocation = "Сонячна Рів'єра",
-  locationId = '0123',
+  pathPhotoLocatin,
+  nameTypeLocation,
+  rate,
+  nameLocation,
+  locationId,
 }: LocationCardProps) {
-  /*const router = useRouter();
-  const handleEditClick = () => {
+  // const router = useRouter();
+  /*const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
-  };
+  };/**/
   /*const handleViewLocationClick = () => {
     router.push(`/locations/${locationId}`);
-  };/**/
+  }; /**/
   return (
     <div className={clsx(css['location-card'])}>
       <div className={css['article-box-img']}>
@@ -53,6 +53,7 @@ export default function LocationCard({
             className={css['btn-view-location']}
             text="Переглянути локацію"
             href={`/locations/${locationId}`}
+            // onClick={handleViewLocationClick}
           />
           {/*user && (
             <Button

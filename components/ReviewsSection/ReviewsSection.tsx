@@ -8,9 +8,10 @@ import { useQuery } from '@tanstack/react-query';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-import { getFeedbacksByLocationId } from '@/lib/api/client/feedbacksApi'; 
+import { getFeedbacksByLocationId } from '@/lib/api/client/feedbacksApi';
 import css from './ReviewsSection.module.css';
 import Icon from '@/shared/ui/Icon/Icon';
+import { useAuthStore } from '@/lib/store/authStore';
 
 interface BackendReview {
   _id: string;
@@ -22,12 +23,12 @@ interface BackendReview {
 
 interface ReviewsSectionProps {
   locationId: string;
-  isAuthorized: boolean;
+  // isAuthorized: boolean;
 }
 
-export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSectionProps) {
+export default function ReviewsSection({ locationId }: ReviewsSectionProps) {
   const router = useRouter();
-
+  const isAuthorized = useAuthStore((state) => state.isAuthenticated);
   const {
     data: feedbacksData,
     isLoading,
@@ -35,10 +36,11 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
     error,
   } = useQuery({
     queryKey: ['location-feedbacks', locationId],
-    queryFn: () => getFeedbacksByLocationId(locationId, { perPage: 10, page: 1 }),
+    queryFn: () =>
+      getFeedbacksByLocationId(locationId, { perPage: 10, page: 1 }),
   });
 
-    const reviewsList = (feedbacksData?.data as BackendReview[]) || [];
+  const reviewsList = (feedbacksData?.data as BackendReview[]) || [];
 
   const handleLeaveReview = () => {
     if (isAuthorized) {
@@ -52,7 +54,9 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (rate >= i) {
-        stars.push(<Icon key={i} name="star_filled" className={css.iconStar} />);
+        stars.push(
+          <Icon key={i} name="star_filled" className={css.iconStar} />,
+        );
       } else if (rate > i - 1 && rate < i) {
         stars.push(<Icon key={i} name="star_half" className={css.iconStar} />);
       } else {
@@ -68,7 +72,11 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
         <div className={css.wrapper}>
           <div className={css.headerBlock}>
             <h2 className={css.sectionTitle}>Відгуки</h2>
-            <button type="button" onClick={handleLeaveReview} className={css.btnAction}>
+            <button
+              type="button"
+              onClick={handleLeaveReview}
+              className={css.btnAction}
+            >
               Залишити відгук
             </button>
           </div>
@@ -86,12 +94,17 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
         <div className={css.wrapper}>
           <div className={css.headerBlock}>
             <h2 className={css.sectionTitle}>Відгуки</h2>
-            <button type="button" onClick={handleLeaveReview} className={css.btnAction}>
+            <button
+              type="button"
+              onClick={handleLeaveReview}
+              className={css.btnAction}
+            >
               Залишити відгук
             </button>
           </div>
           <div style={{ color: 'red' }}>
-            Помилка завантаження: {(error as Error)?.message || 'Щось пішло не так'}
+            Помилка завантаження:{' '}
+            {(error as Error)?.message || 'Щось пішло не так'}
           </div>
         </div>
       </section>
@@ -105,14 +118,19 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
       <div className={clsx('container', css.wrapper)}>
         <div className={css.headerBlock}>
           <h2 className={css.sectionTitle}>Відгуки</h2>
-          <button type="button" onClick={handleLeaveReview} className={css.btnAction}>
+          <button
+            type="button"
+            onClick={handleLeaveReview}
+            className={css.btnAction}
+          >
             Залишити відгук
           </button>
         </div>
 
         {reviewsList.length === 0 ? (
           <p className={css.emptyText}>
-            Для цього місця ще немає відгуків. Будьте першим, хто поділиться враженнями!
+            Для цього місця ще немає відгуків. Будьте першим, хто поділиться
+            враженнями!
           </p>
         ) : (
           <div className={css.sliderContainer}>
@@ -160,10 +178,18 @@ export default function ReviewsSection({ locationId, isAuthorized }: ReviewsSect
 
             {showNavigation && (
               <div className={css.navigation}>
-                <button type="button" className={css.btnPrev} aria-label="Назад">
+                <button
+                  type="button"
+                  className={css.btnPrev}
+                  aria-label="Назад"
+                >
                   <Icon name="arrow_back" className={css.iconArrow} />
                 </button>
-                <button type="button" className={css.btnNext} aria-label="Вперед">
+                <button
+                  type="button"
+                  className={css.btnNext}
+                  aria-label="Вперед"
+                >
                   <Icon name="arrow_forward" className={css.iconArrow} />
                 </button>
               </div>
