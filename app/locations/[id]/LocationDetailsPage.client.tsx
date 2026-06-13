@@ -8,6 +8,7 @@ import { useLocationType } from '@/shared/hooks/useLocationType';
 import { useRegion } from '@/shared/hooks/useRegion';
 import { useGetUser } from '@/shared/hooks/useGetUser';
 import { useMemo } from 'react';
+import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
 
 interface LocationDetailsPageClientProps {
   locationId: string;
@@ -39,8 +40,7 @@ export default function LocationDetailsPageClient({
     );
   }, [regionData]);
 
-  if (isLoading || !location || !user || !regionData || !!categoriesData)
-    return <div>Loading...</div>;
+  if (isLoading || !location || !user) return <div>Loading...</div>;
 
   const {
     image: pathImage,
@@ -76,7 +76,7 @@ export default function LocationDetailsPageClient({
         </section>
         <section className={css['location-page-feedbacks']}>
           <div className="container">
-            <p>Place for feadbacks</p>
+            <ReviewsSection locationId={locationId} />
           </div>
         </section>
       </div>
