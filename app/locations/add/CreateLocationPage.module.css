@@ -1,16 +1,16 @@
 .section {
-  padding: 32px 0 64px;
+  padding: 32px 0 48px;
   background-color: var(--color-scheme-2-background);
 }
 
 .title {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 
-  font-size: var(--font-size-3_5xl);
+  font-size: var(--font-size-2_5xl);
   font-weight: var(--font-weight-bold);
-  line-height: 1.1;
-  letter-spacing: var(--letter-spacing-tight2);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--color-scheme-2-text);
 }
 
@@ -20,22 +20,22 @@
 
 @media (min-width: 768px) {
   .section {
-    padding: 32px 0 72px;
+    padding: 40px 0 56px;
   }
 
   .title {
     margin-bottom: 24px;
-    font-size: var(--font-size-5xl);
+    font-size: var(--font-size-4xl);
   }
 }
 
 @media (min-width: 1440px) {
   .section {
-    padding: 48px 0 80px;
+    padding: 48px 0 64px;
   }
 
   .title {
-    margin-bottom: 32px;
-    font-size: var(--font-size-6xl);
+    margin-bottom: 36px;
+    font-size: var(--font-size-5xl);
   }
 }

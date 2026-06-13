@@ -1,0 +1,388 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-coral-darkest);
+}
+
+.preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--color-neutral-lighter);
+}
+
+.previewImage {
+  object-fit: cover;
+}
+
+.placeholderImage {
+  object-fit: cover;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.uploadButton {
+  width: fit-content;
+  min-height: 28px;
+  margin-top: 16px;
+  padding: 5px 9px;
+  border: 1px solid var(--color-scheme-2-border);
+  border-radius: 6px;
+  background-color: var(--color-coral-primary);
+  color: var(--color-coral-darkest);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.uploadButton:focus-visible {
+  border-color: var(--color-coral);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+.uploadButton:active {
+  border-color: var(--color-coral);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .uploadButton:hover {
+    border-color: var(--color-coral);
+    background-color: var(--color-coral-lighter);
+    color: var(--color-green-darkest);
+  }
+}
+
+.control {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px;
+  border: 1px solid var(--color-scheme-2-border);
+  border-radius: 6px;
+  outline: none;
+  background-color: var(--color-coral-lighter);
+  color: var(--color-coral-darkest);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  transition:
+    border-color var(--transition-base),
+    color var(--transition-base);
+}
+
+.control::placeholder {
+  color: var(--opacity-neutral-60);
+}
+
+.control:hover,
+.control:focus {
+  border-color: var(--color-coral-light);
+}
+
+.controlError {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.controlTextDefault {
+  color: var(--color-coral-darkest);
+}
+
+.placeholderError::placeholder {
+  color: var(--color-error);
+}
+
+.selectWrap {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.selectWrapOpen {
+  z-index: 20;
+}
+
+.selectIcon {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  color: var(--color-coral-darkest);
+  fill: currentColor;
+  stroke: currentColor;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: transform var(--transition-base);
+}
+
+.selectIconOpen {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.selectIconError {
+  color: var(--color-error);
+}
+
+.selectButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 40px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.selectButton:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.selectButtonOpen {
+  border-color: var(--color-coral-light);
+  border-bottom-color: transparent;
+  border-radius: 6px 6px 0 0;
+}
+
+.selectValue {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.placeholderText {
+  color: var(--opacity-neutral-60);
+}
+
+.placeholderText.controlError {
+  color: var(--color-error);
+}
+
+.selectMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 21;
+  width: 100%;
+  max-height: 252px;
+  overflow-y: auto;
+  padding: 8px;
+  border-right: 1px solid var(--color-coral-light);
+  border-bottom: 1px solid var(--color-coral-light);
+  border-left: 1px solid var(--color-coral-light);
+  border-radius: 0 0 6px 6px;
+  background-color: var(--color-coral-lighter);
+  box-shadow: 0 12px 24px var(--opacity-neutral-10);
+}
+
+.selectOption {
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: var(--color-coral-darkest);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.selectOption:hover,
+.selectedOption {
+  background-color: var(--color-coral-light);
+}
+
+.selectMenu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.selectMenu::-webkit-scrollbar-track {
+  background-color: var(--color-coral-lighter);
+}
+
+.selectMenu::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: var(--color-coral-light);
+}
+
+.textarea {
+  min-height: 170px;
+  max-height: 320px;
+  resize: vertical;
+}
+
+.error {
+  margin-top: -2px;
+  color: var(--color-error);
+  font-size: var(--font-size-xxs);
+  line-height: var(--line-height-tight);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 0;
+}
+
+.submitButton,
+.cancelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    opacity var(--transition-base);
+}
+
+.submitButton {
+  border: 1px solid var(--color-coral);
+  background-color: var(--color-coral);
+  color: var(--color-white);
+}
+
+.cancelButton {
+  border: 1px solid var(--color-scheme-2-border);
+  background-color: var(--color-coral-primary);
+  color: var(--color-coral-darkest);
+}
+
+.submitButton:focus-visible {
+  border-color: var(--color-coral);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+.cancelButton:focus-visible {
+  border-color: var(--color-coral);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+.submitButton:active,
+.cancelButton:active {
+  border-color: var(--color-coral);
+  background-color: var(--color-coral-lighter);
+  color: var(--color-green-darkest);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .submitButton:hover,
+  .cancelButton:hover {
+    border-color: var(--color-coral);
+    background-color: var(--color-coral-lighter);
+    color: var(--color-green-darkest);
+  }
+}
+
+.submitButton:disabled,
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .form {
+    max-width: 704px;
+    margin: 0 auto;
+  }
+
+  .preview {
+    aspect-ratio: 16 / 10.6;
+  }
+
+  .textarea {
+    min-height: 190px;
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 0;
+    padding-top: 16px;
+  }
+
+  .submitButton,
+  .cancelButton {
+    width: 160px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .form {
+    max-width: 1091px;
+    margin: 0;
+    gap: 24px;
+  }
+
+  .label,
+  .control,
+  .selectOption {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-normal);
+  }
+
+  .uploadButton,
+  .submitButton,
+  .cancelButton {
+    font-size: var(--font-size-sm);
+  }
+
+  .preview {
+    aspect-ratio: 16 / 10.55;
+  }
+
+  .textarea {
+    min-height: 230px;
+    max-height: 420px;
+  }
+}

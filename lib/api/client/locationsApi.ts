@@ -23,7 +23,7 @@ export async function getAllLocations(
 }
 
 export async function createLocation(
-  location: CreateLocation,
+  location: CreateLocation | FormData,
 ): Promise<Location> {
   const res = await nextServer.post<Location>('/locations', location);
   return res.data;
