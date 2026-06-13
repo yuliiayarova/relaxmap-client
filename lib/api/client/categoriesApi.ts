@@ -1,5 +1,8 @@
 import { forwardBackend } from '../api';
-import { GetCategoriesTypesResponse, GetRegionsResponse } from '../types/categoriesTypes';
+import {
+  GetCategoriesTypesResponse,
+  GetRegionsResponse,
+} from '../types/categoriesTypes';
 
 export async function getRegionsCategories(): Promise<GetRegionsResponse> {
   const res = await forwardBackend.get<GetRegionsResponse>(

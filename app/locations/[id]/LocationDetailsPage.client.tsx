@@ -3,6 +3,11 @@ import LocationGallery from '@/components/LocationGallery/LocationGallery';
 import LocationInfoBlock from '@/components/LocationInfoBlock/LocationInfoBlock';
 import LocationDescription from '@/components/LocationDescription/LocationDescription';
 import css from './LocationDetailsPage.module.css';
+import { useLocation } from '@/shared/hooks/useLocation';
+import { useLocationType } from '@/shared/hooks/useLocationType';
+import { useRegion } from '@/shared/hooks/useRegion';
+import { useGetUser } from '@/shared/hooks/useGetUser';
+import { useMemo } from 'react';
 
 interface LocationDetailsPageClientProps {
   locationId: string;
@@ -11,14 +16,43 @@ interface LocationDetailsPageClientProps {
 export default function LocationDetailsPageClient({
   locationId,
 }: LocationDetailsPageClientProps) {
-  const pathImage = '/images/location-sone-beach.jpg';
-  const rate = 3.8;
-  const locationName = 'Бакотська затока';
-  const region = 'Хмельниччина';
-  const type = 'Пляж';
-  const ownerId = '0123456456';
-  const description =
-    '"Бакотська затока — це справжня перлина Поділля, яку часто називають "українською Атлантидою"';
+  const { data: location, isLoading } = useLocation(locationId);
+  const { data: categoriesData } = useLocationType();
+  const { data: regionData } = useRegion();
+  const { data: user } = useGetUser(location?.ownerId);
+
+  const locationTypeMap = useMemo(() => {
+    return (
+      categoriesData?.data.reduce<Record<string, string>>(
+        (acc, { slug, type }) => ({ ...acc, [slug]: type }),
+        {},
+      ) ?? {}
+    );
+  }, [categoriesData]);
+
+  const regionMap = useMemo(() => {
+    return (
+      regionData?.data.reduce<Record<string, string>>(
+        (acc, { slug, region }) => ({ ...acc, [slug]: region }),
+        {},
+      ) ?? {}
+    );
+  }, [regionData]);
+
+  if (isLoading || !location || !user || !regionData || !!categoriesData)
+    return <div>Loading...</div>;
+
+  const {
+    image: pathImage,
+    name: locationName,
+    locationType,
+    region,
+    rate,
+    description,
+    ownerId,
+  } = location;
+
+  const ownerName = user.data.name;
 
   return (
     <main className={css['location-page-main']}>
@@ -32,9 +66,9 @@ export default function LocationDetailsPageClient({
             <LocationInfoBlock
               rate={rate}
               locationName={locationName}
-              region={region}
-              type={type}
-              ownerName={ownerId}
+              region={regionMap[region]}
+              type={locationTypeMap[locationType]}
+              ownerName={ownerName}
               ownerId={ownerId}
             />
           </div>

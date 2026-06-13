@@ -24,13 +24,13 @@ export default function LocationCard({
   nameLocation = "Сонячна Рів'єра",
   locationId = '0123',
 }: LocationCardProps) {
-  /*const router = useRouter();
-  const handleEditClick = () => {
+  // const router = useRouter();
+  /*const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
-  };
+  };/**/
   /*const handleViewLocationClick = () => {
     router.push(`/locations/${locationId}`);
-  };/**/
+  }; /**/
   return (
     <div className={clsx(css['location-card'])}>
       <div className={css['article-box-img']}>
@@ -53,6 +53,7 @@ export default function LocationCard({
             className={css['btn-view-location']}
             text="Переглянути локацію"
             href={`/locations/${locationId}`}
+            // onClick={handleViewLocationClick}
           />
           {/*user && (
             <Button

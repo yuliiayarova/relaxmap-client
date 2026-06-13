@@ -7,24 +7,24 @@ import { getLocationById } from '@/lib/api/client/locationsApi';
 import LocationDetailsPageClient from './LocationDetailsPage.client';
 
 interface LocationDetailsPageProps {
-  params: Promise<{ locationId: string }> | { locationId: string };
+  params: Promise<{ id: string }> | { id: string };
 }
 
 export default async function LocationDetailsPage({
   params,
 }: LocationDetailsPageProps) {
-  const { locationId } = await params;
+  const { id } = await params;
 
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['locationId', locationId],
-    queryFn: () => getLocationById(locationId),
+    queryKey: ['location', id],
+    queryFn: () => getLocationById(id),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <LocationDetailsPageClient locationId={locationId} />
+      <LocationDetailsPageClient locationId={id} />
     </HydrationBoundary>
   );
 }

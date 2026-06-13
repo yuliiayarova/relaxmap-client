@@ -4,7 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 
 export const useLocation = (locationId: string) => {
   return useQuery<Location>({
-    queryKey: ['locationId', locationId],
+    queryKey: ['location', locationId],
     queryFn: () => getLocationById(locationId),
+    // enabled: !!locationId,
   });
 };
