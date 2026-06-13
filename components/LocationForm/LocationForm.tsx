@@ -94,6 +94,20 @@ function getErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : undefined;
 }
 
+function getErrorStatus(error: unknown) {
+  if (error && typeof error === 'object' && 'response' in error) {
+    const responseError = error as {
+      response?: {
+        status?: number;
+      };
+    };
+
+    return responseError.response?.status;
+  }
+
+  return undefined;
+}
+
 function normalizeLocationResponse(response: LocationResponse): Location {
   if ('data' in response) {
     return response.data;
@@ -287,7 +301,9 @@ export default function LocationForm({
           throw new Error('Не знайдено id локації для редагування');
         }
 
-        locationResponse = await updateLocation(locationId, values);
+        const formData = createLocationFormData(values, selectedFile);
+
+        locationResponse = await updateLocation(locationId, formData);
         toast.success('Зміни збережено');
       } else {
         const formData = createLocationFormData(values, selectedFile);
@@ -302,7 +318,19 @@ export default function LocationForm({
       onSuccess?.(location);
       router.push(`/locations/${location._id}`);
     } catch (error) {
-      toast.error(getErrorMessage(error) ?? 'Не вдалося зберегти локацію');
+      const errorStatus = getErrorStatus(error);
+      let errorMessage =
+        getErrorMessage(error) ?? 'Не вдалося зберегти локацію';
+
+      if (isEditMode && errorStatus === 401) {
+        errorMessage = 'Увійдіть в акаунт, щоб редагувати локацію';
+      }
+
+      if (isEditMode && errorStatus === 404) {
+        errorMessage = 'Ви можете редагувати тільки власні локації';
+      }
+
+      toast.error(errorMessage);
     } finally {
       setSubmitting(false);
     }
