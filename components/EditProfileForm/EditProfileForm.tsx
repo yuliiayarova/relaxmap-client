@@ -10,6 +10,7 @@ import {
   updateUserProfile,
   deleteUserAvatar,
 } from '../../lib/api/client/usersApi';
+import { useAuthStore } from '@/lib/store/authStore';
 
 import css from './EditProfileForm.module.css';
 
@@ -28,14 +29,18 @@ export default function EditProfileForm({
 }: EditProfileFormProps) {
   const queryClient = useQueryClient();
 
+  const setUser = useAuthStore((state) => state.setUser);
   const [name, setName] = useState(initialName);
   const [avatarFile, setAvatarFile] = useState<File | null>(null);
   const [avatarPreview, setAvatarPreview] = useState(initialAvatarUrl);
 
   const updateProfileMutation = useMutation({
     mutationFn: (formData: FormData) => updateUserProfile(formData),
-    onSuccess: () => {
+    onSuccess: (responseData:any) => {
       toast.success('Профіль успішно оновлено!');
+      if (responseData?.data) {
+        setUser(responseData.data);
+      }
       queryClient.invalidateQueries({ queryKey: ['current-user'] });
       queryClient.invalidateQueries({ queryKey: ['user-profile', userId] });
       onClose();
@@ -55,6 +60,10 @@ export default function EditProfileForm({
         'https://ac.goit.global/fullstack/react/default-avatar.jpg';
       setAvatarPreview(defaultUrl);
       setAvatarFile(null);
+
+      if (responseData?.data) {
+        setUser(responseData.data);
+      }
 
       queryClient.invalidateQueries({ queryKey: ['current-user'] });
       queryClient.invalidateQueries({ queryKey: ['user-profile', userId] });
