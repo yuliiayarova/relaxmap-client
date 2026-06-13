@@ -1,11 +1,12 @@
-// 'use client';
+'use client';
 import Button from '@/shared/ui/Button/Button';
-// import Icon from '@/shared/ui/Icon/Icon';
+import Icon from '@/shared/ui/Icon/Icon';
 import clsx from 'clsx';
 import css from './LocationCard.module.css';
 import Image from 'next/image';
 import { AddRate } from '@/shared/ui/AddStarsRate/AddRate';
 import { User } from '@/lib/api/types/authTypes';
+import { useAuthStore } from '@/lib/store/authStore';
 // import { useRouter } from 'next/navigation';
 
 interface LocationCardProps {
@@ -14,7 +15,8 @@ interface LocationCardProps {
   rate: number;
   nameLocation: string;
   locationId: string;
-  user?: User;
+  ownerId?: string;
+  userId?: string;
 }
 
 export default function LocationCard({
@@ -22,8 +24,14 @@ export default function LocationCard({
   nameTypeLocation,
   rate,
   nameLocation,
+  ownerId,
   locationId,
+  userId,
 }: LocationCardProps) {
+  const isAuthorized = useAuthStore((state) => state.isAuthenticated);
+  console.log('🚀 ~ LocationCard ~ isAuthorized:', isAuthorized);
+  console.log('🚀 ~ LocationCard ~ ownerId:', ownerId);
+  console.log('🚀 ~ LocationCard ~ userId:', userId);
   // const router = useRouter();
   /*const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
@@ -55,7 +63,7 @@ export default function LocationCard({
             href={`/locations/${locationId}`}
             // onClick={handleViewLocationClick}
           />
-          {/*user && (
+          {isAuthorized && userId === ownerId && userId && ownerId && (
             <Button
               className={css['btn-edit-location']}
               // onClick={handleEditClick}
@@ -63,7 +71,7 @@ export default function LocationCard({
             >
               <Icon name="edit" />
             </Button>
-          )*/}
+          )}
         </div>
       </div>
     </div>

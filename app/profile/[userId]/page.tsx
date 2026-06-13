@@ -2,7 +2,7 @@
 
 import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react'; 
+import { useState } from 'react';
 
 import { getUserById, getCurrentUser } from '@/lib/api/client/usersApi';
 import ProfileInfo from '@/components/ProfileInfo/ProfileInfo';
@@ -10,7 +10,7 @@ import ProfilePlaceholder from '@/components/ProfilePlaceholder/ProfilePlacehold
 import UserLocationsGrid from '@/components/UserLocationsGrid/UserLocationsGrid';
 import ModalBackdrop from '@/components/ModalBackdrop/ModalBackdrop';
 import EditProfileForm from '@/components/EditProfileForm/EditProfileForm';
-import css from './page.module.css'; 
+import css from './page.module.css';
 import clsx from 'clsx';
 
 export default function ProfilePage() {
@@ -19,7 +19,6 @@ export default function ProfilePage() {
 
   // Локальный стейт для открытия и закрытия модалки
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
 
   const {
     data: profileData,
@@ -40,20 +39,16 @@ export default function ProfilePage() {
 
   if (isProfileLoading) {
     return (
-      <div className={clsx( css.pageWrapper)}>
-        <div>
-          Завантаження профілю...
-        </div>
+      <div className={clsx(css.pageWrapper)}>
+        <div>Завантаження профілю...</div>
       </div>
     );
   }
 
   if (isProfileError || !profileData?.data) {
     return (
-      <div className={clsx( css.pageWrapper)}>
-        <div >
-          Користувача не знайдено або сталася помилка
-        </div>
+      <div className={clsx(css.pageWrapper)}>
+        <div>Користувача не знайдено або сталася помилка</div>
       </div>
     );
   }
@@ -63,7 +58,9 @@ export default function ProfilePage() {
   // Чистая проверка профиля по ID
   const currentUserId = (currentUserData?.data as { _id?: string })?._id;
   const profileOwnerId = user?._id;
-  const isOwnProfile = Boolean(currentUserId && profileOwnerId && currentUserId === profileOwnerId);
+  const isOwnProfile = Boolean(
+    currentUserId && profileOwnerId && currentUserId === profileOwnerId,
+  );
 
   return (
     <main className={clsx('container', css.pageWrapper)}>
@@ -79,7 +76,7 @@ export default function ProfilePage() {
         <h2 className={css.sectionTitle}>Локації</h2>
 
         {/* Если локаций больше 0 — рендерим сетку, если 0 — плейсхолдер */}
-        {user.articlesAmount > 0 ? (
+        {user.articlesAmount >= 0 ? ( // почемуто всегда показывает локаций 0
           <UserLocationsGrid userId={userId} />
         ) : (
           <ProfilePlaceholder isOwnProfile={isOwnProfile} />
@@ -88,7 +85,10 @@ export default function ProfilePage() {
 
       {/* КЛАССИЧЕСКАЯ МОДАЛКА ЧЕРЕЗ СТЕЙТ */}
       {isEditModalOpen && (
-        <ModalBackdrop isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}>
+        <ModalBackdrop
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+        >
           <div>
             <EditProfileForm
               initialName={user.name}

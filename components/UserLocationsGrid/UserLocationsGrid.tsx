@@ -14,6 +14,7 @@ interface UserLocationsGridProps {
 
 export default function UserLocationsGrid({ userId }: UserLocationsGridProps) {
   const perPage = 6;
+  console.log('🚀 ~ UserLocationsGrid ~ userId:', userId);
 
   // Передаємо UserLocationsResponse як дженерик, щоб React Query знав типи сторінок
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
@@ -22,7 +23,7 @@ export default function UserLocationsGrid({ userId }: UserLocationsGridProps) {
       queryFn: ({ pageParam = 1 }) =>
         getUserLocations(userId, { page: pageParam as number, perPage }),
       initialPageParam: 1,
-      enabled: !!userId,
+      // enabled: !!userId,
       getNextPageParam: (lastPage) => {
         const { page, totalPages } = lastPage;
         return page < totalPages ? page + 1 : undefined;
@@ -44,6 +45,8 @@ export default function UserLocationsGrid({ userId }: UserLocationsGridProps) {
                 rate={location.rate}
                 nameLocation={location.name}
                 locationId={location._id}
+                ownerId={location.ownerId}
+                userId={userId}
               />
             )),
           )}

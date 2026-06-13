@@ -17,12 +17,12 @@ export interface UserLocationsResponse {
   limit: number;
   totalItems: number;
   totalPages: number;
-  locations: (Location & { 
-  _id: string;
-  image: string;
-  locationType: string;
-  rate: number;
-  name: string;
-})[];
-
+  locations: (Location & {
+    _id: string;
+    image: string;
+    locationType: string;
+    rate: number;
+    name: string;
+    ownerId: string;
+  })[];
 }

@@ -5,14 +5,32 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import LocationCard from '../LocationCard/LocationCard';
 import css from './LocationsGrid.module.css';
 import Button from '@/shared/ui/Button/Button';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import FullPageLoader from '../FullPageLoader/FullPageLoader';
+import { useLocationType } from '@/shared/hooks/useLocationType';
 
 export default function LocationsGrid() {
   const [perPage, setPerPage] = useState<number | null>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
+
+  const { data: categoriesData } = useLocationType();
+
+  const locationTypeMap = useMemo(() => {
+    return (
+      categoriesData?.data.reduce<Record<string, string>>(
+        (acc, { slug, type }) => ({ ...acc, [slug]: type }),
+        {},
+      ) ?? {}
+    );
+  }, [categoriesData]);
+
+  // const locationTypeMap: Record<string, string> =
+  //   categoriesData?.data.reduce(
+  //     (acc, { slug, type }) => ({ ...acc, [slug]: type }),
+  //     {},
+  //   ) ?? {};
 
   const filters = {
     search: searchParams.get('search') || undefined,
@@ -90,10 +108,11 @@ export default function LocationsGrid() {
               <LocationCard
                 key={location._id}
                 pathPhotoLocatin={location.image}
-                nameTypeLocation={location.locationType}
+                nameTypeLocation={locationTypeMap[location.locationType]}
                 rate={location.rate}
                 nameLocation={location.name}
                 locationId={location._id}
+                // ownerId={location.ownerId}
               />
             )),
           )}
