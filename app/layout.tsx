@@ -4,7 +4,7 @@ import '@/styles/global.css';
 import { Toaster } from 'react-hot-toast';
 import TanStackProvider from '@/components/TanStackProvider/TanStackProvider';
 import Header from '@/components/Header/Header';
-import AuthProvider from './(auth-routes)/AuthProvider';
+import AuthProvider from './(auth routes)/AuthProvider';
 import Footer from '@/components/Footer/Footer';
 
 const montserrat = Montserrat({
@@ -24,6 +24,7 @@ export default function RootLayout({
   modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en">
