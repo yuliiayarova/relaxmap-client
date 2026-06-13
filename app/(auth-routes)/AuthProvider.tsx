@@ -29,7 +29,7 @@ export default function AuthProvider({ children }: Props) {
 
     setAuthChecked(false);
 
-    const checkAuth = async () => {
+    async function checkAuth() {
       try {
         await refreshSessionClient();
 
@@ -42,7 +42,7 @@ export default function AuthProvider({ children }: Props) {
       } finally {
         setAuthChecked(true);
       }
-    };
+    }
 
     checkAuth();
   }, [pathname, setUser, clearAuth, setAuthChecked]);

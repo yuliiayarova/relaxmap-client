@@ -31,6 +31,8 @@ export async function createLocation(
 
 export async function getLocationById(locationId: string): Promise<Location> {
   const res = await forwardBackend.get<Location>(`/locations/${locationId}`);
+  console.log('🚀 ~ getLocationById ~ res:', res.data);
+
   return res.data;
 }
 

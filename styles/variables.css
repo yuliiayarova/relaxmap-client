@@ -19,7 +19,7 @@
 
   --color-coral-lightest: #fff2ec;
   --color-coral-lighter: #ffe5d9;
-  --color-coral-primary:  #f2e6e0;
+  --color-coral-primary: #f2e6e0;
   --color-coral-light: #ffa57a;
   --color-coral: #cc6534;
   --color-coral-dark: #b24f24;
@@ -103,6 +103,7 @@
 
   /* Міжрядкові інтервали */
   --line-height-none: 1;
+  --line-height-very-tight: 1.1;
   --line-height-tight: 1.2;
   --line-height-tight2: 1.4;
   --line-height-normal: 1.5;
