@@ -33,7 +33,6 @@ const emptyValues: LocationFormValues = {
   region: '',
   description: '',
 };
-const defaultLocationImage = '/images/location-sone-beach.jpg';
 
 const validationSchema = Yup.object({
   image: Yup.string().required('Додайте фото локації'),
@@ -101,6 +100,26 @@ function normalizeLocationResponse(response: LocationResponse): Location {
   }
 
   return response;
+}
+
+function createLocationFormData(
+  values: LocationFormValues,
+  imageFile: File | null,
+) {
+  const formData = new FormData();
+
+  formData.append('name', values.name.trim());
+  formData.append('locationType', values.locationType);
+  formData.append('region', values.region);
+  formData.append('description', values.description.trim());
+  formData.append('coordinates[lat]', '0');
+  formData.append('coordinates[lon]', '0');
+
+  if (imageFile) {
+    formData.append('image', imageFile);
+  }
+
+  return formData;
 }
 
 function LocationSelect({
@@ -209,6 +228,7 @@ export default function LocationForm({
   const queryClient = useQueryClient();
   const id = useId();
   const [selectedPreview, setSelectedPreview] = useState<string | null>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileInputKey, setFileInputKey] = useState(0);
 
   const isEditMode = mode === 'edit';
@@ -262,7 +282,6 @@ export default function LocationForm({
   ) => {
     try {
       let locationResponse: LocationResponse;
-
       if (isEditMode) {
         if (!locationId) {
           throw new Error('Не знайдено id локації для редагування');
@@ -271,13 +290,9 @@ export default function LocationForm({
         locationResponse = await updateLocation(locationId, values);
         toast.success('Зміни збережено');
       } else {
-        locationResponse = await createLocation({
-          ...values,
-          coordinates: {
-            lat: 0,
-            lon: 0,
-          },
-        });
+        const formData = createLocationFormData(values, selectedFile);
+
+        locationResponse = await createLocation(formData);
         toast.success('Локацію опубліковано');
       }
 
@@ -326,9 +341,13 @@ export default function LocationForm({
                   unoptimized
                 />
               ) : (
-                <div className={css.placeholder} aria-hidden="true">
-                  <span className={css.placeholderIcon} />
-                </div>
+                <Image
+                  className={css.placeholderImage}
+                  src="/images/location-placeholder.webp"
+                  alt=""
+                  fill
+                  aria-hidden="true"
+                />
               )}
             </div>
 
@@ -349,6 +368,7 @@ export default function LocationForm({
                 }
 
                 const nextPreview = URL.createObjectURL(file);
+                setSelectedFile(file);
                 setSelectedPreview((currentPreview) => {
                   if (currentPreview) {
                     URL.revokeObjectURL(currentPreview);
@@ -356,7 +376,7 @@ export default function LocationForm({
 
                   return nextPreview;
                 });
-                setFieldValue('image', defaultLocationImage);
+                setFieldValue('image', file.name);
                 setFieldTouched('image', true, false);
               }}
             />
@@ -472,6 +492,7 @@ export default function LocationForm({
               onClick={() => {
                 resetForm();
                 setSelectedPreview(null);
+                setSelectedFile(null);
                 setFileInputKey((currentKey) => currentKey + 1);
               }}
             >
