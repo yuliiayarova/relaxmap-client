@@ -7,6 +7,7 @@ import css from './LocationsGrid.module.css';
 import Button from '@/shared/ui/Button/Button';
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import FullPageLoader from '../FullPageLoader/FullPageLoader';
 
 export default function LocationsGrid() {
   const [perPage, setPerPage] = useState<number | null>(null);
@@ -68,8 +69,7 @@ export default function LocationsGrid() {
     }
   }, [isFetchingNextPage, data?.pages.length, data]);
 
-  /* !В майбутньому замінити на кращий лоадер */
-  if (isLoading) return <div>Завантаження...</div>;
+  if (isLoading) return <FullPageLoader />;
 
   return (
     <>
