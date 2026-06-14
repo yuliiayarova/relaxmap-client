@@ -9,13 +9,13 @@ import type { AddReviewFormProps, AddReviewValues } from './types';
 import css from './AddReviewForm.module.css';
 
 const initialValues: AddReviewValues = {
-  rating: 0,
-  comment: '',
+  rate: 0,
+  description: '',
 };
 
 const validationSchema = Yup.object({
-  rating: Yup.number().min(0.5, 'Оберіть рейтинг').required('Оберіть рейтинг'),
-  comment: Yup.string().trim().required('Введіть текст відгуку'),
+  rate: Yup.number().min(0.5, 'Оберіть рейтинг').required('Оберіть рейтинг'),
+  description: Yup.string().trim().required('Введіть текст відгуку'),
 });
 
 export default function AddReviewForm({ locationId }: AddReviewFormProps) {
@@ -25,6 +25,7 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
     values: AddReviewValues,
     { setSubmitting }: FormikHelpers<AddReviewValues>,
   ) => {
+    if (!locationId) return;
     try {
       const response = await fetch(`/api/feedbacks/${locationId}`, {
         method: 'POST',
@@ -63,37 +64,41 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
         <Form className={css.form}>
           <h2 className={css.title}>Залишити відгук</h2>
           <div className={css.field}>
-            <label htmlFor="comment" className={css.label}>
+            <label htmlFor="description" className={css.label}>
               Ваш відгук
             </label>
 
             <Field
               as="textarea"
-              id="comment"
-              name="comment"
+              id="description"
+              name="description"
               className={css.textarea}
               placeholder="Напишіть ваш відгук"
             />
 
-            <ErrorMessage name="comment" component="p" className={css.error} />
+            <ErrorMessage
+              name="description"
+              component="p"
+              className={css.error}
+            />
           </div>
           <div className={css.ratingField}>
             <div className={css.ratingWrap}>
               <Rating
                 size={23}
                 allowFraction
-                initialValue={values.rating}
+                initialValue={values.rate}
                 SVGstyle={{ display: 'inline-block' }}
                 fillColor="var(--color-neutral-darkest)"
                 emptyColor="transparent"
                 SVGstrokeColor="var(--color-neutral-darkest)"
                 SVGstorkeWidth={2}
                 className={css.stars}
-                onClick={(rate) => setFieldValue('rating', rate)}
+                onClick={(rate) => setFieldValue('rate', rate)}
               />
             </div>
 
-            <ErrorMessage name="rating" component="p" className={css.error} />
+            <ErrorMessage name="rate" component="p" className={css.error} />
           </div>
           <div className={css.actions}>
             <button
