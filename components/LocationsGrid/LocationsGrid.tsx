@@ -3,12 +3,12 @@
 import { getAllLocations } from '@/lib/api/client/locationsApi';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import LocationCard from '../LocationCard/LocationCard';
-import css from './LocationsGrid.module.css';
 import Button from '@/shared/ui/Button/Button';
 import { useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import FullPageLoader from '../FullPageLoader/FullPageLoader';
 import { useLocationType } from '@/shared/hooks/useLocationType';
+import css from './LocationsGrid.module.css';
 
 export default function LocationsGrid() {
   const [perPage, setPerPage] = useState<number | null>(null);

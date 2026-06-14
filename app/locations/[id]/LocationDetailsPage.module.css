@@ -1,5 +1,9 @@
 .location-page-main {
   padding: 32px 0;
+
+  @media only screen and (min-width: 1440px) {
+    padding: 48px 0 72px;
+  }
 }
 .location-page-box {
   width: 100%;
@@ -29,7 +33,7 @@
 }
 .location-page-feedbacks {
   width: 100%;
-  padding-top: 32px;
+  padding: 32px 0;
 
   @media only screen and (min-width: 1440px) {
     padding-top: 48px;

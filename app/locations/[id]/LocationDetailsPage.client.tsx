@@ -2,13 +2,13 @@
 import LocationGallery from '@/components/LocationGallery/LocationGallery';
 import LocationInfoBlock from '@/components/LocationInfoBlock/LocationInfoBlock';
 import LocationDescription from '@/components/LocationDescription/LocationDescription';
-import css from './LocationDetailsPage.module.css';
 import { useLocation } from '@/shared/hooks/useLocation';
 import { useLocationType } from '@/shared/hooks/useLocationType';
 import { useRegion } from '@/shared/hooks/useRegion';
 import { useGetUser } from '@/shared/hooks/useGetUser';
 import { useMemo } from 'react';
 import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
+import css from './LocationDetailsPage.module.css';
 
 interface LocationDetailsPageClientProps {
   locationId: string;
@@ -56,8 +56,8 @@ export default function LocationDetailsPageClient({
 
   return (
     <main className={css['location-page-main']}>
-      <div className="container">
-        <section className={css['location-page-box']}>
+      <section className={css['location-page-box']}>
+        <div className="container">
           <div className={css['location-header-box']}>
             <LocationGallery
               locationName={locationName}
@@ -73,12 +73,10 @@ export default function LocationDetailsPageClient({
             />
           </div>
           <LocationDescription description={description} />
-        </section>
-        <section className={css['location-page-feedbacks']}>
-          <div className="container">
-            <ReviewsSection locationId={locationId} />
-          </div>
-        </section>
+        </div>
+      </section>
+      <div className={css['location-page-feedbacks']}>
+        <ReviewsSection locationId={locationId} />
       </div>
     </main>
   );
