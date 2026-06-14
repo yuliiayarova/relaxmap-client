@@ -1,3 +1,8 @@
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
 import { Metadata } from 'next';
 import ProfilePageClient from './ProfilePage.client';
 import { getUserById } from '@/lib/api/client/usersApi';
@@ -24,6 +29,22 @@ export async function generateMetadata({
   }
 }
 
-export default function ProfilePage() {
-  return <ProfilePageClient />;
+export default async function ProfilePage({
+  params,
+}: {
+  params: Promise<{ userId: string }>;
+}) {
+  const { userId } = await params;
+
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['user-profile', userId],
+    queryFn: () => getUserById(userId),
+  });
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <ProfilePageClient />
+    </HydrationBoundary>
+  );
 }

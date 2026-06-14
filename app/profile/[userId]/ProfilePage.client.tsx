@@ -31,7 +31,7 @@ export default function ProfilePageClient() {
   });
 
   // 2. Запрос данных текущего залогиненного пользователя
-  const { data: currentUserData } = useQuery({
+  const { data: currentUserData, isLoading: isCurrentUserLoading } = useQuery({
     queryKey: ['current-user'],
     queryFn: getCurrentUser,
     retry: false,
@@ -78,6 +78,8 @@ export default function ProfilePageClient() {
         {/* Если локаций больше 0 — рендерим сетку, если 0 — плейсхолдер */}
         {user.articlesAmount > 0 ? (
           <UserLocationsGrid userId={userId} />
+        ) : isCurrentUserLoading ? (
+          <div>Завантаження...</div>
         ) : (
           <ProfilePlaceholder isOwnProfile={isOwnProfile} />
         )}
