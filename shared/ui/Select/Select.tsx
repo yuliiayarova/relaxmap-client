@@ -20,7 +20,7 @@ export default function CustomSelect({
   options,
   placeholder = 'Select one...',
   onChange,
-  initialValue,
+  initialValue = null,
 }: SelectProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<SelectOption | null>(
@@ -29,10 +29,8 @@ export default function CustomSelect({
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (initialValue) {
-      const set = () => setSelectedOption(initialValue);
-      set();
-    }
+    const set = () => setSelectedOption(initialValue);
+    set();
   }, [initialValue]);
 
   useEffect(() => {
@@ -54,6 +52,8 @@ export default function CustomSelect({
     if (onChange) onChange(option.value);
   };
 
+  const hasValue = selectedOption && selectedOption.value !== '';
+
   return (
     <div ref={selectRef} className={css.selectContainer}>
       <button
@@ -61,7 +61,7 @@ export default function CustomSelect({
         className={`${css.selectHeader} ${isOpen ? css.activeHeader : ''} ${selectedOption ? css.hasValue : ''}`}
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <span>{selectedOption ? selectedOption.label : placeholder}</span>
+        <span>{hasValue ? selectedOption.label : placeholder}</span>
         <Icon
           // name={isOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}
           name="keyboard_arrow_down"
