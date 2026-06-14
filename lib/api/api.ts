@@ -43,6 +43,16 @@ const attachRefreshInterceptor = (instance: AxiosInstance) => {
     async (error) => {
       const originalRequest = error.config;
 
+      const skipRefreshRoutes = [
+        '/auth/login',
+        '/auth/register',
+        '/auth/refresh',
+      ];
+
+      const shouldSkipRefresh = skipRefreshRoutes.some((route) =>
+        originalRequest.url?.includes(route),
+      );
+
       if (typeof window === 'undefined') {
         return Promise.reject(error);
       }
@@ -52,7 +62,11 @@ const attachRefreshInterceptor = (instance: AxiosInstance) => {
         return Promise.reject(error);
       }
 
-      if (error.response?.status === 401 && !originalRequest._retry) {
+      if (
+        error.response?.status === 401 &&
+        !originalRequest._retry &&
+        !shouldSkipRefresh
+      ) {
         if (isRefreshing) {
           return new Promise((resolve, reject) => {
             failedQueue.push({ resolve, reject });

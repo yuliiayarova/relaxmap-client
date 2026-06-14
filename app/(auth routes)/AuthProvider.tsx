@@ -36,7 +36,6 @@ export default function AuthProvider({ children }: Props) {
 
         setUser(response.data);
       } catch (error) {
-        console.error('AUTH ERROR', error);
         clearAuth();
       } finally {
         setAuthChecked(true);
