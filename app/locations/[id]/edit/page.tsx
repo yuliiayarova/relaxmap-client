@@ -4,8 +4,8 @@ import { getLocationById } from '@/lib/api/client/locationsApi';
 import EditLocationPage from './EditLocationPage';
 
 export const metadata: Metadata = {
-  title: 'Редагування локації | Relax Map',
-  description: 'Сторінка редагування даних локації Relax Map.',
+  title: 'Edit Location | RelaxMap',
+  description: 'Update location details, photos, and information on RelaxMap.',
 };
 
 interface EditLocationRouteProps {
