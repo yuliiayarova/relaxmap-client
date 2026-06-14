@@ -54,7 +54,6 @@ export default function ProfilePageClient() {
   }
 
   const user = profileData.data;
-  console.log('🚀 ~ ProfilePage ~ user:', user);
 
   // Чистая проверка профиля по ID
   const currentUserId = (currentUserData?.data as { _id?: string })?._id;
@@ -77,7 +76,7 @@ export default function ProfilePageClient() {
         <h2 className={css.sectionTitle}>Локації</h2>
 
         {/* Если локаций больше 0 — рендерим сетку, если 0 — плейсхолдер */}
-        {user.articlesAmount >= 0 ? ( // почемуто всегда показывает локаций 0
+        {user.articlesAmount > 0 ? (
           <UserLocationsGrid userId={userId} />
         ) : (
           <ProfilePlaceholder isOwnProfile={isOwnProfile} />
