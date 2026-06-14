@@ -176,7 +176,7 @@ src/
 | ---------------------- | ----------------------- |
 | Yuliia Yarova          | @yuliiayarova           |
 | Anastasiia Zahliada    | @Anastasia-Zahliada     |
-| Artem Bahno            | @ArtemBgn               |
+| Artem Bagno            | @ArtemBgn               |
 | Yevhenii Pavlushchenko | @Yevhenii-Pavlushchenko |
 | Diana Prihozhyna       | @dianapri0303           |
 | Taisiia Shtyk          | @shtyktasya             |
