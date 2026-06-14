@@ -54,7 +54,6 @@ export default function ProfilePage() {
   }
 
   const user = profileData.data;
-  console.log('🚀 ~ ProfilePage ~ user:', user);
 
   // Чистая проверка профиля по ID
   const currentUserId = (currentUserData?.data as { _id?: string })?._id;
