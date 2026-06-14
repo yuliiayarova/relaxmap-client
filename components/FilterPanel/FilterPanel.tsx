@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './FilterPanel.module.css';
 import CustomSelect from '@/shared/ui/Select/Select';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -30,6 +30,12 @@ export default function FilterPanel() {
     locationType: searchParams.get('locationType') || undefined,
     sortBy: searchParams.get('sortBy') || undefined,
   };
+
+  useEffect(() => {
+    const currentSearchInUrl = searchParams.get('search') || '';
+    const set = () => setQuery(currentSearchInUrl);
+    set();
+  }, [searchParams]);
 
   const { data: regions } = useQuery({
     queryKey: ['regions'],
