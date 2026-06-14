@@ -1,7 +1,5 @@
 # RelaxMap
 
-![Application Preview](public/preview.png)
-
 RelaxMap is a web application for discovering and saving recreational locations. Users can browse places, view detailed information, leave reviews, and manage their personal profiles.
 
 ## About the Project
@@ -139,12 +137,10 @@ npm start
 ### Frontend
 
 ```text
-src/
 ├── app/
 ├── components/
-├── hooks/
+├── shared/
 ├── lib/
-├── types/
 └── styles/
 ```
 
@@ -155,9 +151,12 @@ src/
 ├── controllers/
 ├── services/
 ├── routes/
-├── middlewares/
+├── middleware/
 ├── models/
 ├── utils/
+├── constants/
+├── validations/
+├── db/
 └── server.js
 ```
 
