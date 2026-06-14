@@ -1,12 +1,30 @@
-import LocationDetailsPageAll from '@/components/LocationDetailsPageAll/LocationDetailsPageAll';
-import css from './page.module.css';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from '@tanstack/react-query';
+import { getLocationById } from '@/lib/api/client/locationsApi';
+import LocationDetailsPageClient from './LocationDetailsPage.client';
 
-export default function LocationDetailsPage() {
+interface LocationDetailsPageProps {
+  params: Promise<{ id: string }> | { id: string };
+}
+
+export default async function LocationDetailsPage({
+  params,
+}: LocationDetailsPageProps) {
+  const { id } = await params;
+
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ['location', id],
+    queryFn: () => getLocationById(id),
+  });
+
   return (
-    <main className={css['location-page-main']}>
-      <div className="container">
-        <LocationDetailsPageAll />
-      </div>
-    </main>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <LocationDetailsPageClient locationId={id} />
+    </HydrationBoundary>
   );
 }

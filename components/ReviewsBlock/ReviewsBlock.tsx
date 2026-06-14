@@ -40,30 +40,26 @@ export default function Feedbacks() {
     },
   });
 
-const renderStars = (rate: number) => {
-  const stars = [];
-  for (let i = 1; i <= 5; i++) {
-    if (rate >= i) {
-      stars.push(
-        <Icon key={i} name="star_filled" className={css.iconStar} />
-      );
-    } else if (rate > i - 1 && rate < i) {
-      stars.push(
-        <Icon key={i} name="star_half" className={css.iconStar} />
-      );
-    } else {
-      stars.push(
-        <Icon key={i} name="star_rate" className={css.iconStar} />
-      );
+  const renderStars = (rate: number) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (rate >= i) {
+        stars.push(
+          <Icon key={i} name="star_filled" className={css.iconStar} />,
+        );
+      } else if (rate > i - 1 && rate < i) {
+        stars.push(<Icon key={i} name="star_half" className={css.iconStar} />);
+      } else {
+        stars.push(<Icon key={i} name="star_rate" className={css.iconStar} />);
+      }
     }
-  }
-  return stars;
-};
+    return stars;
+  };
 
   if (isLoading) {
     return (
       <section className={css.feedbacks}>
-        <div className={ css.wrapper}>
+        <div className={css.wrapper}>
           <h2 className={css.sectionTitle}>Останні відгуки</h2>
           <div style={{ color: 'var(--color-coral-darkest)' }}>
             Завантаження відгуків...
@@ -93,7 +89,7 @@ const renderStars = (rate: number) => {
 
   return (
     <section className={css.feedbacks}>
-      <div className={( css.wrapper)}>
+      <div className={css.wrapper}>
         <h2 className={css.sectionTitle}>Останні відгуки</h2>
 
         <div className={css.sliderContainer}>

@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { refreshSessionClient } from '@/lib/api/client/authApiClient';
 import { getCurrentUser } from '@/lib/api/client/usersApi';
+import FullPageLoader from '@/components/FullPageLoader/FullPageLoader';
 
 type Props = { children: React.ReactNode };
 
@@ -48,7 +49,7 @@ export default function AuthProvider({ children }: Props) {
   }, [pathname, setUser, clearAuth, setAuthChecked]);
 
   if (!isAuthChecked) {
-    return <p>Loading...</p>;
+    return <FullPageLoader />;
   }
 
   return children;
