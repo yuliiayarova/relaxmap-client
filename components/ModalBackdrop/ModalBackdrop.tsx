@@ -5,8 +5,9 @@ import { createPortal } from 'react-dom';
 import Icon from '@/shared/ui/Icon/Icon';
 import type { ModalBackdropProps } from './types';
 import css from './ModalBackdrop.module.css';
+import clsx from 'clsx';
 
-export default function ModalBackdrop({ isOpen, onClose, children }: ModalBackdropProps) {
+export default function ModalBackdrop({ isOpen, onClose, children,modalClassName, }: ModalBackdropProps) {
   useEffect(() => {
     if (!isOpen) return;
     document.body.style.overflow = 'hidden';
@@ -29,7 +30,7 @@ export default function ModalBackdrop({ isOpen, onClose, children }: ModalBackdr
   return createPortal(
     <div className={css.backdrop} onClick={onClose} role="presentation">
       <div
-        className={css.modal}
+        className={clsx(css.modal, modalClassName)}
         role="dialog"
         aria-modal="true"
         onClick={(e) => e.stopPropagation()}

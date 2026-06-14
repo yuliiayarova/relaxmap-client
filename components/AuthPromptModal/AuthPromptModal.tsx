@@ -17,7 +17,7 @@ export default function AuthPromptModal({ onClose }: AuthPromptModalProps) {
   };
 
   return (
-    <ModalBackdrop isOpen onClose={onClose}>
+    <ModalBackdrop isOpen onClose={onClose} modalClassName={css.authModal}>
       <div className={css.content}>
         <h2 className={css.title}>Помилка під час додавання відгуку</h2>
 
