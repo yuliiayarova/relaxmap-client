@@ -10,14 +10,13 @@ interface Props {
 
 export async function PATCH(req: NextRequest, { params }: Props) {
   try {
-    const body = await req.json();
+    const body = await req.formData();
     const { _id } = await params;
     const cookieStore = await cookies();
 
     const apiRes = await api.patch(`/locations/${_id}`, body, {
       headers: {
         Cookie: cookieStore.toString(),
-        'Content-Type': 'application/json',
       },
     });
 
@@ -30,7 +29,7 @@ export async function PATCH(req: NextRequest, { params }: Props) {
           error: error.message,
           response: error.response?.data,
         },
-        { status: error.status },
+        { status: error.response?.status ?? 500 },
       );
     }
     logErrorResponse({ message: (error as Error).message });
