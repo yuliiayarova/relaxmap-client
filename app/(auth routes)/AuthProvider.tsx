@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { refreshSessionClient } from '@/lib/api/client/authApiClient';
 import { getCurrentUser } from '@/lib/api/client/usersApi';
+import FullPageLoader from '@/components/FullPageLoader/FullPageLoader';
 
 type Props = { children: React.ReactNode };
 
@@ -27,8 +28,6 @@ export default function AuthProvider({ children }: Props) {
       return;
     }
 
-    setAuthChecked(false);
-
     const checkAuth = async () => {
       try {
         await refreshSessionClient();
@@ -37,7 +36,6 @@ export default function AuthProvider({ children }: Props) {
 
         setUser(response.data);
       } catch (error) {
-        console.error('AUTH ERROR', error);
         clearAuth();
       } finally {
         setAuthChecked(true);
@@ -48,7 +46,7 @@ export default function AuthProvider({ children }: Props) {
   }, [pathname, setUser, clearAuth, setAuthChecked]);
 
   if (!isAuthChecked) {
-    return <p>Loading...</p>;
+    return <FullPageLoader />;
   }
 
   return children;

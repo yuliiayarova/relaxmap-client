@@ -1,3 +1,6 @@
+'use client';
+import FullPageLoader from '@/components/FullPageLoader/FullPageLoader';
+
 export default function Loading() {
-  return <p>Loading...please, wait...</p>;
+  return <FullPageLoader />;
 }

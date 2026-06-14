@@ -23,7 +23,7 @@ export async function getAllLocations(
 }
 
 export async function createLocation(
-  location: CreateLocation,
+  location: CreateLocation | FormData,
 ): Promise<Location> {
   const res = await nextServer.post<Location>('/locations', location);
   return res.data;
@@ -36,8 +36,13 @@ export async function getLocationById(locationId: string): Promise<Location> {
 
 export async function updateLocation(
   locationId: string,
-  body: UpdateLocation,
+  body: UpdateLocation | FormData,
 ): Promise<Location> {
+  if (body instanceof FormData) {
+    const res = await nextServer.patch<Location>(`/locations/${locationId}`, body);
+    return res.data;
+  }
+
   const cleanedBody = Object.fromEntries(
     Object.entries(body).filter(
       ([, value]) => value !== undefined && value !== null && value !== '', // Тут якщо ми допускаємо пустий description цю перевірку треба забрати

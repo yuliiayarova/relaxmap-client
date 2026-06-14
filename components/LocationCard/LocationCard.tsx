@@ -1,12 +1,12 @@
-// 'use client';
+'use client';
 import Button from '@/shared/ui/Button/Button';
 import Icon from '@/shared/ui/Icon/Icon';
-import clsx from 'clsx';
-import css from './LocationCard.module.css';
 import Image from 'next/image';
 import { AddRate } from '@/shared/ui/AddStarsRate/AddRate';
-import { User } from '@/lib/api/types/authTypes';
-// import { useRouter } from 'next/navigation';
+import { useAuthStore } from '@/lib/store/authStore';
+import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
+import css from './LocationCard.module.css';
 
 interface LocationCardProps {
   pathPhotoLocatin: string;
@@ -14,23 +14,27 @@ interface LocationCardProps {
   rate: number;
   nameLocation: string;
   locationId: string;
-  user?: User;
+  ownerId?: string;
+  userId?: string;
 }
 
 export default function LocationCard({
-  pathPhotoLocatin = '/images/location-sone-beach.jpg',
-  nameTypeLocation = 'Море',
-  rate = 3.5,
-  nameLocation = "Сонячна Рів'єра",
-  locationId = '0123',
+  pathPhotoLocatin,
+  nameTypeLocation,
+  rate,
+  nameLocation,
+  ownerId,
+  locationId,
 }: LocationCardProps) {
-  /*const router = useRouter();
+  const isAuthorized = useAuthStore((state) => state.isAuthenticated);
+  const userAuthorizedId = useAuthStore((state) => state.user?._id);
+  const router = useRouter();
   const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
   };
-  /*const handleViewLocationClick = () => {
+  const handleViewLocationClick = () => {
     router.push(`/locations/${locationId}`);
-  };/**/
+  };
   return (
     <div className={clsx(css['location-card'])}>
       <div className={css['article-box-img']}>
@@ -52,17 +56,18 @@ export default function LocationCard({
           <Button
             className={css['btn-view-location']}
             text="Переглянути локацію"
-            href={`/locations/${locationId}`}
+            // href={`/locations/${locationId}`}
+            onClick={handleViewLocationClick}
           />
-          {/*user && (
+          {isAuthorized && userAuthorizedId === ownerId && ownerId && (
             <Button
               className={css['btn-edit-location']}
-              // onClick={handleEditClick}
-              href={`/locations/${locationId}/edit`}
+              onClick={handleEditClick}
+              // href={`/locations/${locationId}/edit`}
             >
               <Icon name="edit" />
             </Button>
-          )*/}
+          )}
         </div>
       </div>
     </div>

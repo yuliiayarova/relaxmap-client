@@ -6,12 +6,11 @@ import { logErrorResponse } from '../_utils/utils';
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const body = await req.formData();
     const cookieStore = await cookies();
     const apiRes = await api.post('/locations', body, {
       headers: {
         Cookie: cookieStore.toString(),
-        'Content-Type': 'application/json',
       },
     });
 
@@ -24,7 +23,7 @@ export async function POST(req: NextRequest) {
           error: error.message,
           response: error.response?.data,
         },
-        { status: error.status },
+        { status: error.response?.status ?? 500 },
       );
     }
     logErrorResponse({ message: (error as Error).message });

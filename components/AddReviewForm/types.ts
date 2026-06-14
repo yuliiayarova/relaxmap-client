@@ -3,6 +3,6 @@ export interface AddReviewFormProps {
 }
 
 export interface AddReviewValues {
-  rating: number;
-  comment: string;
+  rate: number;
+  description: string;
 }

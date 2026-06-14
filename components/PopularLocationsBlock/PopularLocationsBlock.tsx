@@ -12,6 +12,7 @@ import Icon from '@/shared/ui/Icon/Icon';
 import { getAllLocations } from '@/lib/api/client/locationsApi';
 import { getCategoriesTypes } from '@/lib/api/client/categoriesApi';
 import css from './PopularLocationsBlock.module.css';
+import { useLocationType } from '@/shared/hooks/useLocationType';
 
 export default function PopularLocationsBlock() {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
@@ -24,10 +25,11 @@ export default function PopularLocationsBlock() {
       getAllLocations({ sortBy: 'rate', sortOrder: 'desc', perPage: 6 }),
   });
 
-  const { data: categoriesData } = useQuery({
+  /*const { data: categoriesData } = useQuery({
     queryKey: ['location-types'],
     queryFn: getCategoriesTypes,
-  });
+  });*/
+  const { data: categoriesData } = useLocationType();
 
   const locationTypeMap: Record<string, string> =
     categoriesData?.data.reduce(
@@ -39,7 +41,11 @@ export default function PopularLocationsBlock() {
     <section className={css.section}>
       <div className={css.header}>
         <h2 className={css.title}>Популярні локації</h2>
-        <Button href="/locations" text="Всі локації" className={css.allLocationsBtn} />
+        <Button
+          href="/locations"
+          text="Всі локації"
+          className={css.allLocationsBtn}
+        />
       </div>
 
       {isLoading && <p className={css.statusText}>Завантаження...</p>}

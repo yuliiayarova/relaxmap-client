@@ -1,36 +1,192 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RelaxMap
 
-## Getting Started
+RelaxMap is a web application for discovering and saving recreational locations. Users can browse places, view detailed information, leave reviews, and manage their personal profiles.
 
-First, run the development server:
+## About the Project
+
+RelaxMap is a team project developed as part of a collaborative learning process. The application helps users find interesting places for leisure and recreation while providing a convenient way to store and explore location information.
+
+The project consists of a frontend application built with Next.js and a backend API built with Express.js and MongoDB.
+
+## Features
+
+- User registration and authentication
+- User profile management
+- Browse available locations
+- Search and filter locations
+- View detailed information about locations
+- Create and view reviews
+- Upload images
+- Responsive design for desktop and mobile devices
+
+## Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- TanStack Query
+- Axios
+- Zustand
+- Formik
+- Yup
+- Swiper
+- CSS Modules
+
+### Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Celebrate / Joi Validation
+- Cookie Parser
+- Multer
+- Cloudinary
+- Helmet
+- CORS
+
+## Live Demo
+
+### Frontend
+
+https://relaxmap-client-git-develop-yuliiayarovas-projects.vercel.app/
+
+### Backend API
+
+https://relaxmap-server.onrender.com/
+
+## Installation and Setup
+
+### Clone the Repositories
+
+Frontend:
+
+```bash
+git clone https://github.com/yuliiayarova/relaxmap-client.git
+cd relaxmap-client
+```
+
+Backend:
+
+```bash
+git clone https://github.com/yuliiayarova/relaxmap-server.git
+cd relaxmap-server
+```
+
+## Frontend Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env.local` file:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The frontend will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Backend Setup
 
-## Learn More
+Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a `.env` file:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```env
+PORT=3001
+MONGODB_URI=your_mongodb_connection_string
 
-## Deploy on Vercel
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run in development mode:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev
+```
+
+Run in production mode:
+
+```bash
+npm start
+```
+
+## Project Structure
+
+### Frontend
+
+```text
+├── app/
+├── components/
+├── shared/
+├── lib/
+└── styles/
+```
+
+### Backend
+
+```text
+src/
+├── controllers/
+├── services/
+├── routes/
+├── middleware/
+├── models/
+├── utils/
+├── constants/
+├── validations/
+├── db/
+└── server.js
+```
+
+## Implementation Details
+
+- Client-side state management with Zustand
+- Server-state management and caching with TanStack Query
+- Form handling and validation with Formik and Yup
+- Image uploading through Cloudinary
+- MongoDB database integration using Mongoose
+- REST API communication between frontend and backend
+- Secure authentication using HTTP-only cookies
+
+## Team
+
+| Name                   | GitHub                  |
+| ---------------------- | ----------------------- |
+| Yuliia Yarova          | @yuliiayarova           |
+| Anastasiia Zahliada    | @Anastasia-Zahliada     |
+| Artem Bagno            | @ArtemBgn               |
+| Yevhenii Pavlushchenko | @Yevhenii-Pavlushchenko |
+| Diana Prihozhyna       | @dianapri0303           |
+| Taisiia Shtyk          | @shtyktasya             |
+| Ihor Vzhos             | @vjosik                 |
+| Mykhail Pyivoda        | @Onix43                 |
+
+## Contributors
+
+The project was developed collaboratively using GitHub Flow, pull requests, code reviews, and team planning. Team members contributed to frontend development, backend development, API integration, state management, validation, UI implementation, and testing.
+
+## License
+
+This project was created for educational purposes.

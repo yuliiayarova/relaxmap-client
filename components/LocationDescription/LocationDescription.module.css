@@ -1,0 +1,15 @@
+.location-story {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-green-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    padding-top: 48px;
+    font-size: var(--font-size-lg);
+
+    width: 865px;
+    margin: 0 auto;
+  }
+}
