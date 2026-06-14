@@ -58,7 +58,6 @@ export default function UserLocationsGrid({ userId }: UserLocationsGridProps) {
                 nameLocation={location.name}
                 locationId={location._id}
                 ownerId={location.ownerId}
-                userId={userId}
               />
             )),
           )}

@@ -25,9 +25,9 @@ export default function LocationCard({
   nameLocation,
   ownerId,
   locationId,
-  userId,
 }: LocationCardProps) {
   const isAuthorized = useAuthStore((state) => state.isAuthenticated);
+  const userAuthorizedId = useAuthStore((state) => state.user?._id);
   const router = useRouter();
   const handleEditClick = () => {
     router.push(`/locations/${locationId}/edit`);
@@ -59,7 +59,7 @@ export default function LocationCard({
             // href={`/locations/${locationId}`}
             onClick={handleViewLocationClick}
           />
-          {isAuthorized && userId === ownerId && userId && ownerId && (
+          {isAuthorized && userAuthorizedId === ownerId && ownerId && (
             <Button
               className={css['btn-edit-location']}
               onClick={handleEditClick}
