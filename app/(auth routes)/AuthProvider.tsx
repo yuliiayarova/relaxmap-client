@@ -28,8 +28,6 @@ export default function AuthProvider({ children }: Props) {
       return;
     }
 
-    setAuthChecked(false);
-
     const checkAuth = async () => {
       try {
         await refreshSessionClient();

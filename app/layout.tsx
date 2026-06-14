@@ -39,6 +39,8 @@ export default function RootLayout({
               <Footer />
             </div>
 
+            {modal}
+
             <Toaster position="bottom-center" />
           </AuthProvider>
         </TanStackProvider>
