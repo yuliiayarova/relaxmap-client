@@ -4,8 +4,23 @@ import FilterPanel from '@/components/FilterPanel/FilterPanel';
 import LocationsGrid from '@/components/LocationsGrid/LocationsGrid';
 
 export const metadata: Metadata = {
-  title: 'Усі місця відпочинку | Relax Map',
-  description: 'Каталог місць для відпочинку в Україні.',
+  title: 'All Locations | RelaxMap',
+  description:
+    'Browse recreational locations, discover new places, and find your next destination with RelaxMap.',
+  openGraph: {
+    title: 'All Locations | RelaxMap',
+    description:
+      'Browse recreational locations, discover new places, and find your next destination with RelaxMap.',
+    url: `${process.env.NEXT_PUBLIC_API_URL}/locations`,
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_API_URL}/images/hero-desktop.webp`,
+        width: 1200,
+        height: 630,
+        alt: 'RelaxMap Locations',
+      },
+    ],
+  },
 };
 
 export default function LocationsPage() {
