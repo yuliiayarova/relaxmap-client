@@ -6,7 +6,7 @@
 }
 
 .brandIcon {
-  fill: var(--color-scheme-1-text);
+  transition: var(--transition-base);
 }
 
 .brandText {
@@ -14,4 +14,9 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-normal);
   color: var(--color-scheme-2-text);
+  transition: var(--transition-base);
+}
+
+.brandText:hover {
+  color: var(--color-coral);
 }
