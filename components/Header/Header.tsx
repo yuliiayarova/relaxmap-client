@@ -7,7 +7,7 @@ import { useAuthStore } from '@/lib/store/authStore';
 import HeaderActions from './HeaderActions/HeaderActions';
 import HeaderNav from './HeaderNav/HeaderNav';
 import Logo from './Logo/Logo';
-import LogoutModal from './LogoutModal/LogoutModal';
+import ConfirmationModal from '@/components/ConfirmationModal/ConfirmationModal';
 import MobileMenu from './MobileMenu/MobileMenu';
 import css from './Header.module.css';
 
@@ -19,8 +19,7 @@ export default function Header() {
 
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isAuthChecked = useAuthStore((state) => state.isAuthChecked);
-  const isAuthLoading = useAuthStore((state) => state.isAuthLoading);
-  const user = useAuthStore((state) => state.user);
+const user = useAuthStore((state) => state.user);
 
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
@@ -95,13 +94,15 @@ export default function Header() {
         )}
       </header>
 
-      {isLogoutModalOpen && (
-        <LogoutModal
-          isLoading={isAuthLoading}
-          onCancel={closeLogoutModal}
-          onConfirm={confirmLogout}
-        />
-      )}
+      <ConfirmationModal
+        isOpen={isLogoutModalOpen}
+        title="Ви точно хочете вийти?"
+        description="Ми будемо сумувати за вами!"
+        cancelButtonText="Відмінити"
+        confirmButtonText="Вийти"
+        onCancel={closeLogoutModal}
+        onConfirm={confirmLogout}
+      />
     </>
   );
 }
