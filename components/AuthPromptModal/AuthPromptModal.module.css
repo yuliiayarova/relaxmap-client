@@ -12,6 +12,11 @@
   padding: 64px 20px 40px;
   border-radius: 24px;
   background-color: var(--color-coral-lightest);
+  scrollbar-width: none;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 .content {
