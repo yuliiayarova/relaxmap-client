@@ -32,6 +32,12 @@
   order: 1;
 }
 
+.secondDiv > div {
+  width: 160px; 
+  max-width: 160px; 
+  flex-shrink: 0; 
+}
+
 .filtersDiv {
   margin-bottom: 40px;
 }
@@ -47,6 +53,10 @@
   }
   .thirdDiv {
     width: 158px;
+  }
+  .secondDiv > div {
+    width: 208px;
+    max-width: 208px;
   }
 }
 
@@ -76,5 +86,9 @@
   }
   .thirdDiv {
     width: 160px;
+  }
+  .secondDiv > div {
+    width: 200px;
+    max-width: 200px;
   }
 }
