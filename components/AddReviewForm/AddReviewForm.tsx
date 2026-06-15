@@ -15,7 +15,7 @@ const initialValues: AddReviewValues = {
 
 const validationSchema = Yup.object({
   rate: Yup.number().min(0.5, 'Оберіть рейтинг').required('Оберіть рейтинг'),
-  description: Yup.string().trim().required('Введіть текст відгуку'),
+  description: Yup.string().max(200).trim().required('Введіть текст відгуку'),
 });
 
 export default function AddReviewForm({ locationId }: AddReviewFormProps) {
