@@ -38,8 +38,8 @@ const validationSchema = Yup.object({
   image: Yup.string().required('Додайте фото локації'),
   name: Yup.string()
     .trim()
-    .min(2, 'Назва має містити щонайменше 2 символи')
-    .max(80, 'Назва має містити не більше 80 символів')
+    .min(3, 'Назва має містити щонайменше 3 символи')
+    .max(96, 'Назва має містити не більше 96 символів')
     .required('Введіть назву місця'),
   locationType: Yup.string().required('Оберіть тип місця'),
   region: Yup.string().required('Оберіть регіон'),
