@@ -17,9 +17,7 @@
   box-shadow: 0 16px 40px var(--opacity-neutral-20);
   max-width: calc(100vw - 40px);
 
-  max-height: calc(100vh - 40px);
-  overflow-y: visible;
-  animation: slideUp var(--transition-base);
+animation: slideUp var(--transition-base);
   padding: 64px 20px;
 }
 

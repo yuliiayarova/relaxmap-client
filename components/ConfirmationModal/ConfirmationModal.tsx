@@ -27,7 +27,7 @@ export default function ConfirmationModal({
   };
 
   return (
-    <ModalBackdrop isOpen={isOpen} onClose={onCancel}>
+    <ModalBackdrop isOpen={isOpen} onClose={onCancel} modalClassName={css.modal}>
       <div className={css.content}>
         <h2 className={css.title}>{title}</h2>
         {description && <p className={css.description}>{description}</p>}
