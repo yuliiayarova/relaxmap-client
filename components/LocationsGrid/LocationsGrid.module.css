@@ -45,5 +45,6 @@
   color: #000;
 }
 .resetButton {
-  width: 170px;
+  align-self: flex-start;
+  min-width: 170px;
 }
