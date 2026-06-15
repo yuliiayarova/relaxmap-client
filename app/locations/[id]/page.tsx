@@ -19,7 +19,7 @@ export async function generateMetadata({
 
     const image =
       location.image ||
-      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-desktop.webp`;
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-desktop.png`;
 
     return {
       title: `${location.name} | RelaxMap`,
