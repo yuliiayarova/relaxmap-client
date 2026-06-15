@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     title: 'RelaxMap — Discover and Save Recreational Places',
     description:
       'Find recreational locations, save favorite spots, read reviews, and explore places recommended by the community.',
-    url: process.env.NEXT_PUBLIC_API_URL,
+    url: process.env.NEXT_PUBLIC_FRONTEND_URL,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_API_URL}/images/hero-desktop.webp`,
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-desktop.webp`,
         width: 1200,
         height: 630,
         alt: 'RelaxMap',
