@@ -18,8 +18,8 @@ export async function generateMetadata({
     const description = location.description || '';
 
     const image =
-      location.image?.[0] ||
-      `${process.env.NEXT_PUBLIC_API_URL}/images/hero-desktop.webp`;
+      location.image ||
+      `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-desktop.webp`;
 
     return {
       title: `${location.name} | RelaxMap`,
@@ -31,7 +31,7 @@ export async function generateMetadata({
       openGraph: {
         title: location.name,
         description: description.slice(0, 160),
-        url: `${process.env.NEXT_PUBLIC_API_URL}/locations/${id}`,
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/locations/${id}`,
         siteName: 'RelaxMap',
         type: 'website',
         images: [
