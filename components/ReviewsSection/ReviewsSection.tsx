@@ -13,6 +13,10 @@ import css from './ReviewsSection.module.css';
 import Icon from '@/shared/ui/Icon/Icon';
 import { useAuthStore } from '@/lib/store/authStore';
 
+import { useState } from 'react';
+import ModalBackdrop from '@/components/ModalBackdrop/ModalBackdrop';
+import AddReviewForm from '@/components/AddReviewForm/AddReviewForm';
+
 interface BackendReview {
   _id: string;
   userName: string;
@@ -28,6 +32,9 @@ interface ReviewsSectionProps {
 
 export default function ReviewsSection({ locationId }: ReviewsSectionProps) {
   const router = useRouter();
+
+  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+
   const isAuthorized = useAuthStore((state) => state.isAuthenticated);
   const {
     data: feedbacksData,
@@ -42,13 +49,13 @@ export default function ReviewsSection({ locationId }: ReviewsSectionProps) {
 
   const reviewsList = (feedbacksData?.data as BackendReview[]) || [];
 
-  const handleLeaveReview = () => {
-    if (isAuthorized) {
-      router.push(`/locations/${locationId}/review`);
-    } else {
-      router.push(`/locations/${locationId}/auth-prompt`);
-    }
-  };
+const handleLeaveReview = () => {
+  if (isAuthorized) {
+    setIsReviewModalOpen(true);
+  } else {
+    router.push(`/locations/${locationId}/auth-prompt`);
+  }
+};
 
   const renderStars = (rate: number) => {
     const stars = [];
@@ -197,6 +204,12 @@ export default function ReviewsSection({ locationId }: ReviewsSectionProps) {
           </div>
         )}
       </div>
+      <ModalBackdrop
+  isOpen={isReviewModalOpen}
+  onClose={() => setIsReviewModalOpen(false)}
+>
+  <AddReviewForm locationId={locationId} />
+</ModalBackdrop>
     </section>
   );
 }
