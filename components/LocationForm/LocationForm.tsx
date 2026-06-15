@@ -11,6 +11,7 @@ import {
 } from 'formik';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
 import * as Yup from 'yup';
@@ -26,12 +27,21 @@ import type { Location } from '@/lib/api/types/locationTypes';
 import type { LocationFormProps, LocationFormValues } from './types';
 import css from './LocationForm.module.css';
 
+const LocationPickerMap = dynamic(
+  () => import('@/components/LocationPickerMap/LocationPickerMap'),
+  {
+    ssr: false,
+    loading: () => <div className={css.mapLoader}>Завантаження карти...</div>,
+  },
+);
+
 const emptyValues: LocationFormValues = {
   image: '',
   name: '',
   locationType: '',
   region: '',
   description: '',
+  coordinates: null,
 };
 
 const validationSchema = Yup.object({
@@ -48,6 +58,12 @@ const validationSchema = Yup.object({
     .min(20, 'Опис має містити щонайменше 20 символів')
     .max(6000, 'Опис має містити не більше 6000 символів')
     .required('Додайте детальний опис'),
+  coordinates: Yup.object({
+    lat: Yup.number().required(),
+    lng: Yup.number().required(),
+  })
+    .nullable()
+    .required('Оберіть розташування на карті'),
 });
 
 type ErrorResponse = {
@@ -126,8 +142,11 @@ function createLocationFormData(
   formData.append('locationType', values.locationType);
   formData.append('region', values.region);
   formData.append('description', values.description.trim());
-  formData.append('coordinates[lat]', '0');
-  formData.append('coordinates[lon]', '0');
+
+  if (values.coordinates) {
+    formData.append('coordinates[lat]', String(values.coordinates.lat));
+    formData.append('coordinates[lng]', String(values.coordinates.lng));
+  }
 
   if (imageFile) {
     formData.append('image', imageFile);
@@ -498,6 +517,23 @@ export default function LocationForm({
             />
             <ErrorMessage
               name="description"
+              component="p"
+              className={css.error}
+            />
+          </div>
+
+          <div className={clsx(css.field, css.locationPickerField)}>
+            <p className={css.label}>Оберіть розташування</p>
+            <LocationPickerMap
+              value={values.coordinates}
+              hasError={Boolean(errors.coordinates && touched.coordinates)}
+              onLocationSelect={(coordinates) => {
+                setFieldValue('coordinates', coordinates);
+                setFieldTouched('coordinates', true, false);
+              }}
+            />
+            <ErrorMessage
+              name="coordinates"
               component="p"
               className={css.error}
             />
