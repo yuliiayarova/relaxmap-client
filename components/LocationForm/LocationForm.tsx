@@ -46,7 +46,7 @@ const validationSchema = Yup.object({
   description: Yup.string()
     .trim()
     .min(20, 'Опис має містити щонайменше 20 символів')
-    .max(1200, 'Опис має містити не більше 1200 символів')
+    .max(6000, 'Опис має містити не більше 6000 символів')
     .required('Додайте детальний опис'),
 });
 
@@ -341,6 +341,7 @@ export default function LocationForm({
       enableReinitialize
       initialValues={formInitialValues}
       validationSchema={validationSchema}
+      validateOnMount
       onSubmit={handleSubmit}
     >
       {({
@@ -348,6 +349,8 @@ export default function LocationForm({
         touched,
         values,
         isSubmitting,
+        isValid,
+        dirty,
         resetForm,
         handleChange,
         setFieldTouched,
@@ -457,7 +460,9 @@ export default function LocationForm({
             <LocationSelect
               id={`${id}-region`}
               name="region"
-              placeholder={isRegionsLoading ? 'Завантаження...' : 'Оберіть регіон'}
+              placeholder={
+                isRegionsLoading ? 'Завантаження...' : 'Оберіть регіон'
+              }
               options={regionOptions}
               disabled={isRegionsLoading}
               hasError={Boolean(errors.region && touched.region)}
@@ -481,9 +486,7 @@ export default function LocationForm({
               className={clsx(
                 css.control,
                 css.textarea,
-                errors.description &&
-                  touched.description &&
-                  css.controlError,
+                errors.description && touched.description && css.controlError,
                 errors.description &&
                   touched.description &&
                   values.description.trim() &&
@@ -504,7 +507,7 @@ export default function LocationForm({
             <button
               className={css.submitButton}
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || !dirty || !isValid}
             >
               {isSubmitting
                 ? 'Збереження...'

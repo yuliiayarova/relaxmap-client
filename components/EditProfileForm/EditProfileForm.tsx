@@ -36,7 +36,7 @@ export default function EditProfileForm({
 
   const updateProfileMutation = useMutation({
     mutationFn: (formData: FormData) => updateUserProfile(formData),
-    onSuccess: (responseData:any) => {
+    onSuccess: (responseData: any) => {
       toast.success('Профіль успішно оновлено!');
       if (responseData?.data) {
         setUser(responseData.data);
@@ -77,8 +77,8 @@ export default function EditProfileForm({
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 5 * 1024 * 1024) {
-      toast.error('Файл занадто великий! Максимальний розмір — 5 МБ.');
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error('Файл занадто великий! Максимальний розмір — 2 МБ.');
       return;
     }
 
