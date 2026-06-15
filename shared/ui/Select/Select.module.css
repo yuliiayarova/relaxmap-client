@@ -18,7 +18,6 @@
   align-items: center;
   cursor: pointer;
 
-  white-space: nowrap;
   overflow: hidden;
 
   font-weight: 400;
@@ -32,6 +31,15 @@
   @media only screen and (min-width: 1440px) {
     height: 43px;
   }
+}
+
+.selectHeader span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  flex-grow: 1;
+  margin-right: 8px;
 }
 
 .hasValue {

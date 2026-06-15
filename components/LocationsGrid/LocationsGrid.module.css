@@ -13,8 +13,9 @@
   font-size: var(--font-size-base);
   height: 48px;
 
-  align-self: center;
-  justify-self: center;
+  white-space: nowrap;
+
+  margin: 0 auto;
   @media only screen and (min-width: 768px) {
     width: 135px;
   }
