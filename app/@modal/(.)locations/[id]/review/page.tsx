@@ -14,13 +14,16 @@ export default function ReviewModalPage({ params }: ReviewModalPageProps) {
   const router = useRouter();
   const id = use(params).id;
 
- return (
-  <ModalBackdrop
-    isOpen
-   onClose={() => router.push(`/locations/${id}`)}
-    modalClassName={css.reviewModal}
-  >
-    <AddReviewForm locationId={id} />
-  </ModalBackdrop>
-);
+  return (
+    <ModalBackdrop
+      isOpen
+      onClose={() => router.back()} 
+      modalClassName={css.reviewModal}
+    >
+      <AddReviewForm 
+        locationId={id} 
+        onClose={() => router.back()} 
+      />
+    </ModalBackdrop>
+  );
 }

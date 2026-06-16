@@ -49,13 +49,13 @@ export default function ReviewsSection({ locationId }: ReviewsSectionProps) {
 
   const reviewsList = (feedbacksData?.data as BackendReview[]) || [];
 
-const handleLeaveReview = () => {
-  if (isAuthorized) {
-    setIsReviewModalOpen(true);
-  } else {
-    router.push(`/locations/${locationId}/auth-prompt`);
-  }
-};
+  const handleLeaveReview = () => {
+    if (isAuthorized) {
+      setIsReviewModalOpen(true);
+    } else {
+      router.push(`/locations/${locationId}/auth-prompt`);
+    }
+  };
 
   const renderStars = (rate: number) => {
     const stars = [];
@@ -205,11 +205,14 @@ const handleLeaveReview = () => {
         )}
       </div>
       <ModalBackdrop
-  isOpen={isReviewModalOpen}
-  onClose={() => setIsReviewModalOpen(false)}
->
-  <AddReviewForm locationId={locationId} />
-</ModalBackdrop>
+        isOpen={isReviewModalOpen}
+        onClose={() => setIsReviewModalOpen(false)}
+      >
+        <AddReviewForm
+          locationId={locationId}
+          onClose={() => setIsReviewModalOpen(false)}
+        />
+      </ModalBackdrop>
     </section>
   );
 }

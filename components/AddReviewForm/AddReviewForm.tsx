@@ -4,7 +4,6 @@ import { Formik, Form, Field, ErrorMessage, type FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { Rating } from 'react-simple-star-rating';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 import type { AddReviewFormProps, AddReviewValues } from './types';
 import css from './AddReviewForm.module.css';
 
@@ -18,8 +17,7 @@ const validationSchema = Yup.object({
   description: Yup.string().max(200).trim().required('Введіть текст відгуку'),
 });
 
-export default function AddReviewForm({ locationId }: AddReviewFormProps) {
-  const router = useRouter();
+export default function AddReviewForm({ locationId, onClose }: AddReviewFormProps) {
 
   const handleSubmit = async (
     values: AddReviewValues,
@@ -44,10 +42,10 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
       }
 
       toast.success('Відгук відправлено на модерацію');
-
-      window.location.href = `/locations/${locationId}`;
+      onClose();
 
     } catch (error) {
+
       toast.error(
         error instanceof Error ? error.message : 'Не вдалося відправити відгук',
       );
@@ -106,7 +104,7 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
             <button
               type="button"
               className={css.cancelButton}
-              onClick={() => router.push(`/locations/${locationId}`)} 
+              onClick={onClose} 
               disabled={isSubmitting}
             >
               Відмінити
