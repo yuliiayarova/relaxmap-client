@@ -31,7 +31,7 @@ export default function AuthProvider({ children }: Props) {
     const checkAuth = async () => {
       try {
         const isAuthed = await refreshSessionClient();
-        if (isAuthed.data.sucesss) {
+        if (isAuthed.data.success) {
           const response = await getCurrentUser();
 
           setUser(response.data);
