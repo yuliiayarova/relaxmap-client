@@ -31,15 +31,15 @@ export const loginSchema = Yup.object({
   email: Yup.string()
     .trim()
     .lowercase()
-    .email('Invalid email format')
-    .max(64, 'Email must be at most 64 characters')
-    .required('Email is required'),
+    .email('Некоректний формат електронної пошти')
+    .max(64, 'Електронна пошта не може містити більше ніж 64 символи')
+    .required("Електронна пошта є обов'язковою"),
 
   password: Yup.string()
     .trim()
-    .min(8, 'Password must be at least 8 characters')
-    .max(128, 'Password must be at most 128 characters')
-    .required('Password is required'),
+    .min(8, 'Пароль має містити щонайменше 8 символів')
+    .max(128, 'Пароль не може містити більше ніж 128 символів')
+    .required('Пароль є обов’язковим'),
 });
 
 export default function LoginForm() {
@@ -62,7 +62,7 @@ export default function LoginForm() {
           axiosError.response?.data?.message ??
           axiosError.response?.data?.error ??
           axiosError.message ??
-          'Oops... some error',
+          'Упс... щось пішло не так',
       );
     }
   };
