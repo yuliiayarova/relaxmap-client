@@ -22,7 +22,13 @@ export default function Button({
 }: ButtonProps) {
   if (href) {
     return (
-      <Link href={href} target={target} className={clsx(css.btn, className)}>
+      <Link
+        href={href}
+        target={target}
+        className={clsx(css.btn, className)}
+        onClick={onClick}
+      >
+        {children}
         {text}
       </Link>
     );

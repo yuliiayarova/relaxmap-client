@@ -1,0 +1,128 @@
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 24px;
+    width: 100%;
+    padding: 24px 0;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+         @media (min-width: 1440px) {
+             align-items: center;
+             justify-content: flex-start;
+             gap: 50px;
+         }
+}
+
+.profileInfo{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    @media (min-width:768px) {
+        flex-direction: row;
+        align-items: center;
+        
+    }
+}
+
+.avatarWrapper {
+    width: 145px;
+    height: 145px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        width: 100px;
+        height: 100px;
+        flex-shrink: 0;
+    }
+}
+
+.avatar {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.infoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        align-items: flex-start;
+    }
+}
+
+.name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight2);
+    color: var(--color-coral-darkest);
+
+    @media (min-width: 768px) {
+        color: var(--color-green-darkest);
+    }
+    @media (min-width: 1440px) {
+       font-size: var(--font-size-3_5xl);
+    }
+}
+
+.countLabel, 
+.countNumber {
+    font-size: var(--font-size-base);
+    color: var(--color-coral-darkest);
+    line-height: var(--line-height-normal);
+    
+    @media (min-width: 768px) {
+            color: var(--color-green-darkest);
+        }
+    @media (min-width: 1440px) {
+            font-size: var(--font-size-xl);
+        }
+}
+
+.editButton{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 190px;
+    height: 32px;
+    padding: 4px 4px;
+    border: 1px solid var(--opacity-neutral-15);
+    border-radius: 6px;
+    background-color: var(--color-coral-lighter);
+
+    font-weight: var(--font-weight-medium);
+    font-size: 15px;
+    line-height:var(--line-height-normal);
+    color: var(--color-coral-darkest);
+    transition:
+            color var(--transition-slow),
+            background-color var(--transition-slow),
+            border-color var(--transition-slow);
+}
+
+.editButton:hover{
+    color: var(--color-white);
+    background-color: var(--color-coral);
+    border-color: var(--opacity-transparent);
+}
+.editButton:active {
+    color: var(--color-white);
+    background-color: var(--color-green-darkest);
+    border-color:var(--opacity-transparent);
+}
+
+
+    

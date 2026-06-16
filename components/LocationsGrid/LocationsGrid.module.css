@@ -1,0 +1,50 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(335px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+.loadMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: var(--font-size-base);
+  height: 48px;
+
+  white-space: nowrap;
+
+  margin: 0 auto;
+  @media only screen and (min-width: 768px) {
+    width: 135px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 162px;
+    font-size: var(--font-size-xl);
+  }
+}
+
+.emptyMessageDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffe5d9;
+  height: 195px;
+  border-radius: 24px;
+  padding: 20px;
+  max-width: 768px;
+  width: 335px;
+
+  font-weight: 700;
+  font-size: 18px;
+
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+.resetButton {
+  align-self: flex-start;
+  min-width: 170px;
+}

@@ -1,0 +1,22 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  transition: var(--transition-base);
+}
+
+.brandText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  color: var(--color-scheme-2-text);
+  transition: var(--transition-base);
+}
+
+.brandText:hover {
+  color: var(--color-coral);
+}

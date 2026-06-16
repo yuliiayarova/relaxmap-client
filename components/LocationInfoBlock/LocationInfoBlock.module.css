@@ -1,0 +1,108 @@
+.location-titele-box {
+  width: 100%;
+
+  @media only screen and (min-width: 1440px) {
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+}
+.location-rate-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+.location-rate-stars {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.dot-separator {
+  display: block;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-green-darkest);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.location-text-rate {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-green-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-lg);
+  }
+}
+.location-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: var(--font-size-3_5xl);
+  line-height: var(--line-height-very-tight); /*******************************/
+  letter-spacing: var(--letter-spacing-tight2);
+  color: var(--color-green-darkest);
+
+  margin-bottom: 12px;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 48px;
+  }
+  @media only screen and (min-width: 1440px) {
+    font-size: 56px;
+  }
+}
+.location-details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+}
+.location-params-str {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+}
+.location-params-key {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-green-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-lg);
+  }
+}
+.location-params-value {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-green-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-lg);
+  }
+}
+.link-autor-story {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-green-darkest);
+
+  @media only screen and (min-width: 1440px) {
+    font-size: var(--font-size-lg);
+  }
+}

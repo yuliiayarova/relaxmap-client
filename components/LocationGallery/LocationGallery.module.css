@@ -1,0 +1,31 @@
+.location-img-box {
+  width: 100%;
+
+  border-radius: 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+
+  @media only screen and (min-width: 1440px) {
+    flex-basis: 755px;
+    height: 503px;
+
+    flex-shrink: 0;
+    flex-grow: 1;
+
+    margin-bottom: 0;
+  }
+}
+.location-img {
+  width: 335px;
+  height: 223px;
+
+  @media only screen and (min-width: 768px) {
+    width: 704px;
+    height: 469px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 755px;
+    height: 503px;
+  }
+}

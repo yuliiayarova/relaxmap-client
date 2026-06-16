@@ -1,0 +1,40 @@
+.main {
+  flex: 1;
+}
+
+.section {
+  padding: 32px 0 64px;
+}
+
+.title {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-3_5xl);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--color-scheme-1-text);
+
+  margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 32px;
+    padding-bottom: 64px;
+  }
+
+  .title {
+    font-size: var(--font-size-5xl);
+  }
+}
+
+@media (min-width: 1440px) {
+  .section {
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+
+  .title {
+    font-size: var(--font-size-6xl);
+  }
+}

@@ -1,0 +1,41 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { api } from '../../api';
+import { cookies } from 'next/headers';
+import { isAxiosError } from 'axios';
+import { logErrorResponse } from '../../_utils/utils';
+
+interface Props {
+  params: Promise<{ _id: string }>;
+}
+
+export async function PATCH(req: NextRequest, { params }: Props) {
+  try {
+    const body = await req.formData();
+    const { _id } = await params;
+    const cookieStore = await cookies();
+
+    const apiRes = await api.patch(`/locations/${_id}`, body, {
+      headers: {
+        Cookie: cookieStore.toString(),
+      },
+    });
+
+    return NextResponse.json(apiRes.data, { status: apiRes.status });
+  } catch (error) {
+    if (isAxiosError(error)) {
+      logErrorResponse(error.response?.data);
+      return NextResponse.json(
+        {
+          error: error.message,
+          response: error.response?.data,
+        },
+        { status: error.response?.status ?? 500 },
+      );
+    }
+    logErrorResponse({ message: (error as Error).message });
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 },
+    );
+  }
+}
