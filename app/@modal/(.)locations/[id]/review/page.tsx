@@ -17,7 +17,7 @@ export default function ReviewModalPage({ params }: ReviewModalPageProps) {
  return (
   <ModalBackdrop
     isOpen
-    onClose={() => router.back()}
+   onClose={() => router.push(`/locations/${id}`)}
     modalClassName={css.reviewModal}
   >
     <AddReviewForm locationId={id} />

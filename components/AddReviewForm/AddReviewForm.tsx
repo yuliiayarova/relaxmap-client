@@ -44,7 +44,9 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
       }
 
       toast.success('Відгук відправлено на модерацію');
-      router.back();
+
+      window.location.href = `/locations/${locationId}`;
+
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : 'Не вдалося відправити відгук',
@@ -104,7 +106,7 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
             <button
               type="button"
               className={css.cancelButton}
-              onClick={() => router.back()}
+              onClick={() => router.push(`/locations/${locationId}`)} 
               disabled={isSubmitting}
             >
               Відмінити
