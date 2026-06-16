@@ -127,7 +127,7 @@ function createLocationFormData(
   formData.append('region', values.region);
   formData.append('description', values.description.trim());
   formData.append('coordinates[lat]', '0');
-  formData.append('coordinates[lon]', '0');
+  formData.append('coordinates[lng]', '0');
 
   if (imageFile) {
     formData.append('image', imageFile);

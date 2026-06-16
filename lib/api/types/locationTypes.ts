@@ -13,7 +13,7 @@ export type SortOrder = 'asc' | 'desc'; // Це можна буде винест
 export interface Location {
   coordinates: {
     lat: number;
-    lon: number;
+    lng: number;
   };
   _id: string;
   image: string;
@@ -35,7 +35,7 @@ export interface CreateLocation {
   description: string;
   coordinates: {
     lat: number;
-    lon: number;
+    lng: number;
   };
 }
 
@@ -47,7 +47,7 @@ export interface UpdateLocation {
   description?: string;
   coordinates?: {
     lat: number;
-    lon: number;
+    lng: number;
   };
 }
 
