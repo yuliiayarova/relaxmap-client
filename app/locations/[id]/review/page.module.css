@@ -1,0 +1,15 @@
+.reviewModal {
+  width: min(334px, calc(100vw - 40px));
+}
+
+@media (min-width: 768px) {
+  .reviewModal {
+    width: 704px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .reviewModal {
+    width: 768px;
+  }
+}
