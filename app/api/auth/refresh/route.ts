@@ -45,7 +45,7 @@ export async function POST() {
         return NextResponse.json({ success: true }, { status: 200 });
       }
     }
-    return NextResponse.json({ success: false }, { status: 401 });
+    return NextResponse.json({ success: false }, { status: 200 });
   } catch (error) {
     if (isAxiosError(error)) {
       logErrorResponse(error.response?.data);
