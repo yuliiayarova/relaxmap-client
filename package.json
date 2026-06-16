@@ -14,11 +14,13 @@
     "clsx": "^2.1.1",
     "cookie": "^1.1.1",
     "formik": "^2.4.9",
+    "leaflet": "^1.9.4",
     "modern-normalize": "^3.0.1",
     "next": "16.2.7",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hot-toast": "^2.6.0",
+    "react-leaflet": "^5.0.0",
     "react-simple-star-rating": "^5.1.7",
     "swiper": "^12.2.0",
     "use-debounce": "^10.1.1",
@@ -26,6 +28,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
