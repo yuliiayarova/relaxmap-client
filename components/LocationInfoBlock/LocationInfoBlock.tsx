@@ -43,7 +43,6 @@ export default function LocationInfoBlock({
             <a
               className={css['link-autor-story']}
               href={`/profile/${ownerId}`}
-              target="_blank"
               rel="noopener noreferrer"
             >
               {ownerName}
