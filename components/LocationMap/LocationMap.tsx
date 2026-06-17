@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import css from './LocationMap.module.css';
 
 interface LocationMapProps {
+  locationName: string;
   coordinates: { lat: number; lng: number };
 }
 
@@ -16,13 +17,22 @@ const customMarkerIcon = L.icon({
   popupAnchor: [0, -38],
 });
 
-export default function LocationMap({ coordinates }: LocationMapProps) {
+export default function LocationMap({
+  coordinates,
+  locationName,
+}: LocationMapProps) {
   if (
     !coordinates ||
+    coordinates.lat === 0 ||
+    coordinates.lng === 0 ||
     typeof coordinates.lat !== 'number' ||
     typeof coordinates.lng !== 'number'
   ) {
-    return <div className="map-error">Координаты не переданы или неверны</div>;
+    return (
+      <div className="container">
+        <p className="map-error">Координати відсутні</p>
+      </div>
+    );
   }
 
   const position: LatLngTuple = [coordinates.lat, coordinates.lng];
@@ -52,7 +62,13 @@ export default function LocationMap({ coordinates }: LocationMapProps) {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {/**/}
-            <Marker position={position} icon={customMarkerIcon} />
+            <Marker position={position} icon={customMarkerIcon}>
+              <Popup>
+                <div className="map-popup-content">
+                  <strong>{locationName}</strong>
+                </div>
+              </Popup>
+            </Marker>
           </MapContainer>
         </div>
       </div>

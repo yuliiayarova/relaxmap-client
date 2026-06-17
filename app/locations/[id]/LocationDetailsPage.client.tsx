@@ -79,7 +79,7 @@ export default function LocationDetailsPageClient({
           <LocationDescription description={description} />
         </div>
       </section>
-      <LocationMap coordinates={coordinates} />
+      <LocationMap coordinates={coordinates} locationName={locationName} />
       <div className={css['location-page-feedbacks']}>
         <ReviewsSection locationId={locationId} />
       </div>
