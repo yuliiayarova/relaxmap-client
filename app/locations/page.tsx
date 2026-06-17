@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import css from './page.module.css';
 import FilterPanel from '@/components/FilterPanel/FilterPanel';
 import LocationsGrid from '@/components/LocationsGrid/LocationsGrid';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'All Locations | RelaxMap',
@@ -29,8 +30,12 @@ export default function LocationsPage() {
       <section className={css.section}>
         <div className="container">
           <h1 className={css.title}>Усі місця відпочинку</h1>
-          <FilterPanel />
-          <LocationsGrid />
+          <Suspense fallback={null}>
+            <FilterPanel />
+          </Suspense>
+          <Suspense fallback={null}>
+            <LocationsGrid />
+          </Suspense>
         </div>
       </section>
     </main>
