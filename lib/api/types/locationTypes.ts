@@ -13,8 +13,7 @@ export type SortOrder = 'asc' | 'desc'; // Це можна буде винест
 export interface Location {
   coordinates: {
     lat: number;
-    lng?: number;
-    lon?: number;
+    lng: number;
   };
   _id: string;
   image: string;

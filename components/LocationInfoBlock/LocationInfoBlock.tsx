@@ -1,4 +1,5 @@
 import { AddRate } from '@/shared/ui/AddStarsRate/AddRate';
+import Link from 'next/link';
 import css from './LocationInfoBlock.module.css';
 
 interface LocationInfoBlockProps {
@@ -40,14 +41,13 @@ export default function LocationInfoBlock({
         <div className={css['location-params-str']}>
           <dt className={css['location-params-key']}>Автор статті:</dt>
           <dd className={css['location-params-value']}>
-            <a
+            <Link
               className={css['link-autor-story']}
               href={`/profile/${ownerId}`}
-              target="_blank"
               rel="noopener noreferrer"
             >
               {ownerName}
-            </a>
+            </Link>
           </dd>
         </div>
       </dl>

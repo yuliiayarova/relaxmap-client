@@ -30,22 +30,22 @@ type ErrorResponse = {
 export const registerSchema = Yup.object({
   name: Yup.string()
     .trim()
-    .min(2, 'Name must be at least 2 characters')
-    .max(32, 'Name must be at most 32 characters')
-    .required('Name is required'),
+    .min(2, "Ім'я має містити щонайменше 2 символи")
+    .max(32, "Ім'я не може містити більше ніж 32 символи")
+    .required("Ім'я є обов'язковим"),
 
   email: Yup.string()
     .trim()
     .lowercase()
-    .email('Invalid email format')
-    .max(64, 'Email must be at most 64 characters')
-    .required('Email is required'),
+    .email('Некоректний формат електронної пошти')
+    .max(64, 'Електронна пошта не може містити більше ніж 64 символи')
+    .required('Електронна пошта є обовʼязковою'),
 
   password: Yup.string()
-    .min(8, 'Password must be at least 8 characters')
-    .max(128, 'Password must be at most 128 characters')
-    .required('Password is required')
-    .matches(/^[^\s]+$/, 'Password must not contain spaces'),
+    .min(8, 'Пароль має містити щонайменше 8 символів')
+    .max(128, 'Пароль не може містити більше ніж 128 символів')
+    .required('Пароль є обов’язковим')
+    .matches(/^[^\s]+$/, 'Пароль не повинен містити пробілів'),
 });
 
 export default function RegisterForm() {
@@ -68,7 +68,7 @@ export default function RegisterForm() {
           axiosError.response?.data?.message ??
           axiosError.response?.data?.error ??
           axiosError.message ??
-          'Oops... some error',
+          'Упс... щось пішло не так',
       );
     }
   };

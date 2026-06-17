@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     title: 'All Locations | RelaxMap',
     description:
       'Browse recreational locations, discover new places, and find your next destination with RelaxMap.',
-    url: `${process.env.NEXT_PUBLIC_API_URL}/locations`,
+    url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/locations`,
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_API_URL}/images/hero-desktop.webp`,
+        url: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/images/hero-desktop.png`,
         width: 1200,
         height: 630,
         alt: 'RelaxMap Locations',

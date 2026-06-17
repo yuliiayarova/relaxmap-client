@@ -51,7 +51,7 @@ The project consists of a frontend application built with Next.js and a backend 
 
 ### Frontend
 
-https://relaxmap-client-git-develop-yuliiayarovas-projects.vercel.app/
+https://relaxmap-client.vercel.app/
 
 ### Backend API
 

@@ -104,7 +104,7 @@ export default function AddReviewForm({ locationId }: AddReviewFormProps) {
             <button
               type="button"
               className={css.cancelButton}
-              onClick={() => router.back()}
+              onClick={() => router.push(`/locations/${locationId}`)}
               disabled={isSubmitting}
             >
               Відмінити
