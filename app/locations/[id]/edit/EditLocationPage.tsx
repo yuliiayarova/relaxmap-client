@@ -7,6 +7,15 @@ interface EditLocationPageProps {
 }
 
 export default function EditLocationPage({ location }: EditLocationPageProps) {
+  const longitude = location.coordinates.lng ?? location.coordinates.lon;
+  const coordinates =
+    longitude === undefined
+      ? undefined
+      : {
+          lat: location.coordinates.lat,
+          lng: longitude,
+        };
+
   return (
     <section className={css.section}>
       <div className="container">
@@ -21,6 +30,7 @@ export default function EditLocationPage({ location }: EditLocationPageProps) {
               locationType: location.locationType,
               region: location.region,
               description: location.description,
+              coordinates,
             }}
           />
         </div>

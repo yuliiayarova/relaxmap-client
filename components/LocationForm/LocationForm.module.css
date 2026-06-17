@@ -14,6 +14,11 @@
   width: 100%;
 }
 
+.locationPickerField {
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
 .label {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-normal);
@@ -255,11 +260,23 @@
   line-height: var(--line-height-tight);
 }
 
+.mapLoader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 188px;
+  background-color: var(--color-neutral-lightest);
+  color: var(--opacity-neutral-60);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-normal);
+}
+
 .actions {
   display: flex;
   flex-direction: column-reverse;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 0;
   padding-top: 0;
 }
 
@@ -344,11 +361,16 @@
     min-height: 190px;
   }
 
+  .mapLoader {
+    max-width: 704px;
+    height: 395px;
+  }
+
   .actions {
     flex-direction: row;
     gap: 16px;
     margin-top: 0;
-    padding-top: 16px;
+    padding-top: 0;
   }
 
   .submitButton,
@@ -375,6 +397,12 @@
   .submitButton,
   .cancelButton {
     font-size: var(--font-size-sm);
+  }
+
+  .mapLoader {
+    max-width: 864px;
+    height: 485px;
+    font-size: var(--font-size-lg);
   }
 
   .preview {
