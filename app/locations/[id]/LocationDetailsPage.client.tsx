@@ -8,6 +8,7 @@ import { useRegion } from '@/shared/hooks/useRegion';
 import { useGetUser } from '@/shared/hooks/useGetUser';
 import { useMemo } from 'react';
 import ReviewsSection from '@/components/ReviewsSection/ReviewsSection';
+import LocationMap from '@/components/LocationMap/LocationMap';
 import css from './LocationDetailsPage.module.css';
 
 interface LocationDetailsPageClientProps {
@@ -50,9 +51,12 @@ export default function LocationDetailsPageClient({
     rate,
     description,
     ownerId,
+    coordinates,
   } = location;
 
   const ownerName = user.data.name;
+
+  // const _hardCoordinates = { lat: 46.0263, lng: 30.4577 };
 
   return (
     <main className={css['location-page-main']}>
@@ -75,6 +79,7 @@ export default function LocationDetailsPageClient({
           <LocationDescription description={description} />
         </div>
       </section>
+      <LocationMap coordinates={coordinates} locationName={locationName} />
       <div className={css['location-page-feedbacks']}>
         <ReviewsSection locationId={locationId} />
       </div>
