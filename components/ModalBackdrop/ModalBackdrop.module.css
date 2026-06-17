@@ -1,7 +1,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  z-index: 20;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +17,7 @@
   box-shadow: 0 16px 40px var(--opacity-neutral-20);
   max-width: calc(100vw - 40px);
 
-animation: slideUp var(--transition-base);
+  animation: slideUp var(--transition-base);
   padding: 64px 20px;
 }
 
