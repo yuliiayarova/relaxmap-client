@@ -7,7 +7,7 @@ interface EditLocationPageProps {
 }
 
 export default function EditLocationPage({ location }: EditLocationPageProps) {
-  const longitude = location.coordinates.lng ?? location.coordinates.lon;
+  const longitude = location.coordinates.lng;
   const coordinates =
     longitude === undefined
       ? undefined
